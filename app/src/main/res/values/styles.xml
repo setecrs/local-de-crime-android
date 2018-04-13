@@ -5,7 +5,43 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
     </style>
+
+    <string name="localPrompt">Local</string>
+
+    <string-array name="localList">
+        <item>Escolha um local</item>
+        <item>Correios</item>
+        <item>CEF</item>
+        <item>Universidade Federal</item>
+        <item>Colega</item>
+        <item>DNIT</item>
+        <item>Instituto Federal</item>
+        <item>Drogas</item>
+        <item>Moeda Falsa</item>
+        <item>Estrangeiro</item>
+        <item>Ignorar Formulário</item>
+
+    </string-array>
+
+    <string name="estadoPrompt">Estado</string>
+
+    <string-array name="estadoList">
+        <item>Escolha um estado</item>
+        <item>RS</item>
+        <item>SC</item>
+    </string-array>
+
+    <string name="cidadePrompt">Cidade</string>
+
+    <string-array name="cidadeList">
+        <item>Escolha uma cidade</item>
+        <item>Porto Alegre</item>
+        <item>Viamão</item>
+    </string-array>
+
+
+
 
 </resources>
