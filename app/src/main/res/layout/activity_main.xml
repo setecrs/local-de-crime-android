@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ages181.policiafederal_android.MainActivity">
+
+    <Spinner
+        android:id="@+id/spinnerLocal"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:entries="@array/localList"
+        android:prompt="@string/localPrompt" />
+
+    <Spinner
+        android:id="@+id/spinnerEstado"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:entries="@array/estadoList"
+        android:prompt="@string/estadoPrompt" />
+
+    <Spinner
+        android:id="@+id/spinnerCidade"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewCidade"
+        android:layout_centerHorizontal="true"
+        android:entries="@array/cidadeList"
+        android:prompt="@string/cidadePrompt" />
+
+    <TextView
+        android:id="@+id/textViewLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spinnerLocal"
+        android:layout_alignStart="@+id/spinnerLocal"
+        android:layout_marginBottom="-60dp"
+        android:text="Local" />
+
+    <TextView
+        android:id="@+id/textViewEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spinnerEstado"
+        android:layout_alignStart="@+id/spinnerLocal"
+        android:layout_marginBottom="-120dp"
+        android:text="Estado" />
+
+    <TextView
+        android:id="@+id/textViewCidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/spinnerLocal"
+        android:layout_marginTop="160dp"
+        android:text="Cidade" />
+
+    <TextView
+        android:id="@+id/textViewRua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextRua"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="Rua/Avenida" />
+
+    <EditText
+        android:id="@+id/editTextRua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:hint="Escreva o nome da rua"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textViewComplemento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextComplemento"
+        android:layout_alignParentStart="true"
+        android:text="Complemento" />
+
+    <EditText
+        android:id="@+id/editTextComplemento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:hint="Escreva o complemento"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textViewNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextNumero"
+        android:layout_alignParentStart="true"
+        android:text="Número" />
+
+    <EditText
+        android:id="@+id/editTextNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:ems="10"
+        android:hint="Escreva o número"
+        android:inputType="textPersonName|number" />
+
+</RelativeLayout>
