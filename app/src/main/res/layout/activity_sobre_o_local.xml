@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SobreOLocal">
+
+    <TextView
+        android:id="@+id/labelDataChegadaPerito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="16dp"
+        android:text="Data da chegada dos peritos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelHoraChegadaPeritos"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="85dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="130dp"
+        android:text="Hora da chegada dos peritos"
+        app:layout_constraintBottom_toTopOf="@+id/condicoesLocal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/campoDataChegada"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Selecione a data de chegada"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelDataChegadaPerito" />
+
+    <EditText
+        android:id="@+id/horaChegadaPerito"
+        android:layout_width="242dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Selecione a hora de chegada"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/condicoesLocal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelHoraChegadaPeritos"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <Spinner
+        android:id="@+id/condicoesLocal"
+        android:layout_width="265dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="240dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelHoraChegadaPeritos" />
+
+    <TextView
+        android:id="@+id/labelInformacoesAdicionais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Informações Adicionais"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/condicoesLocal" />
+
+    <EditText
+        android:id="@+id/textInformacoesAdicionais"
+        android:layout_width="366dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Digite aqui as informações adicionais sobre \no local e suas condições"
+        android:inputType="text|textPersonName"
+        android:singleLine="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelInformacoesAdicionais" />
+
+    <CalendarView
+        android:id="@+id/calendarioDataChegada"
+        android:layout_width="256dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#fff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelDataChegadaPerito" />
+
+
+</android.support.constraint.ConstraintLayout>
