@@ -8,6 +8,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 /**
  * Created by 15104313 on 13/04/18.
  */
@@ -16,23 +20,17 @@ public class Teste extends AsyncTask<Void, Void, Void> {
 
     private Exception exception;
 
+    OkHttpClient client = new OkHttpClient();
+
     protected Void doInBackground(Void... params) {
         try {
 
-            StringBuilder result = new StringBuilder();
-            URL url = new URL("https://jsonplaceholder.typicode.com/posts");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.addRequestProperty("Content-Type", "application/" + "POST");
-            conn.setRequestProperty("title", "foo");
-            conn.setRequestProperty("body", "bar");
-            conn.setRequestProperty("userId", "1");
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line;
-            while ((line = rd.readLine()) != null) {
-                System.out.println(result.append(line));
-            }
-            rd.close();
+            Request request = new Request.Builder()
+                    .url("https://jsonplaceholder.typicode.com/posts")
+                    .build();
+
+            Response response = client.newCall(request).execute();
+            System.out.println(response.body());
 
         } catch (Exception e) {
             e.printStackTrace();

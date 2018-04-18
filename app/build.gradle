@@ -28,5 +28,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+<<<<<<< 303d26d2e46364951cbff458e129291226fafd13
     implementation 'com.android.support:design:26.1.0'
+=======
+    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+>>>>>>> Okhhtp
 }
