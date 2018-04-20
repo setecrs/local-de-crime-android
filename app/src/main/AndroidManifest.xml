@@ -17,10 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< 7007d7e4a70d88b8ec50dee6ce95b8bb9a5415d1
         <activity android:name=".DadosGerais">
         </activity>        
-=======
         <activity android:name=".TelaEndereco">
         </activity>
 >>>>>>> Merge Homo com endereço
