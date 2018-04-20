@@ -21,7 +21,6 @@
         </activity>        
         <activity android:name=".TelaEndereco">
         </activity>
->>>>>>> Merge Homo com endereço
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
