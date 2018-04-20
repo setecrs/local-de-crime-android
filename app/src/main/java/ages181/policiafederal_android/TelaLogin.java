@@ -1,5 +1,6 @@
 package ages181.policiafederal_android;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class TelaLogin extends AppCompatActivity {
     public void sendMessage(View view) {
         try {
             new Teste().execute();
+            Intent k = new Intent(TelaLogin.this, TelaEndereco.class);
+            startActivity(k);
         } catch (Exception e) {
             e.printStackTrace();
         }
