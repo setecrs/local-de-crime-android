@@ -1,121 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ages181.policiafederal_android.DadosGerais"
+    tools:context="ages181.policiafederal_android.MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="148dp"
-        android:layout_height="26dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="19dp"
         android:text="Número da Ocorrência"
-        app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/numOcorrenciaId"
+        app:layout_constraintStart_toStartOf="@+id/numOcorrenciaId"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="21dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="20dp"
         android:text="Sede da Ocorrência"
-        app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2" />
+        app:layout_constraintBottom_toTopOf="@+id/sedeOcorrenciaId"
+        app:layout_constraintStart_toStartOf="@+id/sedeOcorrenciaId"
+        app:layout_constraintTop_toBottomOf="@+id/numOcorrenciaId" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:text="Peritos Envolvidos"
-        app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView3" />
+        app:layout_constraintBottom_toTopOf="@+id/peritosEnvolvidosId"
+        app:layout_constraintStart_toStartOf="@+id/peritosEnvolvidosId"
+        app:layout_constraintTop_toBottomOf="@+id/sedeOcorrenciaId" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:text="Data da Ocorrência"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView4" />
+        app:layout_constraintBottom_toTopOf="@+id/dataOcorrenciaId"
+        app:layout_constraintStart_toStartOf="@+id/dataOcorrenciaId"
+        app:layout_constraintTop_toBottomOf="@+id/peritosEnvolvidosId" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_width="121dp"
+        android:layout_height="17dp"
         android:text="Hora da Ocorrência"
-        app:layout_constraintBottom_toTopOf="@+id/editText8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView2"
-        android:layout_width="302dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Digite aqui o número da ocorrência"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView3"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Digite aqui a sede da ocorrência"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView4"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Digite aqui o nome dos peritos"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintBottom_toTopOf="@+id/horaOcorrenciaId"
+        app:layout_constraintStart_toStartOf="@+id/horaOcorrenciaId"
+        app:layout_constraintTop_toBottomOf="@+id/dataOcorrenciaId" />
 
     <EditText
-        android:id="@+id/editText7"
-        android:layout_width="298dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="34dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/dataOcorrenciaId"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
@@ -124,17 +67,69 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editText8"
-        android:layout_width="297dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/horaOcorrenciaId"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/numOcorrenciaId"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:ems="10"
+        android:hint="Digite aqui o Numero da Ocorrência"
+        android:inputType="textPersonName"
+        android:text="@string/numOcorrencia"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/sedeOcorrenciaId"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:ems="10"
+        android:hint="Digite aqui a Sede de Ocorrência"
+        android:inputType="textPersonName"
+        android:text="@string/sedeOcorrencia"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/peritosEnvolvidosId"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:ems="10"
+        android:hint="Digite aqui os Peritos Envolvidos"
+        android:inputType="textPersonName"
+        android:text="@string/peritosEnvolvidos"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </android.support.constraint.ConstraintLayout>

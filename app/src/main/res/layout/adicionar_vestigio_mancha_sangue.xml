@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vestigioManchaSangue"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/lightBlue"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintBottom_toTopOf="@id/switchVestigioColetado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.51"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageButton
+            android:id="@+id/imageButtonVoltar"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/lightBlue"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Adicionar novo vestígio"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="6dp" />
+
+        <Button
+            android:id="@+id/buttonGravar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/lightBlue"
+            android:text="GRAVAR"
+            android:textColor="#FFFFFF" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <Switch
+        android:id="@+id/switchVestigioColetado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="Vestígio coletado"
+        android:checked="true"
+        android:textColor="#5A6986"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNumeroEtiqueta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+
+
+    <TextView
+        android:id="@+id/textViewNumeroEtiqueta"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="Número da etiqueta ou placa do vestígio"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumeroEtiqueta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchVestigioColetado" />
+
+    <EditText
+        android:id="@+id/editTextNumeroEtiqueta"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="38dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#5A6986"
+        android:hint="Digite aqui o número do vestígio"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNomeVestigio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumeroEtiqueta" />
+
+
+    <TextView
+        android:id="@+id/textViewNomeVestigio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Nome do vestígio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumeroEtiqueta" />
+
+    <EditText
+        android:id="@+id/editTextNomeVestigio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Digite aqui o nome do vestígio"
+        android:text="Mancha de sangue"
+        android:textColor="#5A6986"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTipoVestigio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeVestigio"
+        app:layout_constraintVertical_bias="0.13999999"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Spinner
+        android:id="@+id/spinnerTipoVestigio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:entries="@array/vestigioManchaSangue"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInformacoes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNomeVestigio" />
+
+    <TextView
+        android:id="@+id/textViewInformacoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="Informações adicionais"
+        app:layout_constraintBottom_toTopOf="@+id/editTextInformacoes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoVestigio" />
+
+    <EditText
+        android:id="@+id/editTextInformacoes"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:text="Mancha de sangue encontrada no local de crime."
+        android:hint="Digite aqui as informações adicionais sobre o vestígio"
+        android:inputType="textMultiLine|textPersonName"
+        android:paddingBottom="40dp"
+        android:textColor="#5A6986"
+        app:layout_constraintBottom_toTopOf="@+id/switchGeolocalizacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInformacoes" />
+
+    <Switch
+        android:id="@+id/switchGeolocalizacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="Geolocalização"
+        android:textColor="#5A6986"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextInformacoes"
+        app:layout_constraintVertical_bias="0.827" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonAdicionarVestigio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</android.support.constraint.ConstraintLayout>

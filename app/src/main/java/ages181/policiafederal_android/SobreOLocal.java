@@ -1,5 +1,8 @@
 package ages181.policiafederal_android;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
@@ -21,6 +26,12 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class SobreOLocal extends Fragment {
+    EditText horaChegada, dataChegada;
+    Spinner spCondicoesLocal;
+    Calendar horarioAtual = Calendar.getInstance();
+    private Context context;
+
+
     private static final String[] condicoesLocal = { "Condições do Local",
             "Preservado", "Pouco preservado", "Não preservado" };
     ArrayAdapter<String> listaCondicoesLocal;
@@ -31,39 +42,74 @@ public class SobreOLocal extends Fragment {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.activity_sobre_o_local, container, false);
 
-        final CalendarView cvDataChegada = (CalendarView) v.findViewById(R.id.calendarioDataChegada);
-        cvDataChegada.setVisibility(cvDataChegada.INVISIBLE);
+        horaChegada = (EditText) v.findViewById(R.id.etHoraChegada);
+        dataChegada = (EditText) v.findViewById(R.id.etDataChegada);
+        spCondicoesLocal = (Spinner) v.findViewById(R.id.spCondicoesLocal);
+        dataChegada.setFocusable(false);
+        horaChegada.setFocusable(false);
+        showTimePickerDialog();
+        showDatePickerDialog();
 
-        final EditText tvDataChegada = (EditText) v.findViewById(R.id.campoDataChegada);
-        tvDataChegada.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cvDataChegada.setVisibility(cvDataChegada.VISIBLE);
-                cvDataChegada.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                    public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                        tvDataChegada.setText(dayOfMonth+"/"+(month+1)+"/"+year);
-                        cvDataChegada.setVisibility(cvDataChegada.INVISIBLE);
-                        tvDataChegada.setFocusable(false);
-                    }
-                });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1, condicoesLocal);
+        spCondicoesLocal.setAdapter(adapter);
 
-            }
-        });
-
-        EditText etHoraChegada = (EditText) v.findViewById(R.id.horaChegadaPerito);
-        etHoraChegada.addTextChangedListener(Mask.mascara(etHoraChegada, Mask.FORMAT_HOUR));
-
-        listaCondicoesLocal = new ArrayAdapter<String>(getActivity().getApplicationContext() , android.R.layout.simple_list_item_1, condicoesLocal);
-        spinnerCondicoesLocal = (Spinner) v.findViewById(R.id.condicoesLocal);
-        spinnerCondicoesLocal.setAdapter(listaCondicoesLocal);
 
 
         return v;
     }
 
+    public void showTimePickerDialog(){
+
+        horaChegada.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                new TimePickerDialog(context, captarHorario, horarioAtual.get(Calendar.HOUR_OF_DAY),
+                        horarioAtual.get(Calendar.MINUTE),true).show();
+            }
+
+        });
+    } //Fim showTimePickerDialog
+
+    //Captar horario selecionada
+    protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hora, int minuto) {
+            horaChegada.setText(hora+":"+minuto);
+        }
+    };
+
+
+    //Exibir DataPicker
+    public void showDatePickerDialog(){
+        dataChegada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(context, captarData, horarioAtual.get(Calendar.YEAR),
+                        horarioAtual.get(Calendar.MONTH), horarioAtual.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+    }//Fim showDatePickerDialog
+    //Captar data selecionada
+    protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            dataChegada.setText(day+"/"+(month+1)+"/"+year);
+        }
+    };
+
+
     public static SobreOLocal newInstance() {
 
         SobreOLocal f = new SobreOLocal();
         return f;
+    }
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        this.context = context;
+        super.onAttach(context);
     }
 }
