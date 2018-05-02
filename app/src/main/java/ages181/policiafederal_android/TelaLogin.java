@@ -1,6 +1,5 @@
 package ages181.policiafederal_android;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ public class TelaLogin extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         imagem = (ImageView) findViewById(R.id.imageView);
-        imagem.setImageDrawable(getResources().getDrawable(R.drawable.logo_pf));
+        imagem.setImageDrawable(getResources().getDrawable(R.drawable.logo));
 
         usuario = (EditText) findViewById(R.id.editText);
         senha = (EditText) findViewById(R.id.editText2);
@@ -27,7 +26,8 @@ public class TelaLogin extends FragmentActivity {
 
     public void sendMessage(View view) {
         try {
-            new HttpLogin().execute();
+            new HttpLogin().execute().get();
+
             Intent k = new Intent(TelaLogin.this, MainActivity.class);
             startActivity(k);
         } catch (Exception e) {

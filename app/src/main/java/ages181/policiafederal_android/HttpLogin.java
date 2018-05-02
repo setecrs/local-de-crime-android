@@ -59,14 +59,14 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
             RequestBody body = RequestBody.create(JSON, json);
 
             RequestBody formBody = new FormBody.Builder()
-                    .add("usuario", "bbb")
-                    .add("senha", "bbb")
+                    .add("usuario", "cassio")
+                    .add("senha", "cassio")
                     .build();
 
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
-                    .url("https://ages-pf.herokuapp.com/login")
-                    .post(formBody)
+                    .url("http://www.homo.ages.pucrs.br:3001/login")
+                    .post(body)
                     .build();
 
             Response response = client.newCall(request).execute();
