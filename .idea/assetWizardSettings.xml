@@ -13,17 +13,50 @@
                       <PersistentState>
                         <option name="children">
                           <map>
-                            <entry key="launcher">
+                            <entry key="actionbar">
                               <value>
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\Possebas\Desktop\Projeto Polícia Federal\logoPF.png" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\User\StudioProjects\PF\app\src\main\res\mipmap-xhdpi\logo_pf.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="99" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="foregroundImage" value="C:\Users\User\StudioProjects\PF\app\src\main\res\mipmap-xhdpi\ic_launcher_foreground.png" />
+                                      <entry key="foregroundLayerName" value="logo_pf" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
@@ -32,6 +65,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>

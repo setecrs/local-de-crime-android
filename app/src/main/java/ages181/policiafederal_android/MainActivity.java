@@ -37,20 +37,20 @@ public class MainActivity extends FragmentActivity {
             super(fm);
         }
 
-        private String tabTitles[] = new String[] { "Endereço", "Sobre o Local", "Dados Gerais", "Responsável", "Vestigios" };
+        private String tabTitles[] = new String[] { "Dados Gerais", "Endereço", "Responsável do Local", "Sobre o Local", "Vestigios" };
 
         @Override
         public Fragment getItem(int pos) {
             switch (pos) {
 
                 case 0:
-                    return TelaEndereco.newInstance();
-                case 1:
-                    return SobreOLocal.newInstance();
-                case 2:
                     return DadosGerais.newInstance();
-                case 3:
+                case 1:
+                    return TelaEndereco.newInstance();
+                case 2:
                     return Responsavel.newInstance();
+                case 3:
+                    return SobreOLocal.newInstance();
                 case 4:
                     return TelaListaVestigios.newInstance();
                 default:
