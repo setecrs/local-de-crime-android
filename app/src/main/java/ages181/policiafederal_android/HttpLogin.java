@@ -31,22 +31,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     private Exception exception;
     private String teste;
 
-    OkHttpClient client = new OkHttpClient.Builder()
-            .cookieJar(new CookieJar() {
-                private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
-
-                @Override
-                public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                    cookieStore.put(url, cookies);
-                }
-
-                @Override
-                public List<Cookie> loadForRequest(HttpUrl url) {
-                    List<Cookie> cookies = cookieStore.get(url);
-                    return cookies != null ? cookies : new ArrayList<Cookie>();
-                }
-            })
-            .build();
+    OkHttpClient client = new OkHttpClient.Builder().followRedirects(false).build();
 
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
@@ -65,7 +50,8 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
-                    .url("http://www.homo.ages.pucrs.br:3001/login")
+
+                    .url("https://ages-pf.herokuapp.com/login")
                     .post(body)
                     .build();
 

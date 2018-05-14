@@ -26,7 +26,7 @@ public class TelaLogin extends FragmentActivity {
 
     public void sendMessage(View view) {
         try {
-            new HttpLogin().execute().get();
+            new HttpLogin().execute();
 
             Intent k = new Intent(TelaLogin.this, MainActivity.class);
             startActivity(k);
