@@ -51,15 +51,8 @@ public class TelaEndereco extends Fragment{
         criaFuncionalidadeSalvarTexto(editTextNumero, "editTextNumero");
         criaFuncionalidadeSalvarTexto(editTextComplemento, "editTextComplemento");
         carregaConteudoEditText( "editTextOutro", editTextOutro);
-        carregaConteudoAutoComplete("autoCompleteTextViewCidade", autoCompleteTextViewCidade);
-
-
-        carregaConteudoEditText( "editTextRua", editTextRua);
-        carregaConteudoEditText( "editTextNumero", editTextNumero);
-        carregaConteudoEditText( "editTextComplemento", editTextComplemento);
-
-        carregaInfromacaoSpinners("spinnerLocal", spinnerLocal);
-        carregaInfromacaoSpinners("spinnerEstado", spinnerEstado);
+        criaFuncionalidadeSalvarTexto(editTextOutro, "editTextOutro");
+        criaFuncionalidadeSalvarTextoAutoComplete(autoCompleteTextViewCidade, "autoCompleteTextViewCidade");
 
         return v;
     }
@@ -70,13 +63,6 @@ public class TelaEndereco extends Fragment{
         editor.putInt(nomeSpinner, posicao);
         editor.apply();
     }
-
-    private void carregaConteudoAutoComplete(String nomeAutoCompleteTextView, AutoCompleteTextView autoCompleteTextView){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-        String texto = sp.getString(nomeAutoCompleteTextView, null);
-        autoCompleteTextView.setText(texto);
-    }
-
 
     private void salvaConteudoEditText(String nomeEditText, String texto){
         SharedPreferences sp = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -89,6 +75,15 @@ public class TelaEndereco extends Fragment{
         SharedPreferences sp = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         int posicaoSpinner = sp.getInt(nomeSpinner, 0);
         spinner.setSelection(posicaoSpinner);
+        if(spinnerLocal.getSelectedItem().toString().equals("Outro")){
+            editTextOutro.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void carregaConteudoAutoComplete(String nomeAutoCompleteTextView, AutoCompleteTextView autoCompleteTextView){
+        SharedPreferences sp = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        String texto = sp.getString(nomeAutoCompleteTextView, null);
+        autoCompleteTextView.setText(texto);
     }
 
     private void carregaConteudoEditText(String nomeEditText, EditText editText){
@@ -103,10 +98,10 @@ public class TelaEndereco extends Fragment{
             public void onItemSelected(AdapterView<?> parent, View view, int posicao, long id) {
                 // salvar no BD
                 if(parent.getSelectedItem().toString().equals("Outro")){
-                    editTextOutro.setEnabled(true);
+                    editTextOutro.setVisibility(View.VISIBLE);
                 }else {
-                    editTextOutro.setEnabled(false);
-                    //editTextOutro.setText("");
+                    editTextOutro.setVisibility(View.GONE);
+                    editTextOutro.setText("");
                 }
                 salvaPosicaoSpinner(nomeSpinner, posicao);
             }

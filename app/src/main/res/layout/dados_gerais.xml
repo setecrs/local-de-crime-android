@@ -54,9 +54,9 @@
 
     <EditText
         android:id="@+id/dataOcorrenciaId"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:ems="10"
@@ -68,8 +68,8 @@
 
     <EditText
         android:id="@+id/horaOcorrenciaId"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
@@ -84,8 +84,8 @@
 
     <EditText
         android:id="@+id/numOcorrenciaId"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
@@ -102,8 +102,8 @@
 
     <EditText
         android:id="@+id/sedeOcorrenciaId"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
@@ -118,9 +118,9 @@
 
     <EditText
         android:id="@+id/peritosEnvolvidosId"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:ems="10"

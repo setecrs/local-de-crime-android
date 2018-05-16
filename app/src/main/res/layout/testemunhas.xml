@@ -2,91 +2,105 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SobreOLocal"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".TelaTestemunhas">
+
 
     <TextView
-        android:id="@+id/tvDataChegada"
+        android:id="@+id/tvNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="19dp"
-        android:text="Data da chegada dos peritos"
-        app:layout_constraintStart_toStartOf="@+id/etDataChegada"
+        android:text="Nome"
+        app:layout_constraintStart_toStartOf="@+id/etNome"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etDataChegada"
-        android:layout_width="match_parent"
+        android:id="@+id/etNome"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Selecione a data de chegada"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDataChegada" />
-
-    <TextView
-        android:id="@+id/tvHoraChegada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Hora da chegada dos peritos"
-        app:layout_constraintStart_toStartOf="@+id/etHoraChegada"
-        app:layout_constraintTop_toBottomOf="@+id/etDataChegada" />
-
-    <EditText
-        android:id="@+id/etHoraChegada"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Selecione a hora de chegada"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHoraChegada" />
-
-    <Spinner
-        android:id="@+id/spCondicoesLocal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etHoraChegada" />
-
-    <TextView
-        android:id="@+id/tvInfoAdicional"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Informações Adicionais"
-        app:layout_constraintStart_toStartOf="@+id/etInfoAdicional"
-        app:layout_constraintTop_toBottomOf="@+id/spCondicoesLocal" />
-
-    <EditText
-        android:id="@+id/etInfoAdicional"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Digite aqui as informações adicionais \nsobre o local e suas condições"
+        android:hint="Digite aqui o nome da testemunha"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInfoAdicional" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNome" />
+
+    <TextView
+        android:id="@+id/tvDocumento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="RG/CPF"
+        app:layout_constraintStart_toStartOf="@+id/etDocumento"
+        app:layout_constraintTop_toBottomOf="@+id/etNome" />
+
+    <EditText
+        android:id="@+id/etDocumento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Digite aqui o RG ou o CPF"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDocumento" />
+
+    <TextView
+        android:id="@+id/tvFuncao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Função"
+        app:layout_constraintStart_toStartOf="@+id/etFuncao"
+        app:layout_constraintTop_toBottomOf="@+id/etDocumento" />
+
+    <EditText
+        android:id="@+id/etFuncao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Digite a função da testemunha"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFuncao" />
+
+    <TextView
+        android:id="@+id/tvEntrevista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Entrevista"
+        app:layout_constraintStart_toStartOf="@+id/etEntrevista"
+        app:layout_constraintTop_toBottomOf="@+id/etFuncao" />
+
+    <EditText
+        android:id="@+id/etEntrevista"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Informe aqui as informações coletadas na entrevista"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEntrevista" />
+
 </android.support.constraint.ConstraintLayout>
