@@ -49,10 +49,17 @@ public class TelaLogin extends AppCompatActivity {
 
     public void sendMessage(View view) {
         try {
-            new HttpLogin().execute();
 
-            Intent k = new Intent(TelaLogin.this, MainActivity.class);
-            startActivity(k);
+            HttpLogin t = new HttpLogin(actvUsuario.getText(), senha.getText());
+            t.execute().get();
+
+                if (token.getToken() != null){
+                    Intent k = new Intent(TelaLogin.this, MainActivity.class);
+                    startActivity(k);
+                 } else {
+                    // Aviso de usuário inválido
+                }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
