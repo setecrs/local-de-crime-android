@@ -66,11 +66,26 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
             if (responseObject.has("token")) {
                 System.out.println("TOKEN: " + responseObject.get("token"));
                 token.setToken((String) responseObject.get("token"));
+
+                String json = "";
+
+                RequestBody body_ocorrencia = RequestBody.create(JSON, json);
+
+                Request requestSignup = new Request.Builder()
+                        .addHeader("content-type", "application/json")
+                        .addHeader("x-access-token", token.getToken())
+                        .post(body_ocorrencia)
+                        .url("https://ages-pf.herokuapp.com/ocorrencias")
+                        .build();
+
+                Response responseSignup = client.newCall(requestSignup).execute();
+
+                System.out.println(responseSignup.body().string());
+
             } else {
                 token.setToken(null);
                 System.out.println("Login inválido");
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
