@@ -2,7 +2,6 @@ package ages181.policiafederal_android;
 
 public class token {
 
-
     private static String Token;
 
     public static String getToken() {
