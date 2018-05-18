@@ -152,7 +152,7 @@ public class TelaEndereco extends Fragment{
 
     public void sendMassage(View view){
         try{
-            new HttpLogin().execute();
+            new HttpEndereco().execute();
         }catch (Exception e){
             e.printStackTrace();
         }
