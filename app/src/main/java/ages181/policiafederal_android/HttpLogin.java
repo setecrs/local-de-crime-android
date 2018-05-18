@@ -42,8 +42,6 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
-
-
     protected Void doInBackground(Void... params) {
         try {
 
