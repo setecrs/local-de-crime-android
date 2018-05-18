@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.text.Editable;
 import android.util.Base64;
 
-import junit.framework.Test;
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -29,6 +27,9 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     private Editable usuario;
     private Editable senha;
 
+    public HttpLogin (){
+    };
+
     public HttpLogin (Editable usuario, Editable senha){
         this.usuario = usuario;
         this.senha = senha;
@@ -43,23 +44,6 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
     protected Void doInBackground(Void... params) {
         try {
-/*
-            // POST /SIGNUP
-            String json = "{\"username\": \"" +  usuario + "\", \"password\": \"" + senha +"\", \"name\": \"test\"}";
-            System.out.println("JSON" + json);
-
-            RequestBody body = RequestBody.create(JSON, json);
-
-            Request requestSignup = new Request.Builder()
-                    .addHeader("content-type", "application/json")
-                    .post(body)
-                    .url("https://ages-pf.herokuapp.com/signup")
-                    .build();
-
-            Response responseSignup = client.newCall(requestSignup).execute();
-
-            System.out.println(responseSignup.body().string());
-*/
 
             // GET /login
             String credentials = usuario + ":" + senha;
@@ -79,24 +63,27 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
             if (responseObject.has("token")) {
                 System.out.println("TOKEN: " + responseObject.get("token"));
+                token.setToken((String) responseObject.get("token"));
+
+                String json = "";
+
+                RequestBody body_ocorrencia = RequestBody.create(JSON, json);
+
+                Request requestSignup = new Request.Builder()
+                        .addHeader("content-type", "application/json")
+                        .addHeader("x-access-token", token.getToken())
+                        .post(body_ocorrencia)
+                        .url("https://ages-pf.herokuapp.com/ocorrencias")
+                        .build();
+
+                Response responseSignup = client.newCall(requestSignup).execute();
+
+                System.out.println(responseSignup.body().string());
+
             } else {
+                token.setToken(null);
                 System.out.println("Login inválido");
             }
-
-            /*
-            // GET /profile
-            String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOjIwMCwibWVzc2FnZSI6InZhbW8yQGNjYyIsImlhdCI6MTUyNTY1NTk5MCwiZXhwIjoxNTI1NjU3NDMwfQ.gyHAxKWBLCHkZeUt95hVl9iJukmKpABmlvn5wrDgsFI";
-
-            Request requestProfile = new Request.Builder()
-                    .addHeader("content-type", "application/json")
-                    .addHeader("x-access-token", token)
-                    .url("https://ages-pf.herokuapp.com/profile")
-                    .build();
-
-            Response responseProfile = client.newCall(requestProfile).execute();
-
-            System.out.println(responseProfile.body().string());
-            */
 
         } catch (Exception e) {
             e.printStackTrace();
