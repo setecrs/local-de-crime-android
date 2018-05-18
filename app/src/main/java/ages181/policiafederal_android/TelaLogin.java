@@ -50,9 +50,6 @@ public class TelaLogin extends AppCompatActivity {
     public void sendMessage(View view) {
         try {
             new HttpLogin().execute();
-
-            Intent k = new Intent(TelaLogin.this, MainActivity.class);
-            startActivity(k);
         } catch (Exception e) {
             e.printStackTrace();
         }
