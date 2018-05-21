@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 public class MainActivity extends FragmentActivity {
 
@@ -71,5 +72,6 @@ public class MainActivity extends FragmentActivity {
             // Generate title based on item position
             return tabTitles[position];
         }
+
     }
 }
