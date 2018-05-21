@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -76,66 +77,56 @@ public class SobreOFato extends Fragment {
         iniciaListaModusOperandi();
 
         onClickSpinner(spinnerTipoDeDelito);
+        onClickCheckboxListener(checkBoxChupaCabra);
+
+        onClickEditText(editTextOutroModusOperandis);
+        onClickEditText(editTextOutroTipoDelito);
+
+
+        //     android checkbox dynamically
+
+
+
         return v;
     }
 
+
+
+
     public void onClickSpinner(View v) {
-        Spinner aux = (Spinner) v;
-        itemSpinner = aux.getSelectedItem().toString();
-        Log.i("SPINNER", "ATUALIZADO");
-        if (aux.getSelectedItem().toString().equals("Outro")) {
-            editTextOutroTipoDelito.setVisibility(View.VISIBLE);
-        } else {
-            editTextOutroTipoDelito.setVisibility(View.GONE);
-            editTextOutroTipoDelito.setText("");
-        }
+        ((Spinner)v).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int posicao, long id) {
+                itemSpinner = parent.getSelectedItem().toString();
+                if (parent.getSelectedItem().toString().equals("Outro")) {
+                    editTextOutroTipoDelito.setVisibility(View.VISIBLE);
+                } else {
+                    editTextOutroTipoDelito.setVisibility(View.GONE);
+                    editTextOutroTipoDelito.setText("");
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
     }
-
-
-
-//    public void onClickSpinner(View v) {
-//        ((Spinner)v).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int posicao, long id) {
-//                itemSpinner = parent.getSelectedItem().toString();
-//                if (parent.getSelectedItem().toString().equals("Outro")) {
-//                    editTextOutroTipoDelito.setVisibility(View.VISIBLE);
-//                } else {
-//                    editTextOutroTipoDelito.setVisibility(View.GONE);
-//                    editTextOutroTipoDelito.setText("");
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//            }
-//        });
-//    }
 
     public void onClickCheckboxListener(View v) {
 
-
         if (v.getId() == R.id.checkBoxOutroModusOperandi && ((CheckBox) v).isChecked()) {
+
             editTextOutroModusOperandis.setVisibility(View.VISIBLE);
-            //Log.i("CHECKBOX OUTRO","TRUE");
+
         } else if (v.getId() == R.id.checkBoxOutroModusOperandi && !(((CheckBox) v).isChecked())) {
+
             editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
             editTextOutroModusOperandis.setText("");
             atualizaListaCheckbox(v.getId(), ((CheckBox) v).isChecked(), "");
-            //Log.i("CHECKBOX OUTRO","FALSE");
-        } else {
-            atualizaListaCheckbox(v.getId(), ((CheckBox) v).isChecked(), "");
 
-//                    teste com log (deletar)
-//                    Log.isLoggable("CHECKBOX ID", view.getId());
-//                    String selecionado;
-//                    if(((CheckBox) view).isChecked()){
-//                        selecionado = "true";
-//                    }else{
-//                        selecionado = "false";
-//                    }
-//                    Log.i("CHECKBOX SELECIONADO", selecionado);
+        } else {
+
+            atualizaListaCheckbox(v.getId(), ((CheckBox) v).isChecked(), "");
         }
 
     }
@@ -277,16 +268,7 @@ public class SobreOFato extends Fragment {
 
         aux.setSelecionado(selecionado);
         aux.setOutro(outro);
-        String teste = "";
-        if (selecionado) {
-            teste = "true";
-        } else {
-            teste = "false";
         }
-
-        Log.i("CHECKBOX ATUALIZADO", teste);
-
-    }
 
     public static SobreOFato newInstance() {
 
