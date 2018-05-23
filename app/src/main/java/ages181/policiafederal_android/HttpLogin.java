@@ -65,6 +65,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
                 System.out.println("TOKEN: " + responseObject.get("token"));
                 token.setToken((String) responseObject.get("token"));
 
+
                 String json = "";
 
                 RequestBody body_ocorrencia = RequestBody.create(JSON, json);
@@ -78,6 +79,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
                 Response responseSignup = client.newCall(requestSignup).execute();
 
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
                 System.out.println(responseSignup.body().string());
 
             } else {
