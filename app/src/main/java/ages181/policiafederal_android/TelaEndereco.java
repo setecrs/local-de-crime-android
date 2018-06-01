@@ -161,10 +161,14 @@ public class TelaEndereco extends Fragment{
             HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
                                         editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
                                         StaticProperties.getId());
+<<<<<<< 83834c7a946281bfb6f131758a880904ade0616e
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
             t.execute();
 =======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+            t.execute();
+>>>>>>> Integração classe httpEndereco (João Soares e Marc)
         }catch (Exception e){
             e.printStackTrace();
         }
