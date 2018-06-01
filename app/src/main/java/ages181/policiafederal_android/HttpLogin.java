@@ -52,7 +52,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
             Request requestLogin = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("Authorization", basic)
-                    .url("https://ages-pf.herokuapp.com/login")
+                    .url(StaticProperties.getUrl() + "login")
                     .build();
 
             Response responseLogin = client.newCall(requestLogin).execute();
@@ -64,7 +64,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
             if (responseObject.has("token")) {
                 System.out.println("TOKEN: " + responseObject.get("token"));
                 //System.out.println("ID: " + responseObject.get("_id"));
-                token.setToken((String) responseObject.get("token"));
+                StaticProperties.setToken(((String) responseObject.get("token")));
 
                 String json = "";
 
@@ -74,15 +74,16 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
                         .addHeader("content-type", "application/json")
                         .addHeader("x-access-token", token.getToken())
                         .post(body_ocorrencia)
-                        .url("https://ages-pf.herokuapp.com/ocorrencias")
+                        .url(StaticProperties.getUrl() + "signup")
                         .build();
 
                 Response responseSignup = client.newCall(requestSignup).execute();
 
+
                 System.out.println(responseSignup.body().string());
 
             } else {
-                token.setToken(null);
+                StaticProperties.setToken(null);
                 System.out.println("Login inválido");
             }
 

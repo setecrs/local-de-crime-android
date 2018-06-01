@@ -23,6 +23,6 @@ public class StaticProperties {
     }
 
     public static void setId(String id){
-        id =id;
+        id = id;
     }
 }
