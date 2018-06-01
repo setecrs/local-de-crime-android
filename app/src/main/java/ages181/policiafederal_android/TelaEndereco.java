@@ -47,8 +47,12 @@ public class TelaEndereco extends Fragment{
         criaFuncionalideSalvarSpinner(spinnerLocal, "spinnerLocal");
         criaFuncionalideSalvarSpinner(spinnerEstado, "spinnerEstado");
 
+<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
+=======
+<<<<<<< c9e1b352beb762e42acfde19422c71509c7893a6
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 =======
 <<<<<<< a6f4aba2dff8ef1676883f2a2a414f8e071b1417
         criaFuncionalidadeSalvarTexto(editTextRua, "editTextRua");
@@ -60,6 +64,9 @@ public class TelaEndereco extends Fragment{
 
 =======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
+=======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 =======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)

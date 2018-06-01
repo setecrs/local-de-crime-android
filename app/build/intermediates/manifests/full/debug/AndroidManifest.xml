@@ -17,9 +17,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
         android:testOnly="true"
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         android:theme="@style/AppTheme" >
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         <activity

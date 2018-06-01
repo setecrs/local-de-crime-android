@@ -21,7 +21,11 @@
             "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
+<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/77446d6035fb8f052e4dbeef3a35e599/res/values-v23/values-v23.xml",
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/f0e60911f2aff2cadc1eeab050070bb2/res/values-v23/values-v23.xml",
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
                     "from": {
                         "startLines": "2",
@@ -43,7 +47,7 @@
 =======
                 },
                 {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/values-v23/values-v23.xml",
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

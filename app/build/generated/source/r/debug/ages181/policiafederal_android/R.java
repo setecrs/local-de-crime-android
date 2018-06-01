@@ -30,12 +30,13 @@ public final class R {
     public static final int design_appbar_state_list_animator=0x7f020000;
   }
   public static final class array {
-    public static final int estadoList=0x7f030000;
-    public static final int localList=0x7f030001;
-    public static final int tipo=0x7f030002;
-    public static final int tiposVestigios=0x7f030003;
-    public static final int vestigioCapsula=0x7f030004;
-    public static final int vestigioManchaSangue=0x7f030005;
+    public static final int cidadeList=0x7f030000;
+    public static final int estadoList=0x7f030001;
+    public static final int localList=0x7f030002;
+    public static final int tipo=0x7f030003;
+    public static final int tiposVestigios=0x7f030004;
+    public static final int vestigioCapsula=0x7f030005;
+    public static final int vestigioManchaSangue=0x7f030006;
   }
   public static final class attr {
     /**
