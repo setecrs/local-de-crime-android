@@ -50,7 +50,7 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .patch(body_endereco)
-                    .url(StaticProperties.getUrl() + id)
+                    .url(StaticProperties.getUrl()+ "endereco/" + id)
                     .build();
 
             Response response = client.newCall(request).execute();
