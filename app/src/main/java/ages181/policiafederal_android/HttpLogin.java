@@ -66,7 +66,11 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
             if (responseObject.has("token")) {
                 System.out.println("TOKEN: " + responseObject.get("token"));
                 //System.out.println("ID: " + responseObject.get("_id"));
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
                 StaticProperties.setToken(((String) responseObject.get("token")));
+=======
+                token.setToken((String) responseObject.get("token"));
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 
                 String json = "";
 

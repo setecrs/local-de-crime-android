@@ -568,7 +568,10 @@ public final class R {
         public static final int abc_textfield_search_default_mtrl_alpha = 0x7f080057;
         public static final int abc_textfield_search_material = 0x7f080058;
         public static final int abc_vector_test = 0x7f080059;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         public static final int notification_action_background = 0x7f080066;
         public static final int notification_bg = 0x7f080067;
         public static final int notification_bg_low = 0x7f080068;
@@ -583,6 +586,7 @@ public final class R {
         public static final int notify_panel_notification_icon_bg = 0x7f080071;
         public static final int tooltip_frame_dark = 0x7f080072;
         public static final int tooltip_frame_light = 0x7f080073;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
         public static final int notification_action_background = 0x7f080064;
         public static final int notification_bg = 0x7f080065;
@@ -598,6 +602,8 @@ public final class R {
         public static final int notify_panel_notification_icon_bg = 0x7f08006f;
         public static final int tooltip_frame_dark = 0x7f080070;
         public static final int tooltip_frame_light = 0x7f080071;
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
     }
     public static final class id {
@@ -627,7 +633,10 @@ public final class R {
         public static final int blocking = 0x7f090025;
         public static final int buttonPanel = 0x7f09002a;
         public static final int cancel_action = 0x7f09002b;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         public static final int checkbox = 0x7f09004b;
         public static final int chronometer = 0x7f09004c;
         public static final int contentPanel = 0x7f090051;
@@ -701,6 +710,7 @@ public final class R {
         public static final int uniform = 0x7f09011e;
         public static final int up = 0x7f09011f;
         public static final int wrap_content = 0x7f090128;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
         public static final int checkbox = 0x7f090046;
         public static final int chronometer = 0x7f090047;
@@ -775,6 +785,8 @@ public final class R {
         public static final int uniform = 0x7f090119;
         public static final int up = 0x7f09011a;
         public static final int wrap_content = 0x7f090123;
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
     }
     public static final class integer {

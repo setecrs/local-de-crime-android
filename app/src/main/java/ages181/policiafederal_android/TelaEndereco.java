@@ -47,6 +47,7 @@ public class TelaEndereco extends Fragment{
         criaFuncionalideSalvarSpinner(spinnerLocal, "spinnerLocal");
         criaFuncionalideSalvarSpinner(spinnerEstado, "spinnerEstado");
 
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
 =======
 <<<<<<< a6f4aba2dff8ef1676883f2a2a414f8e071b1417
@@ -59,6 +60,8 @@ public class TelaEndereco extends Fragment{
 
 =======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         return v;
     }
@@ -161,6 +164,7 @@ public class TelaEndereco extends Fragment{
             HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
                                         editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
                                         StaticProperties.getId());
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 83834c7a946281bfb6f131758a880904ade0616e
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
             t.execute();
@@ -169,6 +173,8 @@ public class TelaEndereco extends Fragment{
 =======
             t.execute();
 >>>>>>> Integração classe httpEndereco (João Soares e Marc)
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         }catch (Exception e){
             e.printStackTrace();
         }

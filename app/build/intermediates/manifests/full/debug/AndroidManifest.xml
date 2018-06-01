@@ -18,6 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
+=======
+        android:theme="@style/AppTheme" >
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         <activity
             android:name="ages181.policiafederal_android.TelaLogin"
             android:label="pf" >

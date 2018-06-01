@@ -1,6 +1,7 @@
 {
     "logs": [
         {
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
             "outputFile": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
@@ -16,6 +17,12 @@
                 },
                 {
                     "source": "C:\\Users\\joaoe\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-26.1.0.aar\\06853b0c7d30142ca1b848027e5ec94e\\res\\values-v23\\values-v23.xml",
+=======
+            "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/77446d6035fb8f052e4dbeef3a35e599/res/values-v23/values-v23.xml",
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -32,6 +39,20 @@
                         "endColumns": "12",
                         "endOffsets": "2791"
                     }
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
+=======
+                },
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,19,32,33,34,35,36",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1277,2079,2206,2311,2426,2533",
+                        "endLines": "2,3,4,5,18,31,32,33,34,35,36",
+                        "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
+                        "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
+                    }
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
                 }
             ]
         }

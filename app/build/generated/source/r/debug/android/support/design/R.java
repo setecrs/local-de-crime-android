@@ -729,7 +729,10 @@ public final class R {
         public static final int design_ic_visibility_off = 0x7f08005f;
         public static final int design_password_eye = 0x7f080060;
         public static final int design_snackbar_background = 0x7f080061;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         public static final int navigation_empty_icon = 0x7f080065;
         public static final int notification_action_background = 0x7f080066;
         public static final int notification_bg = 0x7f080067;
@@ -745,6 +748,7 @@ public final class R {
         public static final int notify_panel_notification_icon_bg = 0x7f080071;
         public static final int tooltip_frame_dark = 0x7f080072;
         public static final int tooltip_frame_light = 0x7f080073;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
         public static final int navigation_empty_icon = 0x7f080063;
         public static final int notification_action_background = 0x7f080064;
@@ -761,6 +765,8 @@ public final class R {
         public static final int notify_panel_notification_icon_bg = 0x7f08006f;
         public static final int tooltip_frame_dark = 0x7f080070;
         public static final int tooltip_frame_light = 0x7f080071;
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
     }
     public static final class id {
@@ -793,7 +799,10 @@ public final class R {
         public static final int buttonPanel = 0x7f09002a;
         public static final int cancel_action = 0x7f09002b;
         public static final int center = 0x7f09002d;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         public static final int checkbox = 0x7f09004b;
         public static final int chronometer = 0x7f09004c;
         public static final int container = 0x7f090050;
@@ -908,6 +917,7 @@ public final class R {
         public static final int view_offset_helper = 0x7f090123;
         public static final int visible = 0x7f090125;
         public static final int wrap_content = 0x7f090128;
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
         public static final int checkbox = 0x7f090046;
         public static final int chronometer = 0x7f090047;
@@ -1023,6 +1033,8 @@ public final class R {
         public static final int view_offset_helper = 0x7f09011e;
         public static final int visible = 0x7f090120;
         public static final int wrap_content = 0x7f090123;
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
     }
     public static final class integer {

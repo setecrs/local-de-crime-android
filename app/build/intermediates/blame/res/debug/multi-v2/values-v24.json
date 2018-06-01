@@ -1,6 +1,7 @@
 {
     "logs": [
         {
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
             "outputFile": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
@@ -15,6 +16,12 @@
                 },
                 {
                     "source": "C:\\Users\\joaoe\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\3bce243148940d2d384f550a7b384c6b\\res\\values-v24\\values-v24.xml",
+=======
+            "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/242cde9fe3b9a8ee58778b064086d256/res/values-v24/values-v24.xml",
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -29,6 +36,19 @@
                         "endColumns": "65,60,65,66",
                         "endOffsets": "680,741,807,874"
                     }
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
+=======
+                },
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,212,347,416,480,549",
+                        "endColumns": "156,134,68,63,68,69",
+                        "endOffsets": "207,342,411,475,544,614"
+                    }
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
                 }
             ]
         }

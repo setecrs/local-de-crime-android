@@ -1,4 +1,9 @@
+<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 #Mon May 28 19:33:27 BRT 2018
 base.0=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
+=======
+#Fri Jun 08 19:52:59 BRT 2018
+base.0=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/47
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 path.0=classes.dex
 renamed.0=classes.dex
