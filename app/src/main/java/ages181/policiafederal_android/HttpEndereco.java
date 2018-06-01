@@ -24,7 +24,10 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
         try {
 
             Request request = new Request.Builder()
-                    .url("https://jsonplaceholder.typicode.com/posts")
+                    .addHeader("content-type", "application/json")
+                    .addHeader("x-access-token", StaticProperties.getToken())
+                    .patch(body_endereco)
+                    .url(StaticProperties.getUrl() + id)
                     .build();
 
             Response response = client.newCall(request).execute();
