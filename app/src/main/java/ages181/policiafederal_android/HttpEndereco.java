@@ -27,11 +27,7 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .patch(body_endereco)
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
                     .url(StaticProperties.getUrl()+ "endereco/" + id)
-=======
-                    .url(StaticProperties.getUrl() + id)
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
                     .build();
 
             Response response = client.newCall(request).execute();

@@ -18,20 +18,11 @@ public class StaticProperties {
         return token;
     }
 
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
     public static void setToken(String tokenNovo) {
         token = tokenNovo;
     }
 
     public static void setId(String idNovo){
         id = idNovo;
-=======
-    public static void setToken(String token) {
-        token = token;
-    }
 
-    public static void setId(String id){
-        id =id;
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-    }
 }
