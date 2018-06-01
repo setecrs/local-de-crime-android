@@ -48,9 +48,9 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
 
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
-                    .addHeader("x-access-token", token.getToken())
+                    .addHeader("x-access-token", StaticProperties.getToken())
                     .patch(body_endereco)
-                    .url("https://ages-pf.herokuapp.com/endereco/" + id)
+                    .url(StaticProperties.getUrl() + id)
                     .build();
 
             Response response = client.newCall(request).execute();

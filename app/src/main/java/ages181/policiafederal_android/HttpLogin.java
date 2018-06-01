@@ -63,8 +63,8 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
             if (responseObject.has("token")) {
                 System.out.println("TOKEN: " + responseObject.get("token"));
+                //System.out.println("ID: " + responseObject.get("_id"));
                 token.setToken((String) responseObject.get("token"));
-
 
                 String json = "";
 
