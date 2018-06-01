@@ -47,13 +47,6 @@ public class TelaEndereco extends Fragment{
         criaFuncionalideSalvarSpinner(spinnerLocal, "spinnerLocal");
         criaFuncionalideSalvarSpinner(spinnerEstado, "spinnerEstado");
 
-        criaFuncionalidadeSalvarTexto(editTextRua, "editTextRua");
-        criaFuncionalidadeSalvarTexto(editTextNumero, "editTextNumero");
-        criaFuncionalidadeSalvarTexto(editTextComplemento, "editTextComplemento");
-        carregaConteudoEditText( "editTextOutro", editTextOutro);
-        criaFuncionalidadeSalvarTexto(editTextOutro, "editTextOutro");
-        criaFuncionalidadeSalvarTextoAutoComplete(autoCompleteTextViewCidade, "autoCompleteTextViewCidade");
-
         return v;
     }
 
@@ -152,14 +145,15 @@ public class TelaEndereco extends Fragment{
 
     public void sendMassage(View view){
         try{
-            new HttpEndereco().execute();
+            HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
+                                        editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
+                                        StaticProperties.getId());
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     public static TelaEndereco newInstance() {
-
         TelaEndereco f = new TelaEndereco();
         return f;
     }
