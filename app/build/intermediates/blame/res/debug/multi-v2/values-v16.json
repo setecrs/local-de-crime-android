@@ -4,7 +4,7 @@
             "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/88b682926cc30639d27e78cfa284944b/res/values-v16/values-v16.xml",
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/f62eff4eb0affa9ac9604de92c7bdd70/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/values-v16/values-v16.xml",
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

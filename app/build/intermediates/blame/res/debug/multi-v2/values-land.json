@@ -4,7 +4,17 @@
             "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/1978417447213eb7bb4844cbf16359d0/res/values-land/values-land.xml",
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
+                    }
+                },
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/124468da406bf98fc8e91a4260c723bd/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "9",
                         "endColumns": "12",
                         "endOffsets": "505"
-                    }
-                },
-                {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/values-land/values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
                     }
                 }
             ]
