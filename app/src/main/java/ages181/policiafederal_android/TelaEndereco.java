@@ -148,6 +148,7 @@ public class TelaEndereco extends Fragment{
             HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
                                         editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
                                         StaticProperties.getId());
+            t.execute();
         }catch (Exception e){
             e.printStackTrace();
         }
