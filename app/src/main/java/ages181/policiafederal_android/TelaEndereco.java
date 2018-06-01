@@ -47,6 +47,7 @@ public class TelaEndereco extends Fragment{
         criaFuncionalideSalvarSpinner(spinnerLocal, "spinnerLocal");
         criaFuncionalideSalvarSpinner(spinnerEstado, "spinnerEstado");
 
+<<<<<<< a6f4aba2dff8ef1676883f2a2a414f8e071b1417
         criaFuncionalidadeSalvarTexto(editTextRua, "editTextRua");
         criaFuncionalidadeSalvarTexto(editTextNumero, "editTextNumero");
         criaFuncionalidadeSalvarTexto(editTextComplemento, "editTextComplemento");
@@ -54,6 +55,8 @@ public class TelaEndereco extends Fragment{
         criaFuncionalidadeSalvarTexto(editTextOutro, "editTextOutro");
         criaFuncionalidadeSalvarTextoAutoComplete(autoCompleteTextViewCidade, "autoCompleteTextViewCidade");
 
+=======
+>>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         return v;
     }
 
@@ -152,14 +155,15 @@ public class TelaEndereco extends Fragment{
 
     public void sendMassage(View view){
         try{
-            new HttpEndereco().execute();
+            HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
+                                        editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
+                                        StaticProperties.getId());
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     public static TelaEndereco newInstance() {
-
         TelaEndereco f = new TelaEndereco();
         return f;
     }
