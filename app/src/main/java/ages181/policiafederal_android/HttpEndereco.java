@@ -24,7 +24,7 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
         try {
 
             Request request = new Request.Builder()
-                    .url("https://jsonplaceholder.typicode.com/posts")
+                    .url("https://jsonplaceholder.typicode.com/posts" )
                     .build();
 
             Response response = client.newCall(request).execute();

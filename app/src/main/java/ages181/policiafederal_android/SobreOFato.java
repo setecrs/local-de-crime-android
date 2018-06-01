@@ -3,16 +3,13 @@ package ages181.policiafederal_android;
 import android.app.DatePickerDialog;
 import android.support.v4.app.Fragment;
 import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -32,9 +29,12 @@ public class SobreOFato extends Fragment {
             checkBoxOrganizacaoCriminosa, checkBoxPeDeCabra, checkBoxMacarico, checkBoxQuebrouVidro,
             checkBoxBuracoNaParede, checkBoxChaveMixa, checkBoxCorreiosArma, checkBoxChupaCabra,
             checkBoxNomeDadosDivergentes, checkBoxFurtoDescuido, checkBoxMoedaFalsa, checkBoxFurtoPequenoValor,
-            checkBoxFurtoCamera;
+            checkBoxFurtoCamera, checkBoxCorreiosVeiculoComEnd, checkBoxCorreiosVeiculoZonaNorte,
+            checkBoxCorreiosVeiculoZonaSul, checkBoxCorreiosDoisDeMoto, checkBoxCorreiosSuperbonder;
+
     String dataProvavel, horaProvavel, outroTipoDelito, outroTipoModusOperandi, itemSpinner;
     Map<Integer,ModusOperandiCheckbox> listaCheckboxMO = new HashMap<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +67,12 @@ public class SobreOFato extends Fragment {
         checkBoxMoedaFalsa = v.findViewById(R.id.checkBoxMoedaFalsa);
         checkBoxFurtoPequenoValor = v.findViewById(R.id.checkBoxFurtoPequenoValor);
         checkBoxFurtoCamera = v.findViewById(R.id.checkBoxFurtoCamera);
+        checkBoxCorreiosVeiculoComEnd = v.findViewById(R.id.checkBoxCorreiosVeiculoEnd);
+        checkBoxCorreiosVeiculoZonaNorte = v.findViewById(R.id.checkBoxCorreiosVeiculoZN);
+        checkBoxCorreiosVeiculoZonaSul = v.findViewById(R.id.checkBoxCorreiosVeiculoZS);
+        checkBoxCorreiosDoisDeMoto = v.findViewById(R.id.checkBoxCorreiosDoisDeMoto);
+        checkBoxCorreiosSuperbonder = v.findViewById(R.id.checkBoxCorreiosSuperbonder);
+
 
         editTextDataProvavel.setFocusable(false);
         editTextHoraProvavel.setFocusable(false);
@@ -258,6 +264,11 @@ public class SobreOFato extends Fragment {
         listaCheckboxMO.put(R.id.checkBoxMoedaFalsa, new ModusOperandiCheckbox("Moeda falsa", "", false));
         listaCheckboxMO.put(R.id.checkBoxFurtoPequenoValor, new ModusOperandiCheckbox("Furto de pequeno valor", "", false));
         listaCheckboxMO.put(R.id.checkBoxFurtoCamera, new ModusOperandiCheckbox("Furto de câmera ou monitor", "", false));
+        listaCheckboxMO.put(R.id.checkBoxCorreiosVeiculoEnd, new ModusOperandiCheckbox("Correios - Veículo - Com endereço da abordagem", "", false));
+        listaCheckboxMO.put(R.id.checkBoxCorreiosVeiculoZN, new ModusOperandiCheckbox("Correios - Veículo - Zona norte Alvorada - Com endereço da abordagem", "", false));
+        listaCheckboxMO.put(R.id.checkBoxCorreiosVeiculoZS, new ModusOperandiCheckbox("Correios - Veículo - Zona Sul - Com endereço da abordagem", "", false));
+        listaCheckboxMO.put(R.id.checkBoxCorreiosDoisDeMoto, new ModusOperandiCheckbox("Correios - Dois de moto", "", false));
+        listaCheckboxMO.put(R.id.checkBoxCorreiosSuperbonder, new ModusOperandiCheckbox("Correios - Superbonder", "", false));
 
 
     }
