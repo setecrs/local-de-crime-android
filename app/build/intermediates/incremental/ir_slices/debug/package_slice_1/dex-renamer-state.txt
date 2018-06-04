@@ -1,4 +1,4 @@
-#Mon May 28 19:33:25 BRT 2018
-base.0=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+#Mon Jun 04 17:54:48 BRT 2018
+base.0=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/22
 path.0=classes.dex
 renamed.0=classes.dex

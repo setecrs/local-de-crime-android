@@ -1,4 +1,4 @@
-#Mon May 28 19:33:27 BRT 2018
+#Mon Jun 04 17:54:48 BRT 2018
 path.3=classes.dex
 path.2=classes.dex
 path.1=classes.dex
@@ -7,7 +7,7 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
-base.2=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
-base.1=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14
-base.0=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
+base.3=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/35
+base.2=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/33
+base.1=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/34
+base.0=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/32

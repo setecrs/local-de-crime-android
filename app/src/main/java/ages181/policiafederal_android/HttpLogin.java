@@ -27,9 +27,6 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     private Editable usuario;
     private Editable senha;
 
-    public HttpLogin (){
-    };
-
     public HttpLogin (Editable usuario, Editable senha){
         this.usuario = usuario;
         this.senha = senha;

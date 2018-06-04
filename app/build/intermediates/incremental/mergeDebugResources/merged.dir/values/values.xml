@@ -21,17 +21,18 @@
 
     </string-array>
     <string-array name="tipo">
-        <item>dano</item>
-        <item>arrombamento(não houve furto)</item>
-        <item>furto sem arrombamento</item>
-        <item>furto com arrombamento</item>
-        <item>roubo</item>
-        <item>drogas</item>
-        <item>moeda falsa</item>
-        <item>falsidade ideológica</item>
-        <item>não houve crime</item>
-        <item>ignorar formulário</item>
-        <item>outro: </item>
+        <item>Selecione o tipo de delito</item>
+        <item>Dano</item>
+        <item>Arrombamento(não houve furto)</item>
+        <item>Furto sem arrombamento</item>
+        <item>Furto com arrombamento</item>
+        <item>Roubo</item>
+        <item>Drogas</item>
+        <item>Moeda falsa</item>
+        <item>Falsidade ideológica</item>
+        <item>Não houve crime</item>
+        <item>Ignorar formulário</item>
+        <item>Outro</item>
     </string-array>
     <string-array name="tiposVestigios">
         <item>Impressões digitais</item>

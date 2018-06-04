@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\joaoe\StudioProjects\PFA\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\joaoe\StudioProjects\PFA\app\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/15104313/AndroidStudioProjects/Policia Federal Android/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/home/15104313/AndroidStudioProjects/Policia Federal Android/app/src/debug/jniLibs"/></dataSet></merger>

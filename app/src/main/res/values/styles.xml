@@ -48,15 +48,11 @@
     <string-array name="estadoList">
         <item>Escolha um estado</item>
         <item>RS</item>
+        <item>SC</item>
     </string-array>
 
     <string name="cidadePrompt">Cidade</string>
 
-    <string-array name="cidadeList">
-        <item>Escolha uma cidade</item>
-        <item>Porto Alegre</item>
-        <item>Viamão</item>
-    </string-array>
 
 
 
