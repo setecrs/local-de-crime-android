@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -77,13 +78,36 @@ public class SobreOFato extends Fragment {
         iniciaListaModusOperandi();
 
         onClickSpinner(spinnerTipoDeDelito);
+
+        onClickCheckboxListener(checkBoxExplosivo );
+        onClickCheckboxListener(checkBoxCorreiosCortaAlarme);
+        onClickCheckboxListener(checkBoxViolencia);
+        onClickCheckboxListener(checkBoxNaoHouveDano);
+        onClickCheckboxListener(checkBoxForcarPortaJanela);
+        onClickCheckboxListener(checkBoxMaoArmada);
+        onClickCheckboxListener(checkBoxLevarCofre);
+        onClickCheckboxListener(checkBoxOutroModusOperandi);
+        onClickCheckboxListener(checkBoxOrganizacaoCriminosa);
+        onClickCheckboxListener(checkBoxPeDeCabra);
+        onClickCheckboxListener(checkBoxMacarico);
+        onClickCheckboxListener(checkBoxQuebrouVidro);
+        onClickCheckboxListener(checkBoxBuracoNaParede);
+        onClickCheckboxListener(checkBoxChaveMixa);
+        onClickCheckboxListener(checkBoxCorreiosArma);
         onClickCheckboxListener(checkBoxChupaCabra);
+        onClickCheckboxListener(checkBoxNomeDadosDivergentes);
+        onClickCheckboxListener(checkBoxFurtoDescuido);
+        onClickCheckboxListener(checkBoxMoedaFalsa);
+        onClickCheckboxListener(checkBoxFurtoPequenoValor);
+        onClickCheckboxListener(checkBoxFurtoCamera);
+        onClickCheckboxListener(checkBoxCorreiosVeiculoComEnd);
+        onClickCheckboxListener(checkBoxCorreiosVeiculoZonaNorte);
+        onClickCheckboxListener(checkBoxCorreiosVeiculoZonaSul);
+        onClickCheckboxListener(checkBoxCorreiosDoisDeMoto);
+        onClickCheckboxListener(checkBoxCorreiosSuperbonder);
 
         onClickEditText(editTextOutroModusOperandis);
         onClickEditText(editTextOutroTipoDelito);
-
-
-        //     android checkbox dynamically
 
 
 
@@ -114,22 +138,30 @@ public class SobreOFato extends Fragment {
 
     public void onClickCheckboxListener(View v) {
 
-        if (v.getId() == R.id.checkBoxOutroModusOperandi && ((CheckBox) v).isChecked()) {
+        ((CheckBox)v).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && buttonView.isChecked()) {
 
-            editTextOutroModusOperandis.setVisibility(View.VISIBLE);
+                    editTextOutroModusOperandis.setVisibility(View.VISIBLE);
 
-        } else if (v.getId() == R.id.checkBoxOutroModusOperandi && !(((CheckBox) v).isChecked())) {
+                } else if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && !(buttonView.isChecked())) {
 
-            editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-            editTextOutroModusOperandis.setText("");
-            atualizaListaCheckbox(v.getId(), ((CheckBox) v).isChecked(), "");
+                    editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
+                    editTextOutroModusOperandis.setText("");
+                    atualizaListaCheckbox(buttonView.getId(), buttonView.isChecked(), "");
 
-        } else {
+                } else {
 
-            atualizaListaCheckbox(v.getId(), ((CheckBox) v).isChecked(), "");
-        }
-
+                    atualizaListaCheckbox(buttonView.getId(), buttonView.isChecked(), "");
+                }
+            }
+        });
     }
+
+
+
+
 
     public void onClickEditText(View v){
         final EditText aux = (EditText)v;
@@ -148,7 +180,6 @@ public class SobreOFato extends Fragment {
                 } else {
                     outroTipoDelito = editable.toString();
                 }
-                //salvaConteudoEditText(nomeEditText, editable.toString());
             }
         });
 
