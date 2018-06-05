@@ -171,7 +171,6 @@
                     android:ems="10"
                     android:hint="Escolha a data provável"
                     android:inputType="textPersonName"
-                    android:onClick="onClickEditText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +223,6 @@
                     android:ems="10"
                     android:hint="Digite outro Modus Operandi"
                     android:inputType="textPersonName"
-                    android:onClick="onClickEditText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBoxOutroModusOperandi" />
