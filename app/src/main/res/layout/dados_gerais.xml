@@ -29,7 +29,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peritos Envolvidos"
+        android:text="Policiais Envolvidos"
         app:layout_constraintBottom_toTopOf="@+id/peritosEnvolvidosId"
         app:layout_constraintStart_toStartOf="@+id/peritosEnvolvidosId"
         app:layout_constraintTop_toBottomOf="@+id/sedeOcorrenciaId" />
@@ -124,7 +124,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:ems="10"
-        android:hint="Digite aqui os Peritos Envolvidos"
+        android:hint="Digite aqui os Policiais Envolvidos"
         android:inputType="textPersonName"
         android:text="@string/peritosEnvolvidos"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
