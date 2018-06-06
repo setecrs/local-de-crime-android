@@ -46,20 +46,6 @@ public class TelaEndereco extends Fragment{
 
         criaFuncionalideSalvarSpinner(spinnerLocal, "spinnerLocal");
         criaFuncionalideSalvarSpinner(spinnerEstado, "spinnerEstado");
-
-<<<<<<< c9e1b352beb762e42acfde19422c71509c7893a6
-=======
-<<<<<<< a6f4aba2dff8ef1676883f2a2a414f8e071b1417
-        criaFuncionalidadeSalvarTexto(editTextRua, "editTextRua");
-        criaFuncionalidadeSalvarTexto(editTextNumero, "editTextNumero");
-        criaFuncionalidadeSalvarTexto(editTextComplemento, "editTextComplemento");
-        carregaConteudoEditText( "editTextOutro", editTextOutro);
-        criaFuncionalidadeSalvarTexto(editTextOutro, "editTextOutro");
-        criaFuncionalidadeSalvarTextoAutoComplete(autoCompleteTextViewCidade, "autoCompleteTextViewCidade");
-
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         return v;
     }
 
