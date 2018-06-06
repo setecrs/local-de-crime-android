@@ -1,3 +1,4 @@
+<<<<<<< 32ed65619c50715456c0efae5c0847a6f7596840
 #Internal package file, do not edit.
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
@@ -61,3 +62,5 @@ count=4
 1.path=classes.dex
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> Correção do token na StaticProperties 2

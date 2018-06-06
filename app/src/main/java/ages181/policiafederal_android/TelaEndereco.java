@@ -46,6 +46,7 @@ public class TelaEndereco extends Fragment{
 
         criaFuncionalideSalvarSpinner(spinnerLocal, "spinnerLocal");
         criaFuncionalideSalvarSpinner(spinnerEstado, "spinnerEstado");
+<<<<<<< 32ed65619c50715456c0efae5c0847a6f7596840
 
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
@@ -62,6 +63,8 @@ public class TelaEndereco extends Fragment{
         criaFuncionalidadeSalvarTexto(editTextOutro, "editTextOutro");
         criaFuncionalidadeSalvarTextoAutoComplete(autoCompleteTextViewCidade, "autoCompleteTextViewCidade");
 
+=======
+>>>>>>> Correção do token na StaticProperties 2
         return v;
     }
 

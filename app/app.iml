@@ -22,7 +22,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
     <output url="file://$MODULE_DIR$/build/intermediates/classes/debug" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/debug" />
     <exclude-output />
@@ -145,7 +145,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 <<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
@@ -185,6 +185,7 @@
     <orderEntry type="library" name="com.android.support:design-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:transition-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:cardview-v7-26.1.0" level="project" />
+<<<<<<< 32ed65619c50715456c0efae5c0847a6f7596840
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
@@ -228,5 +229,7 @@
 =======
     <orderEntry type="library" name="android-android-26" level="project" />
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> Correção do token na StaticProperties 2
   </component>
 </module>
