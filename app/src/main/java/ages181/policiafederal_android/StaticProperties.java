@@ -6,14 +6,6 @@ public class StaticProperties {
     private static String token;
     private static String id;
 
-    public static void setToken(String token) {
-        StaticProperties.token = token;
-    }
-
-    public static void setId(String id) {
-        StaticProperties.id = id;
-    }
-
     public static String getId(){
         return id;
     }
@@ -26,4 +18,11 @@ public class StaticProperties {
         return token;
     }
 
+    public static void setToken(String tokenNovo) {
+        token = tokenNovo;
+    }
+
+    public static void setId(String idNovo){
+        id = idNovo;
+    }
 }
