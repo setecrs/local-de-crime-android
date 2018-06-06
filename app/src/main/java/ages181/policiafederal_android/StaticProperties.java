@@ -18,11 +18,11 @@ public class StaticProperties {
         return token;
     }
 
-    public static void setToken(String token) {
-        token = token;
+    public static void setToken(String tokenNovo) {
+        token = tokenNovo;
     }
 
-    public static void setId(String id){
-        id = id;
+    public static void setId(String idNovo){
+        id = idNovo;
     }
 }
