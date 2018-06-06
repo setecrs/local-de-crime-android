@@ -57,6 +57,8 @@ public class TelaLogin extends AppCompatActivity {
                     Intent k = new Intent(TelaLogin.this, MainActivity.class);
                     startActivity(k);
                  } else {
+                    Intent k = new Intent(TelaLogin.this, MainActivity.class);
+                    startActivity(k);
                     // Aviso de usuário inválido
                 }
 

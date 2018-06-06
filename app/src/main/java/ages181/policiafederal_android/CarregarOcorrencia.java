@@ -1,14 +1,18 @@
 package ages181.policiafederal_android;
 
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Date;
 
 public class CarregarOcorrencia {
 
     // Dados Gerais
 
-    static String dgNumeroOcorrencia, dgSedeOcorrencia,  dgHoraAcionamento, dgDataAcionamento;
-    // LISTA DE MAIS DE UM PERITO, ARRUMAR CLASSE DADOSGERAIS COM AUTOCOMPLETE ===>> String[] dgPeritoOcorrencia
+    static String dgNumeroOcorrencia, dgSedeOcorrencia,  dgHoraAcionamento, dgDataAcionamento, dgPeritosOcorrencia;
+    // LISTA DE MAIS DE UM PERITO, ARRUMAR CLASSE DADOSGERAIS COM AUTOCOMPLETE ===>>
+    JSONArray dgPeritosAcionados;
 
     // Reponsavel
 
@@ -16,7 +20,7 @@ public class CarregarOcorrencia {
 
     // Sobre o Fato
 
-    static String sfHoraProvavel, sbDataProvavel, sfTipoDelito, sfModusOperandi;
+    static String sfHoraProvavel, sfDataProvavel, sfTipoDelito, sfModusOperandi;
     // ====>>> sfCheckBox
 
     // Sobre o Local
@@ -31,17 +35,31 @@ public class CarregarOcorrencia {
 
     static String testNome, testDoc, testFuncao, testEntrevista;
 
+
     public void carregaOcorrencia(JSONObject ocorrencia){
+        Date aux = null;
+        JSONObject auxJson = null;
+        StringBuffer sb = new StringBuffer();
+
         try {
             dgNumeroOcorrencia = (String)ocorrencia.get("numeroOcorrencia");
             dgSedeOcorrencia = (String)ocorrencia.get("sede");
-            //peritos acionados
+
+            dgPeritosAcionados = ocorrencia.getJSONArray("peritosAcionados");
+
+            for(int i = 0; i < dgPeritosAcionados.length(); i++){
+                auxJson = dgPeritosAcionados.getJSONObject(i);
+                sb.append(auxJson.get("name"));
+                sb.append(", ");
+            }
+            dgPeritosOcorrencia = sb.toString();
+
             endLocal = (String)ocorrencia.get("tipoLocal");
             endEstado = (String)ocorrencia.get("estado");
             endCidade = (String)ocorrencia.get("municipio");
             endRua = (String)ocorrencia.get("logradouro");
             endComplemento = (String)ocorrencia.get("complemento");
-            // ==== >>> ATUALIZAR API COM NUMERO ---- endNumero = (String)ocorrencia.get("numero");
+            endNumero = (String)ocorrencia.get("numero");
             respNome = (String)ocorrencia.get("nomeResponsavel");
             respCargo = (String)ocorrencia.get("cargoResponsavel");
             respDoc = (String)ocorrencia.get("documentoResponsavel");
@@ -50,6 +68,10 @@ public class CarregarOcorrencia {
             testFuncao = (String)ocorrencia.get("cargoTestemunha");
             testDoc = (String)ocorrencia.get("documentoTestemunha");
             testEntrevista = (String)ocorrencia.get("entrevistaTestemunha");
+
+            aux = (Date)ocorrencia.get("dataHoraChegada");
+
+
             // receber date e separar em data e hora (CHEGADA)
             sbCondicoesLocal = (String)ocorrencia.get("condicaoLocal");
             sbInfo = (String)ocorrencia.get("informacoesAdicionais");
@@ -74,9 +96,7 @@ public class CarregarOcorrencia {
         return dgSedeOcorrencia;
     }
 
-    /*public static String getDgPeritoOcorrencia() {
-        return dgPeritoOcorrencia;
-    }*/
+    public static String getDgPeritosOcorrencia() { return dgPeritosOcorrencia; }
 
     public static String getDgHoraAcionamento() {
         return dgHoraAcionamento;
@@ -106,8 +126,8 @@ public class CarregarOcorrencia {
         return sfHoraProvavel;
     }
 
-    public static String getSbDataProvavel() {
-        return sbDataProvavel;
+    public static String getSfDataProvavel() {
+        return sfDataProvavel;
     }
 
     public static String getSfTipoDelito() {
