@@ -24,5 +24,5 @@ public class StaticProperties {
 
     public static void setId(String idNovo){
         id = idNovo;
-
+    }
 }
