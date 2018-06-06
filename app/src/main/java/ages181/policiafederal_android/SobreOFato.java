@@ -301,6 +301,36 @@ public class SobreOFato extends Fragment {
         aux.setOutro(outro);
         }
 
+    public void carregaSobreOFato(){
+
+        boolean aux = false;
+
+        editTextHoraProvavel.setText(CarregarOcorrencia.getSfHoraProvavel());
+        editTextDataProvavel.setText(CarregarOcorrencia.getSfDataProvavel());
+
+        itemSpinner = CarregarOcorrencia.getSfTipoDelito();
+
+        if(itemSpinner.equals("")){
+            spinnerTipoDeDelito.setSelection(0);
+        } else {
+            for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
+                if(itemSpinner.equals(spinnerTipoDeDelito.getItemAtPosition(i).toString())){
+                    spinnerTipoDeDelito.setSelection(i);
+                    aux = true;
+                    break;
+                }
+            }
+            if(!aux){
+                spinnerTipoDeDelito.setSelection(spinnerTipoDeDelito.getAdapter().getCount()-1);
+                editTextOutroTipoDelito.setVisibility(View.VISIBLE);
+                editTextOutroTipoDelito.setText(itemSpinner);
+            }
+        }
+
+
+
+    }
+
     public static SobreOFato newInstance() {
 
         SobreOFato f = new SobreOFato();
