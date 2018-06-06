@@ -1,13 +1,4 @@
-#Mon Jun 04 17:54:48 BRT 2018
-path.3=classes.dex
-path.2=classes.dex
-path.1=classes.dex
+#Wed Jun 06 17:54:31 BRT 2018
+base.0=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/37
 path.0=classes.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
-renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/35
-base.2=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/33
-base.1=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/34
-base.0=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/32

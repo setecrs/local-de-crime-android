@@ -1,19 +1,7 @@
 #Internal package file, do not edit.
-#Mon Jun 04 17:54:48 BRT 2018
-1.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/32
-2.path=classes.dex
+#Wed Jun 06 17:54:31 BRT 2018
 0.baseType=DIRECTORY
-3.baseType=DIRECTORY
-2.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/35
-3.set=DEX
-2.set=DEX
-1.baseType=DIRECTORY
-3.path=classes.dex
-count=4
-1.set=DEX
+0.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/37
 0.path=classes.dex
-3.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/33
 0.set=DEX
-0.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/34
-2.baseType=DIRECTORY
-1.path=classes.dex
+count=1
