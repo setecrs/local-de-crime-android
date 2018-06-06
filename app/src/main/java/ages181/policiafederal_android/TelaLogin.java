@@ -54,7 +54,7 @@ public class TelaLogin extends AppCompatActivity {
             HttpLogin t = new HttpLogin(actvUsuario.getText(), senha.getText());
             t.execute().get();
 
-                if (token.getToken() != null){
+                if (StaticProperties.getToken() != null){
                     Intent k = new Intent(TelaLogin.this, MainActivity.class);
                     startActivity(k);
                 } else {
