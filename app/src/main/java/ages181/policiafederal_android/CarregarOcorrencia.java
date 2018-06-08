@@ -20,8 +20,8 @@ public class CarregarOcorrencia {
 
     // Sobre o Fato
 
-    static String sfHoraProvavel, sfDataProvavel, sfTipoDelito, sfModusOperandi;
-    // ====>>> sfCheckBox
+    static String sfHoraProvavel, sfDataProvavel, sfTipoDelito;
+    static JSONArray sfModusOperandi;
 
     // Sobre o Local
 
@@ -77,6 +77,9 @@ public class CarregarOcorrencia {
             sbInfo = (String)ocorrencia.get("informacoesAdicionais");
             // receber date e separar em data e hota (OCORRENCIA)
             sfTipoDelito = (String)ocorrencia.get("tipoDelito");
+
+            sfModusOperandi = ocorrencia.getJSONArray("modusOperandi");
+
             // ARRAY de modus operandi ---- sfModusOperandi =
             // VALOES SUBTRAIDOS ???
             // VESTIGIOS ARRAY
@@ -134,7 +137,7 @@ public class CarregarOcorrencia {
         return sfTipoDelito;
     }
 
-    public static String getSfTipoModusOperandi() {
+    public static JSONArray getSfModusOperandi() {
         return sfModusOperandi;
     }
 
