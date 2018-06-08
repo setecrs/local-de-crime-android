@@ -3,9 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android2.iml" filepath="$PROJECT_DIR$/Android2.iml" />
+<<<<<<< 61c123191956af639cc8b209ac92f06d3db66b1d
       <module fileurl="file://$PROJECT_DIR$/Android2.iml" filepath="$PROJECT_DIR$/Android2.iml" />
       <module fileurl="file://$PROJECT_DIR$/PFA.iml" filepath="$PROJECT_DIR$/PFA.iml" />
       <module fileurl="file://$PROJECT_DIR$/Policia Federal Android.iml" filepath="$PROJECT_DIR$/Policia Federal Android.iml" />
+=======
+>>>>>>> método para carregar tela sobre o fato completo com checkbox. (Joao Soares e Marc)
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
