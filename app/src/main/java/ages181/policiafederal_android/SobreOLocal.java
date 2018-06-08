@@ -26,32 +26,35 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class SobreOLocal extends Fragment {
-    EditText horaChegada, dataChegada;
-    Spinner spCondicoesLocal;
-    Calendar horarioAtual = Calendar.getInstance();
+    private EditText horaChegada, dataChegada, infoAdicional;
+    private Spinner spCondicoesLocal;
+    private Calendar horarioAtual = Calendar.getInstance();
     private Context context;
+    private String itemSpinner;
 
 
     private static final String[] condicoesLocal = { "Condições do Local",
-            "Preservado", "Pouco preservado", "Não preservado" };
-    ArrayAdapter<String> listaCondicoesLocal;
-    Spinner spinnerCondicoesLocal;
+            "Preservado", "Não preservado" };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.activity_sobre_o_local, container, false);
 
-        horaChegada = (EditText) v.findViewById(R.id.etHoraChegada);
-        dataChegada = (EditText) v.findViewById(R.id.etDataChegada);
-        spCondicoesLocal = (Spinner) v.findViewById(R.id.spCondicoesLocal);
+        horaChegada = v.findViewById(R.id.etHoraChegada);
+        dataChegada = v.findViewById(R.id.etDataChegada);
+        spCondicoesLocal = v.findViewById(R.id.spCondicoesLocal);
+        infoAdicional = v.findViewById(R.id.etInfoAdicional);
         dataChegada.setFocusable(false);
         horaChegada.setFocusable(false);
         showTimePickerDialog();
         showDatePickerDialog();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1, condicoesLocal);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context,android.R.layout.simple_list_item_1, condicoesLocal);
         spCondicoesLocal.setAdapter(adapter);
+
+        carregaSobreOLocal();
 
 
 
@@ -97,6 +100,30 @@ public class SobreOLocal extends Fragment {
             dataChegada.setText(day+"/"+(month+1)+"/"+year);
         }
     };
+
+
+    public void carregaSobreOLocal(){
+
+        itemSpinner = CarregarOcorrencia.getSbCondicoesLocal();
+
+        if(itemSpinner.equals("")){
+            spCondicoesLocal.setSelection(0);
+        } else {
+            for(int i = 1; i < spCondicoesLocal.getAdapter().getCount(); i++){
+                if(itemSpinner.equals(spCondicoesLocal.getItemAtPosition(i).toString())) {
+                    spCondicoesLocal.setSelection(i);
+                    break;
+                }
+            }
+        }
+
+        dataChegada.setText(CarregarOcorrencia.getSbDatachegada());
+        horaChegada.setText(CarregarOcorrencia.getSbHoraChegada());
+        infoAdicional.setText(CarregarOcorrencia.getSbInfo());
+    }
+
+
+
 
 
     public static SobreOLocal newInstance() {
