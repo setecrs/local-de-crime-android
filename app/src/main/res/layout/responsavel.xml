@@ -6,7 +6,7 @@
     android:background="@android:color/white">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewNome"
         android:layout_width="287dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -14,11 +14,11 @@
         android:layout_marginTop="16dp"
         android:text="@string/nome_do_respons_vel_presente_no_local"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/editText1"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toStartOf="@+id/editTextNomeResponsavel"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCargoResponsavel" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextNomeResponsavel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -30,48 +30,10 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNome" />
 
     <EditText
-        android:id="@+id/editText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/cargo_do_respons_vel_presente_do_local"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataOcorrencia" />
-
-    <TextView
-        android:id="@+id/textViewDataOcorrencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="19dp"
-        android:text="@string/cargo_do_respons_vel_presente_no_local"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewHoraOcorrencia"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/documento_do_respons_vel_presente_no_local"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/editText5"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
-
-    <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/editTextCargoResponsavel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -83,10 +45,48 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHoraOcorrencia" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCargo" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewCargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/cargo_do_respons_vel_presente_do_local"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/editTextCargoResponsavel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/documento_do_respons_vel_presente_no_local"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/editTextDocResponsavel"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNomeResponsavel" />
+
+    <EditText
+        android:id="@+id/editTextDocResponsavel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/digite_documento_do_respons_vel_presente_no_local"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDoc" />
+
+    <TextView
+        android:id="@+id/textViewEntrevista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -94,11 +94,11 @@
         android:layout_marginTop="16dp"
         android:text="@string/entrevista"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/editText6"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintStart_toStartOf="@+id/editTextEntrevistaResponsavel"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDocResponsavel" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/editTextEntrevistaResponsavel"
         android:hint="@string/digite_aqui_os_fatos_relevantes_da_entrevista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +110,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEntrevista" />
 
 </android.support.constraint.ConstraintLayout>

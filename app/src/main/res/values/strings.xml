@@ -7,7 +7,7 @@
     <string name="nome_do_respons_vel_presente_no_local">Nome do responsável presente no local</string>
     <string name="digite_aqui_o_nome_do_respons_vel">Digite aqui o nome do Responsável</string>
     <string name="cargo_do_respons_vel_presente_do_local">Cargo do responsável presente do local</string>
-    <string name="cargo_do_respons_vel_presente_no_local">Cargo do responsável presente no local</string>
+    <string name="digite_documento_do_respons_vel_presente_no_local">Digite o documento do responsável</string>
     <string name="documento_do_respons_vel_presente_no_local">Documento do responsável presente no local</string>
     <string name="digite_aqui_o_cargo_do_respons_vel">Digite aqui o cargo do responsável</string>
     <string name="entrevista">Entrevista</string>

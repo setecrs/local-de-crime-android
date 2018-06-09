@@ -999,7 +999,7 @@ public final class R {
         public static final int abc_toolbar_collapse_description = 0x7f0d001e;
         public static final int appbar_scrolling_view_behavior = 0x7f0d0020;
         public static final int bottom_sheet_behavior = 0x7f0d0021;
-        public static final int character_counter_pattern = 0x7f0d0024;
+        public static final int character_counter_pattern = 0x7f0d0023;
         public static final int password_toggle_content_description = 0x7f0d0030;
         public static final int path_password_eye = 0x7f0d0031;
         public static final int path_password_eye_mask_strike_through = 0x7f0d0032;
