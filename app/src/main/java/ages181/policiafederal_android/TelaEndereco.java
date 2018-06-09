@@ -90,7 +90,7 @@ public class TelaEndereco extends Fragment{
                                         editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
                                         StaticProperties.getId());
             t.execute();
-git         }catch (Exception e){
+         }catch (Exception e){
             e.printStackTrace();
         }
     }

@@ -7,7 +7,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewNumeroOcorrencia"
         android:layout_width="148dp"
         android:layout_height="15dp"
         android:layout_marginTop="19dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewSedeOcorrencia"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="Sede da Ocorrência"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/numOcorrenciaId" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewPoliciaisEnvolvidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Policiais Envolvidos"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sedeOcorrenciaId" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewDataOcorrencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Data da Ocorrência"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/peritosEnvolvidosId" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewHoraOcorrencia"
         android:layout_width="121dp"
         android:layout_height="17dp"
         android:text="Hora da Ocorrência"
@@ -61,10 +61,10 @@
         android:layout_marginStart="30dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/textViewHoraOcorrencia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDataOcorrencia" />
 
     <EditText
         android:id="@+id/horaOcorrenciaId"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHoraOcorrencia"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -94,11 +94,11 @@
         android:inputType="textPersonName"
         android:text="@string/numOcorrencia"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSedeOcorrencia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumeroOcorrencia" />
 
     <EditText
         android:id="@+id/sedeOcorrenciaId"
@@ -111,10 +111,10 @@
         android:hint="Digite aqui a Sede de Ocorrência"
         android:inputType="textPersonName"
         android:text="@string/sedeOcorrencia"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPoliciaisEnvolvidos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSedeOcorrencia" />
 
     <EditText
         android:id="@+id/peritosEnvolvidosId"
@@ -124,12 +124,12 @@
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:ems="10"
-        android:hint="Digite aqui os Policiais Envolvidos"
+        android:hint="Digite aqui os Peritos Envolvidos"
         android:inputType="textPersonName"
         android:text="@string/peritosEnvolvidos"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDataOcorrencia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPoliciaisEnvolvidos" />
 
 </android.support.constraint.ConstraintLayout>
