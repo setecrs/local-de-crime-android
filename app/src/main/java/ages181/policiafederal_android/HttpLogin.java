@@ -67,17 +67,20 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
                 RequestBody body_ocorrencia = RequestBody.create(JSON, json);
 
-                Request requestSignup = new Request.Builder()
+                Request requestOcorrencia = new Request.Builder()
                         .addHeader("content-type", "application/json")
                         .addHeader("x-access-token", StaticProperties.getToken())
                         .post(body_ocorrencia)
-                        .url(StaticProperties.getUrl() + "signup")
+                        .url(StaticProperties.getUrl() + "ocorrencias")
                         .build();
 
-                Response responseSignup = client.newCall(requestSignup).execute();
+                Response responseOcorrencia = client.newCall(requestOcorrencia).execute();
 
+                String bodyOcorrencia = responseOcorrencia.body().string();
 
-                System.out.println(responseSignup.body().string());
+                JSONObject responseObjectOcorrencia = new JSONObject(bodyOcorrencia);
+
+                StaticProperties.setId((String) responseObjectOcorrencia.get("_id").toString());
 
             } else {
                 StaticProperties.setToken(null);

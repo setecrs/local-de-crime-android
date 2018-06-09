@@ -48,13 +48,15 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
 
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
-                    .url("https://ages-pf.herokuapp.com//dados_gerais/"+numOcorrencia)
-                    .post(body)
+                    .addHeader("x-access-token", StaticProperties.getToken())
+                    .url(StaticProperties.getUrl() + "dados_gerais/" + StaticProperties.getId())
+                    .patch(body)
                     .build();
 
             Response response = client.newCall(request).execute();
 
-            System.out.println("Responde body: " + response.body().string());
+            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println("Responde body Http dados Gerais: " + response.body().string());
 
         } catch (Exception e) {
             e.printStackTrace();
