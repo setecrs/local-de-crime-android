@@ -34,7 +34,6 @@ public class TelaEndereco extends Fragment{
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.endereco, container, false);
 
-
         spinnerLocal = v.findViewById(R.id.spinnerLocal);
         spinnerEstado = v.findViewById(R.id.spinnerEstado);
         editTextOutro = v.findViewById(R.id.editTextOutro);

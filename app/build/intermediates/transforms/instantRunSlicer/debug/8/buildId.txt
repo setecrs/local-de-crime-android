@@ -1,5 +1,0 @@
-<<<<<<< c9e1b352beb762e42acfde19422c71509c7893a6
-1528498372052
-=======
-1527549471173
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)

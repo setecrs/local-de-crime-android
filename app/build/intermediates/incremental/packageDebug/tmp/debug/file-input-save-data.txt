@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Sat Jun 09 11:34:12 BRT 2018
+0.baseType=DIRECTORY
+0.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/0
+0.path=classes.dex
+0.set=DEX
+count=1
