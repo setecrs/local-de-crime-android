@@ -99,17 +99,6 @@ public class TelaEndereco extends Fragment{
         }
     }
 
-    public void sendMassage(View view){
-        String local = localSelecionado();
-        try{
-            HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
-                    editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
-                    StaticProperties.getId());
-            t.execute();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     public static TelaEndereco newInstance() {
         TelaEndereco f = new TelaEndereco();
