@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
-<<<<<<< HEAD
-    <string-array name="cidadeList">
-        <item>Escolha uma cidade</item>
-        <item>Porto Alegre</item>
-        <item>Viamão</item>
-    </string-array>
-    <string-array name="estadoList">
-        <item>Escolha um estado</item>
-        <item>RS</item>
-=======
     <string-array name="estadoList">
         <item>Escolha um estado</item>
         <item>RS</item>
         <item>SC</item>
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
     </string-array>
     <string-array name="localList">
         <item>Escolha um local</item>

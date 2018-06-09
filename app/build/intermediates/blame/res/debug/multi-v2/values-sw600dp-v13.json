@@ -1,38 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-            "outputFile": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\joaoe\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\a7a1d9bb83de9a710cf4c4439810ea7a\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-=======
-            "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
-            "map": [
-                {
-<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/values-sw600dp-v13/values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,124,193,263,337,413,472,543",
-                        "endColumns": "68,68,69,73,75,58,70,67",
-                        "endOffsets": "119,188,258,332,408,467,538,606"
-                    }
-                },
-                {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/1978417447213eb7bb4844cbf16359d0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/124468da406bf98fc8e91a4260c723bd/res/values-sw600dp-v13/values-sw600dp-v13.xml",
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
             "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/124468da406bf98fc8e91a4260c723bd/res/values-sw600dp-v13/values-sw600dp-v13.xml",
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -49,22 +21,9 @@
                         "endColumns": "59,69,70,71,57,57,105,63,62,12",
                         "endOffsets": "666,736,807,879,937,995,1101,1165,1228,1410"
                     }
-<<<<<<< HEAD
-<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-                },
-                {
-                    "source": "C:\\Users\\joaoe\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\77fc3cab9458eaade121c9ef11fa9d9a\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-=======
                 },
                 {
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-sw600dp-v13/values-sw600dp-v13.xml",
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
-                },
-                {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-sw600dp-v13/values-sw600dp-v13.xml",
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -72,14 +31,6 @@
                         "endColumns": "68,68,69,73,75,58,70,67",
                         "endOffsets": "119,188,258,332,408,467,538,606"
                     }
-<<<<<<< HEAD
-<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                 }
             ]
         }

@@ -10,10 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-<<<<<<< HEAD
-import android.widget.ArrayAdapter;
-=======
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -151,19 +147,11 @@ public class SobreOFato extends Fragment {
                     editTextOutroModusOperandis.setVisibility(View.VISIBLE);
 
                 }else if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && !(buttonView.isChecked())) {
-<<<<<<< HEAD
 
                     editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
                     editTextOutroModusOperandis.setText("");
                 }
 
-=======
-
-                    editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-                    editTextOutroModusOperandis.setText("");
-                }
-
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
             }
         });
     }
@@ -277,24 +265,6 @@ public class SobreOFato extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
-<<<<<<< HEAD
-        aux.setSelecionado(selecionado);
-        aux.setOutro(outro);
-        }
-
-    public void carregaSobreOFato(){
-
-        boolean aux = false;
-        JSONObject auxJson;
-        String auxCheckBoxtexto;
-
-        editTextHoraProvavel.setText(CarregarOcorrencia.getSfHoraProvavel());
-        editTextDataProvavel.setText(CarregarOcorrencia.getSfDataProvavel());
-
-        itemSpinner = CarregarOcorrencia.getSfTipoDelito();
-
-=======
->>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
         if(itemSpinner.equals("")){
             spinnerTipoDeDelito.setSelection(0);
         } else {

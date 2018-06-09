@@ -53,10 +53,6 @@ public final class R {
         public static final int notification_top_pad_large_text = 0x7f070095;
     }
     public static final class drawable {
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-<<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         public static final int notification_action_background = 0x7f080066;
         public static final int notification_bg = 0x7f080067;
         public static final int notification_bg_low = 0x7f080068;
@@ -69,23 +65,6 @@ public final class R {
         public static final int notification_template_icon_low_bg = 0x7f08006f;
         public static final int notification_tile_bg = 0x7f080070;
         public static final int notify_panel_notification_icon_bg = 0x7f080071;
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-=======
-        public static final int notification_action_background = 0x7f080064;
-        public static final int notification_bg = 0x7f080065;
-        public static final int notification_bg_low = 0x7f080066;
-        public static final int notification_bg_low_normal = 0x7f080067;
-        public static final int notification_bg_low_pressed = 0x7f080068;
-        public static final int notification_bg_normal = 0x7f080069;
-        public static final int notification_bg_normal_pressed = 0x7f08006a;
-        public static final int notification_icon_background = 0x7f08006b;
-        public static final int notification_template_icon_bg = 0x7f08006c;
-        public static final int notification_template_icon_low_bg = 0x7f08006d;
-        public static final int notification_tile_bg = 0x7f08006e;
-        public static final int notify_panel_notification_icon_bg = 0x7f08006f;
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
     }
     public static final class id {
         public static final int action0 = 0x7f090006;
@@ -97,10 +76,6 @@ public final class R {
         public static final int async = 0x7f09001f;
         public static final int blocking = 0x7f090025;
         public static final int cancel_action = 0x7f09002b;
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-<<<<<<< 2c2a98881c0c45298b6cb9b57f6e272e8583f46f
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
         public static final int chronometer = 0x7f09004c;
         public static final int end_padder = 0x7f090072;
         public static final int forever = 0x7f090084;
@@ -132,42 +107,6 @@ public final class R {
         public static final int transition_position = 0x7f090114;
         public static final int transition_scene_layoutid_cache = 0x7f090115;
         public static final int transition_transform = 0x7f090116;
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-=======
-        public static final int chronometer = 0x7f090047;
-        public static final int end_padder = 0x7f09006d;
-        public static final int forever = 0x7f09007f;
-        public static final int ghost_view = 0x7f090081;
-        public static final int icon = 0x7f090085;
-        public static final int icon_group = 0x7f090086;
-        public static final int info = 0x7f09008d;
-        public static final int italic = 0x7f09008e;
-        public static final int line1 = 0x7f090092;
-        public static final int line3 = 0x7f090093;
-        public static final int media_actions = 0x7f090099;
-        public static final int normal = 0x7f0900a2;
-        public static final int notification_background = 0x7f0900a3;
-        public static final int notification_main_column = 0x7f0900a4;
-        public static final int notification_main_column_container = 0x7f0900a5;
-        public static final int parent_matrix = 0x7f0900ab;
-        public static final int right_icon = 0x7f0900b3;
-        public static final int right_side = 0x7f0900b4;
-        public static final int save_image_matrix = 0x7f0900b5;
-        public static final int save_non_transition_alpha = 0x7f0900b6;
-        public static final int save_scale_type = 0x7f0900b7;
-        public static final int status_bar_latest_event_content = 0x7f0900df;
-        public static final int text = 0x7f0900e5;
-        public static final int text2 = 0x7f0900e6;
-        public static final int time = 0x7f090105;
-        public static final int title = 0x7f090106;
-        public static final int transition_current_scene = 0x7f09010d;
-        public static final int transition_layout_save = 0x7f09010e;
-        public static final int transition_position = 0x7f09010f;
-        public static final int transition_scene_layoutid_cache = 0x7f090110;
-        public static final int transition_transform = 0x7f090111;
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
     }
     public static final class integer {
         public static final int cancel_button_image_alpha = 0x7f0a0004;

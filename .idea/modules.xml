@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
-      <module fileurl="file://$PROJECT_DIR$/Android2.iml" filepath="$PROJECT_DIR$/Android2.iml" />
-<<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
-<<<<<<< 61c123191956af639cc8b209ac92f06d3db66b1d
-      <module fileurl="file://$PROJECT_DIR$/Android2.iml" filepath="$PROJECT_DIR$/Android2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PFA.iml" filepath="$PROJECT_DIR$/PFA.iml" />
       <module fileurl="file://$PROJECT_DIR$/Policia Federal Android.iml" filepath="$PROJECT_DIR$/Policia Federal Android.iml" />
-=======
->>>>>>> método para carregar tela sobre o fato completo com checkbox. (Joao Soares e Marc)
-=======
-      <module fileurl="file://$PROJECT_DIR$/PFA.iml" filepath="$PROJECT_DIR$/PFA.iml" />
-=======
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
-      <module fileurl="file://$PROJECT_DIR$/Policia Federal Android.iml" filepath="$PROJECT_DIR$/Policia Federal Android.iml" />
->>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
