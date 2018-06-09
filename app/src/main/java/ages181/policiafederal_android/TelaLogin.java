@@ -54,16 +54,13 @@ public class TelaLogin extends AppCompatActivity {
             HttpLogin t = new HttpLogin(actvUsuario.getText(), senha.getText());
             t.execute().get();
 
-                if (StaticProperties.getToken() != null){
-                    Intent k = new Intent(TelaLogin.this, MainActivity.class);
-                    startActivity(k);
-                } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-
-
-
+            if (StaticProperties.getToken() != null){
+                Intent k = new Intent(TelaLogin.this, TelaListarOcorrencias.class);
+                startActivity(k);
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
+                toast.show();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

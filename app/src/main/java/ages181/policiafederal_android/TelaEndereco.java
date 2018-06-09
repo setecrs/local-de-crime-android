@@ -108,6 +108,9 @@ public class TelaEndereco extends Fragment{
         boolean aux = false;
 
         itemSpinner = CarregarOcorrencia.getEndEstado();
+        if(itemSpinner == null){
+            itemSpinner = "";
+        }
 
         if(itemSpinner.equals("")){
             spinnerEstado.setSelection(0);
@@ -119,10 +122,17 @@ public class TelaEndereco extends Fragment{
                 }
             }
         }
+        if(CarregarOcorrencia.getEndCidade().equals("null")){
+            autoCompleteTextViewCidade.setText("");
+        }else{
+            autoCompleteTextViewCidade.setText(CarregarOcorrencia.endCidade);
+        }
 
-        autoCompleteTextViewCidade.setText(CarregarOcorrencia.getEndCidade());
 
         itemSpinner = CarregarOcorrencia.getEndLocal();
+        if(itemSpinner == null){
+            itemSpinner = "";
+        }
 
         if(itemSpinner.equals("")){
             spinnerLocal.setSelection(0);

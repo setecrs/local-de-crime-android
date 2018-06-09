@@ -56,8 +56,6 @@ public class SobreOLocal extends Fragment {
 
         carregaSobreOLocal();
 
-
-
         return v;
     }
 
@@ -71,9 +69,8 @@ public class SobreOLocal extends Fragment {
             }
 
         });
-    } //Fim showTimePickerDialog
+    }
 
-    //Captar horario selecionada
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
@@ -81,8 +78,6 @@ public class SobreOLocal extends Fragment {
         }
     };
 
-
-    //Exibir DataPicker
     public void showDatePickerDialog(){
         dataChegada.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,9 +86,8 @@ public class SobreOLocal extends Fragment {
                         horarioAtual.get(Calendar.MONTH), horarioAtual.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+    }
 
-    }//Fim showDatePickerDialog
-    //Captar data selecionada
     protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -101,11 +95,12 @@ public class SobreOLocal extends Fragment {
         }
     };
 
-
     public void carregaSobreOLocal(){
 
         itemSpinner = CarregarOcorrencia.getSbCondicoesLocal();
-
+        if(itemSpinner == null){
+            itemSpinner = "";
+        }
         if(itemSpinner.equals("")){
             spCondicoesLocal.setSelection(0);
         } else {
@@ -116,15 +111,10 @@ public class SobreOLocal extends Fragment {
                 }
             }
         }
-
         dataChegada.setText(CarregarOcorrencia.getSbDatachegada());
         horaChegada.setText(CarregarOcorrencia.getSbHoraChegada());
         infoAdicional.setText(CarregarOcorrencia.getSbInfo());
     }
-
-
-
-
 
     public static SobreOLocal newInstance() {
 

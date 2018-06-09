@@ -21,12 +21,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SobreOFato extends Fragment {
     Calendar calendarHoraAtual;
-    EditText editTextHoraProvavel, editTextDataProvavel, editTextOutroTipoDelito, editTextOutroModusOperandis;
+    EditText editTextHoraProvavel, editTextDataProvavel, editTextOutroTipoDelito, editTextOutroModusOperandi;
     Spinner spinnerTipoDeDelito;
     CheckBox checkBoxExplosivo, checkBoxCorreiosCortaAlarme, checkBoxViolencia, checkBoxNaoHouveDano,
             checkBoxForcarPortaJanela, checkBoxMaoArmada, checkBoxLevarCofre, checkBoxOutroModusOperandi,
@@ -48,7 +46,7 @@ public class SobreOFato extends Fragment {
         editTextHoraProvavel = v.findViewById(R.id.editTextHoraProvavel);
         editTextDataProvavel = v.findViewById(R.id.editTextDataProvavel);
         editTextOutroTipoDelito = v.findViewById(R.id.editTextOutroTipoDelito);
-        editTextOutroModusOperandis = v.findViewById(R.id.editTextOutroModusOperandi);
+        editTextOutroModusOperandi = v.findViewById(R.id.editTextOutroModusOperandi);
         spinnerTipoDeDelito = v.findViewById(R.id.editTextTipoDeDelito);
 
         checkBoxExplosivo = v.findViewById(R.id.checkBoxExplosivo);
@@ -80,7 +78,7 @@ public class SobreOFato extends Fragment {
 
         editTextDataProvavel.setFocusable(false);
         editTextHoraProvavel.setFocusable(false);
-        editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
+        editTextOutroModusOperandi.setVisibility(View.INVISIBLE);
         showTimePickerDialog();
         showDatePickerDialog();
 
@@ -114,7 +112,7 @@ public class SobreOFato extends Fragment {
         onClickCheckboxListener(checkBoxCorreiosDoisDeMoto);
         onClickCheckboxListener(checkBoxCorreiosSuperbonder);
 
-        onClickEditText(editTextOutroModusOperandis);
+        onClickEditText(editTextOutroModusOperandi);
         onClickEditText(editTextOutroTipoDelito);
 
         return v;
@@ -144,12 +142,12 @@ public class SobreOFato extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && buttonView.isChecked()) {
 
-                    editTextOutroModusOperandis.setVisibility(View.VISIBLE);
+                    editTextOutroModusOperandi.setVisibility(View.VISIBLE);
 
                 }else if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && !(buttonView.isChecked())) {
 
-                    editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-                    editTextOutroModusOperandis.setText("");
+                    editTextOutroModusOperandi.setVisibility(View.INVISIBLE);
+                    editTextOutroModusOperandi.setText("");
                 }
 
             }
@@ -343,12 +341,12 @@ public class SobreOFato extends Fragment {
                 }else{
                     if (aux) {
                         checkBoxOutroModusOperandi.setSelected(aux);
-                        editTextOutroModusOperandis.setVisibility(View.VISIBLE);
-                        editTextOutroModusOperandis.setText(auxCheckBoxtexto);
+                        editTextOutroModusOperandi.setVisibility(View.VISIBLE);
+                        editTextOutroModusOperandi.setText(auxCheckBoxtexto);
                     } else {
                         checkBoxOutroModusOperandi.setSelected(aux);
-                        editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-                        editTextOutroModusOperandis.setText("");
+                        editTextOutroModusOperandi.setVisibility(View.INVISIBLE);
+                        editTextOutroModusOperandi.setText("");
                     }
                 }
             }

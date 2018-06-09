@@ -53,19 +53,23 @@ public class DadosGerais extends Fragment {
 
 
     public static DadosGerais newInstance() {
-
         DadosGerais f = new DadosGerais();
         return f;
     }
 
     public void carregaDadosGerais(){
+        String sede;
+        if(CarregarOcorrencia.getDgSedeOcorrencia().equals("null")){
+            sede = "";
+        }else{
+            sede = CarregarOcorrencia.getDgSedeOcorrencia();
+        }
 
         numOcorrencia.setText(CarregarOcorrencia.getDgNumeroOcorrencia());
-        sedeOcorrencia.setText(CarregarOcorrencia.getDgSedeOcorrencia());
+        sedeOcorrencia.setText(sede);
         peritoOcorrencia.setText(CarregarOcorrencia.getDgPeritosOcorrencia());
         dataOcorrencia.setText(CarregarOcorrencia.getDgDataAcionamento());
         horaOcorrencia.setText(CarregarOcorrencia.getDgHoraAcionamento());
-
     }
 
     public void showDatePickerDialog(){
@@ -76,7 +80,6 @@ public class DadosGerais extends Fragment {
                         calendarHoraAtual.get(Calendar.MONTH), calendarHoraAtual.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
     }
 
     protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {

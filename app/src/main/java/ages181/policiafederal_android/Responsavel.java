@@ -26,16 +26,14 @@ public class Responsavel extends Fragment {
         return v;
     }
 
-
     public void carregaResponsavel(){
-
+        System.out.println("Cargoteste " + CarregarOcorrencia.respCargo);
         editTextCargoResponsavel.setText(CarregarOcorrencia.getRespCargo());
+        System.out.println("Nometeste " + CarregarOcorrencia.respNome);
         editTextNomeResponsavel.setText(CarregarOcorrencia.getRespNome());
         editTextDocResponsavel.setText(CarregarOcorrencia.getRespDoc());
         editTextEntrevistaResponsavel.setText(CarregarOcorrencia.getRespEntrevista());
     }
-
-
 
     public static Responsavel newInstance() {
 

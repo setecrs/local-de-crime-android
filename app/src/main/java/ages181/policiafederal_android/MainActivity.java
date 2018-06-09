@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Editable;
 import android.view.View;
 
 public class MainActivity extends FragmentActivity {
@@ -19,6 +20,8 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Editable usuario;
+        Editable senha;
         setContentView(R.layout.activity_main);
         ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
@@ -75,3 +78,4 @@ public class MainActivity extends FragmentActivity {
 
     }
 }
+
