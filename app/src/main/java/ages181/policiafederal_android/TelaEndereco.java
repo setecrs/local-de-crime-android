@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -51,6 +52,18 @@ public class TelaEndereco extends Fragment{
         editTextOutro.setVisibility(View.GONE);
 
         carregaEnderecoo();
+        Button button = (Button) v.findViewById(R.id.buttonSaveEndereco);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // TODO: Enviar valor de estado, local e municipio
+                HttpEndereco http_endereco = new HttpEndereco("5b0f1301e9624b001440cbff", "5b0f1301e9624b001440cbfa", autoCompleteTextViewCidade.getText().toString(), editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString());
+                http_endereco.execute();
+
+            }
+        });
 
         return v;
     }

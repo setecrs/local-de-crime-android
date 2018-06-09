@@ -19,8 +19,8 @@ import okhttp3.Response;
 public class HttpEndereco extends AsyncTask<Void, Void, Void> {
 
     private Exception exception;
-    private String local, estado, cidade, rua, numero, complemento, id;
-    public HttpEndereco(String local, String estado, String cidade, String rua, String nummero, String complemento, String id) {
+    private String local, estado, cidade, rua, numero, complemento;
+    public HttpEndereco(String local, String estado, String cidade, String rua, String numero, String complemento) {
 
         this.local = local;
         this.estado = estado;
@@ -28,7 +28,6 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
-        this.id = id;
     }
 
 
@@ -37,12 +36,14 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
+
     protected Void doInBackground(Void... params) {
         try {
 
-            String json = "{\"tipolocal\": "+ local +"\"estado\": "+ estado +"\"municipio\": "+ cidade +
-                            "\"logradouro\": "+ rua + "\"complemento\": "+ complemento +
-                            "\"numero\": "+ numero + "\"_id\" :" + id +"}";
+            // TODO: Implementar Município
+            String json = "{\"tipolocal\": \""+ local +"\", \"estado\": \""+ estado +
+            "\", \"logradouro\": \""+ rua + "\", \"complemento\": \""+ complemento +
+            "\", \"numero\": \""+ numero +"\"}";
 
             RequestBody body_endereco = RequestBody.create(JSON, json);
 
@@ -50,11 +51,13 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .patch(body_endereco)
-                    .url(StaticProperties.getUrl()+ "endereco/" + id)
+                    .url(StaticProperties.getUrl()+ "endereco/" + StaticProperties.getId())
                     .build();
 
             Response response = client.newCall(request).execute();
-            System.out.println(response.body());
+
+            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println(response.body().string());
 
         } catch (Exception e) {
             e.printStackTrace();
