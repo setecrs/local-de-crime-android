@@ -56,18 +56,3 @@ public class HttpResponsavel extends AsyncTask<Void, Void, Void> {
         }
     }
 }
-
-
-
-
-
-//route: /endereco/{idOcorrencia} | method: PATCH | params:
-//        {
-//        "tipoLocal": String,
-//        "estado": String,
-//        "municipio": String,
-//        "logradouro": String,
-//        "complemento": String,
-//        "_id": Ocorrencia._id
-//        }
-//        | Headers: {"x-access-token": [JWT TOKEN]) } [DEVE ESTAR AUTENTICADO]
