@@ -29,10 +29,13 @@ public class TelaEndereco extends Fragment{
 
     ArrayAdapter<String> adapter;
 
+    private String itemSpinner;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.endereco, container, false);
+
 
         spinnerLocal = v.findViewById(R.id.spinnerLocal);
         spinnerEstado = v.findViewById(R.id.spinnerEstado);
@@ -42,13 +45,13 @@ public class TelaEndereco extends Fragment{
         editTextComplemento = v.findViewById(R.id.editTextComplemento);
         autoCompleteTextViewCidade = v.findViewById(R.id.autoCompleteTextViewCidade);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
-                android.R.layout.simple_list_item_1, cidadesRS);
-        autoCompleteTextViewCidade.setAdapter(adapter);
-
         onClickSpinner(spinnerEstado);
         onClickSpinner(spinnerLocal);
+
         editTextOutro.setVisibility(View.GONE);
+
+        carregaEnderecoo();
+
         return v;
     }
 
@@ -87,10 +90,10 @@ public class TelaEndereco extends Fragment{
         String local = localSelecionado();
         try{
             HttpEndereco t  = new HttpEndereco(local, spinnerEstado.getSelectedItem().toString(), autoCompleteTextViewCidade.getText().toString(),
-                                        editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
-                                        StaticProperties.getId());
+                    editTextRua.getText().toString(), editTextNumero.getText().toString(), editTextComplemento.getText().toString(),
+                    StaticProperties.getId());
             t.execute();
-         }catch (Exception e){
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -99,15 +102,49 @@ public class TelaEndereco extends Fragment{
         TelaEndereco f = new TelaEndereco();
         return f;
     }
-}
 
-//route: /endereco/{idOcorrencia} | method: PATCH | params:
-//        {
-//        "tipoLocal": String,
-//        "estado": String,
-//        "municipio": String,
-//        "logradouro": String,
-//        "complemento": String,
-//        "_id": Ocorrencia._id
-//        }
-//        | Headers: {"x-access-token": [JWT TOKEN]) } [DEVE ESTAR AUTENTICADO]
+    public void carregaEnderecoo(){
+
+        boolean aux = false;
+
+        itemSpinner = CarregarOcorrencia.getEndEstado();
+
+        if(itemSpinner.equals("")){
+            spinnerEstado.setSelection(0);
+        } else {
+            for(int i = 1; i < spinnerEstado.getAdapter().getCount(); i++){
+                if(itemSpinner.equals(spinnerEstado.getItemAtPosition(i).toString())) {
+                    spinnerEstado.setSelection(i);
+                    break;
+                }
+            }
+        }
+
+        autoCompleteTextViewCidade.setText(CarregarOcorrencia.getEndCidade());
+
+        itemSpinner = CarregarOcorrencia.getEndLocal();
+
+        if(itemSpinner.equals("")){
+            spinnerLocal.setSelection(0);
+        } else {
+            for(int i = 1; i < spinnerLocal.getAdapter().getCount(); i++){
+                if(itemSpinner.equals(spinnerLocal.getItemAtPosition(i).toString())){
+                    spinnerLocal.setSelection(i);
+                    aux = true;
+                    break;
+                }
+            }
+            if(!aux){
+                spinnerLocal.setSelection(spinnerLocal.getAdapter().getCount()-1);
+                editTextOutro.setVisibility(View.VISIBLE);
+                editTextOutro.setText(itemSpinner);
+            }
+        }
+
+        editTextRua.setText(CarregarOcorrencia.getEndRua());
+        editTextNumero.setText(CarregarOcorrencia.getEndNumero());
+        editTextComplemento.setText(CarregarOcorrencia.getEndComplemento());
+    }
+
+
+}
