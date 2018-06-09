@@ -1,5 +1,6 @@
 -- Merging decision tree log ---
 manifest
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 ADDED from C:\Users\joaoe\StudioProjects\PFA\app\src\main\AndroidManifest.xml:2:1-31:12
 INJECTED from C:\Users\joaoe\StudioProjects\PFA\app\src\main\AndroidManifest.xml:2:1-31:12
@@ -203,6 +204,8 @@ ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\joaoe\.gradle\caches\
 	android:name
 		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\joaoe\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c8ddf875efd2a4e3bf3d0a3327773bc2\AndroidManifest.xml:26:13-58
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 ADDED from /home/15104313/AndroidStudioProjects/Policia Federal Android/app/src/main/AndroidManifest.xml:2:1-31:12
 INJECTED from /home/15104313/AndroidStudioProjects/Policia Federal Android/app/src/main/AndroidManifest.xml:2:1-31:12
 INJECTED from /home/15104313/AndroidStudioProjects/Policia Federal Android/app/src/main/AndroidManifest.xml:2:1-31:12
@@ -403,9 +406,13 @@ ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/15104313/.gradle/caches/
 	android:value
 		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/15104313/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b817538b5aea23ddd2cbadde1b7aed68/AndroidManifest.xml:27:13-44
 	android:name
+<<<<<<< HEAD
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/15104313/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9a6e311216a2d0e82c959ed3038e70d4/AndroidManifest.xml:26:13-58
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 =======
 		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/15104313/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b817538b5aea23ddd2cbadde1b7aed68/AndroidManifest.xml:26:13-58
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/15104313/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b817538b5aea23ddd2cbadde1b7aed68/AndroidManifest.xml:26:13-58
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855

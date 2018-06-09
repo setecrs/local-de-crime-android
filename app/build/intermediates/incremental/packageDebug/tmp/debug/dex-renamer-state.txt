@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< 32ed65619c50715456c0efae5c0847a6f7596840
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
@@ -48,3 +49,9 @@ base.0=C\:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\transf
 =======
 x
 >>>>>>> Correção do token na StaticProperties 2
+=======
+#Sat Jun 09 11:34:12 BRT 2018
+base.0=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855

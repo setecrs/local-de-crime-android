@@ -3,16 +3,17 @@ package ages181.policiafederal_android;
 import android.app.DatePickerDialog;
 import android.support.v4.app.Fragment;
 import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -36,9 +37,13 @@ public class SobreOFato extends Fragment {
             checkBoxOrganizacaoCriminosa, checkBoxPeDeCabra, checkBoxMacarico, checkBoxQuebrouVidro,
             checkBoxBuracoNaParede, checkBoxChaveMixa, checkBoxCorreiosArma, checkBoxChupaCabra,
             checkBoxNomeDadosDivergentes, checkBoxFurtoDescuido, checkBoxMoedaFalsa, checkBoxFurtoPequenoValor,
-            checkBoxFurtoCamera;
+            checkBoxFurtoCamera, checkBoxCorreiosVeiculoComEnd, checkBoxCorreiosVeiculoZonaNorte,
+            checkBoxCorreiosVeiculoZonaSul, checkBoxCorreiosDoisDeMoto, checkBoxCorreiosSuperbonder;
+
     String dataProvavel, horaProvavel, outroTipoDelito, outroTipoModusOperandi, itemSpinner;
-    Map<Integer,ModusOperandiCheckbox> listaCheckboxMO = new HashMap<>();
+    JSONArray modusOperandi;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,11 +151,19 @@ public class SobreOFato extends Fragment {
                     editTextOutroModusOperandis.setVisibility(View.VISIBLE);
 
                 }else if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && !(buttonView.isChecked())) {
+<<<<<<< HEAD
 
                     editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
                     editTextOutroModusOperandis.setText("");
                 }
 
+=======
+
+                    editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
+                    editTextOutroModusOperandis.setText("");
+                }
+
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
             }
         });
     }
@@ -253,38 +266,18 @@ public class SobreOFato extends Fragment {
 
     }
 
+    public void carregaSobreOFato(){
 
-    public void iniciaListaModusOperandi(){
+        boolean aux = false;
+        JSONObject auxJson;
+        String auxCheckBoxtexto;
 
-        listaCheckboxMO.put(R.id.checkBoxExplosivo, new ModusOperandiCheckbox("Explosivo", "", false));
-        listaCheckboxMO.put(R.id.checkBoxCorreiosCortaAlarme, new ModusOperandiCheckbox("Correios - Corta alarme - Leva DVR - Usa luvas", "", false));
-        listaCheckboxMO.put(R.id.checkBoxViolencia, new ModusOperandiCheckbox("Com violência", "", false));
-        listaCheckboxMO.put(R.id.checkBoxNaoHouveDano, new ModusOperandiCheckbox("Não houve dano ou dano mínimo", "", false));
-        listaCheckboxMO.put(R.id.checkBoxForcarPortaJanela, new ModusOperandiCheckbox("Forçar porta ou janela (sem quebrar vidro)", "", false));
-        listaCheckboxMO.put(R.id.checkBoxMaoArmada, new ModusOperandiCheckbox("À mão armada", "", false));
-        listaCheckboxMO.put(R.id.checkBoxLevarCofre, new ModusOperandiCheckbox("Levar o cofre inteiro", "", false));
-        listaCheckboxMO.put(R.id.checkBoxOutroModusOperandi, new ModusOperandiCheckbox("Outro", "", false));
-        listaCheckboxMO.put(R.id.checkBoxOrganizacaoCriminosa, new ModusOperandiCheckbox("Provável: organização criminosa", "", false));
-        listaCheckboxMO.put(R.id.checkBoxPeDeCabra, new ModusOperandiCheckbox("Pé de cabra", "", false));
-        listaCheckboxMO.put(R.id.checkBoxMacarico, new ModusOperandiCheckbox("Maçarico", "", false));
-        listaCheckboxMO.put(R.id.checkBoxQuebrouVidro, new ModusOperandiCheckbox("Quebrou vidro", "", false));
-        listaCheckboxMO.put(R.id.checkBoxBuracoNaParede, new ModusOperandiCheckbox("Buraco na parede", "", false));
-        listaCheckboxMO.put(R.id.checkBoxChaveMixa, new ModusOperandiCheckbox("Chave mixa", "", false));
-        listaCheckboxMO.put(R.id.checkBoxCorreiosArma, new ModusOperandiCheckbox("Correios - Arma - Pela porta giratória", "", false));
-        listaCheckboxMO.put(R.id.checkBoxChupaCabra, new ModusOperandiCheckbox("Chupa-cabra", "", false));
-        listaCheckboxMO.put(R.id.checkBoxNomeDadosDivergentes, new ModusOperandiCheckbox("Nomes e dados divergentes no AFIS-PF", "", false));
-        listaCheckboxMO.put(R.id.checkBoxFurtoDescuido, new ModusOperandiCheckbox("Furto por descuido", "", false));
-        listaCheckboxMO.put(R.id.checkBoxMoedaFalsa, new ModusOperandiCheckbox("Moeda falsa", "", false));
-        listaCheckboxMO.put(R.id.checkBoxFurtoPequenoValor, new ModusOperandiCheckbox("Furto de pequeno valor", "", false));
-        listaCheckboxMO.put(R.id.checkBoxFurtoCamera, new ModusOperandiCheckbox("Furto de câmera ou monitor", "", false));
+        editTextHoraProvavel.setText(CarregarOcorrencia.getSfHoraProvavel());
+        editTextDataProvavel.setText(CarregarOcorrencia.getSfDataProvavel());
 
+        itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
-    }
-
-    public void atualizaListaCheckbox(Integer id, boolean selecionado, String outro) {
-
-        ModusOperandiCheckbox aux = listaCheckboxMO.get(id);
-
+<<<<<<< HEAD
         aux.setSelecionado(selecionado);
         aux.setOutro(outro);
         }
@@ -300,6 +293,8 @@ public class SobreOFato extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
         if(itemSpinner.equals("")){
             spinnerTipoDeDelito.setSelection(0);
         } else {

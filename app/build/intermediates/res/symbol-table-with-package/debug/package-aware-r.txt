@@ -16,6 +16,7 @@ int anim design_snackbar_out 0x7f01000d
 int anim tooltip_enter 0x7f01000e
 int anim tooltip_exit 0x7f01000f
 int animator design_appbar_state_list_animator 0x7f020000
+<<<<<<< HEAD
 int array cidadeList 0x7f030000
 int array estadoList 0x7f030001
 int array localList 0x7f030002
@@ -23,6 +24,14 @@ int array tipo 0x7f030003
 int array tiposVestigios 0x7f030004
 int array vestigioCapsula 0x7f030005
 int array vestigioManchaSangue 0x7f030006
+=======
+int array estadoList 0x7f030000
+int array localList 0x7f030001
+int array tipo 0x7f030002
+int array tiposVestigios 0x7f030003
+int array vestigioCapsula 0x7f030004
+int array vestigioManchaSangue 0x7f030005
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 int attr actionBarDivider 0x7f040000
 int attr actionBarItemBackground 0x7f040001
 int attr actionBarPopupTheme 0x7f040002
@@ -783,6 +792,7 @@ int drawable design_ic_visibility 0x7f08005e
 int drawable design_ic_visibility_off 0x7f08005f
 int drawable design_password_eye 0x7f080060
 int drawable design_snackbar_background 0x7f080061
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 int drawable ic_launcher_foreground 0x7f080062
 int drawable navigation_empty_icon 0x7f080063
@@ -801,6 +811,8 @@ int drawable notify_panel_notification_icon_bg 0x7f08006f
 int drawable tooltip_frame_dark 0x7f080070
 int drawable tooltip_frame_light 0x7f080071
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 int drawable gradient 0x7f080062
 int drawable ic_launcher_background 0x7f080063
 int drawable ic_launcher_foreground 0x7f080064
@@ -819,7 +831,10 @@ int drawable notification_tile_bg 0x7f080070
 int drawable notify_panel_notification_icon_bg 0x7f080071
 int drawable tooltip_frame_dark 0x7f080072
 int drawable tooltip_frame_light 0x7f080073
+<<<<<<< HEAD
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 int id ALT 0x7f090000
 int id CTRL 0x7f090001
 int id FUNCTION 0x7f090002
@@ -874,6 +889,7 @@ int id checkBoxChaveMixa 0x7f090032
 int id checkBoxChupaCabra 0x7f090033
 int id checkBoxCorreiosArma 0x7f090034
 int id checkBoxCorreiosCortaAlarme 0x7f090035
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 int id checkBoxExplosivo 0x7f090036
 int id checkBoxForcarPortaJanela 0x7f090037
@@ -1114,6 +1130,8 @@ int id withText 0x7f090121
 int id wrap 0x7f090122
 int id wrap_content 0x7f090123
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 int id checkBoxCorreiosDoisDeMoto 0x7f090036
 int id checkBoxCorreiosSuperbonder 0x7f090037
 int id checkBoxCorreiosVeiculoEnd 0x7f090038
@@ -1357,7 +1375,10 @@ int id visible 0x7f090125
 int id withText 0x7f090126
 int id wrap 0x7f090127
 int id wrap_content 0x7f090128
+<<<<<<< HEAD
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 int integer abc_config_activityDefaultDur 0x7f0a0000
 int integer abc_config_activityShortDur 0x7f0a0001
 int integer app_bar_elevation_anim_duration 0x7f0a0002

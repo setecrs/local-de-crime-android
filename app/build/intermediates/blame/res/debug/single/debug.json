@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
         "merged": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\joaoe\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\77fc3cab9458eaade121c9ef11fa9d9a\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
@@ -1828,6 +1829,8 @@
         "merged": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "C:\\Users\\joaoe\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\77fc3cab9458eaade121c9ef11fa9d9a\\res\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png"
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
         "merged": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
@@ -3685,11 +3688,15 @@
     },
     {
         "merged": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/res/merged/debug/anim_abc_fade_out.xml.flat",
+<<<<<<< HEAD
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
         "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/310a351c6ff4b964772ef2421a0ed90a/res/anim/abc_fade_out.xml"
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 =======
         "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/anim/abc_fade_out.xml"
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+        "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/anim/abc_fade_out.xml"
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
     }
 ]

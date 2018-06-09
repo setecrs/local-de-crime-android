@@ -1,6 +1,7 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
             "outputFile": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
@@ -56,6 +57,12 @@
 =======
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/124468da406bf98fc8e91a4260c723bd/res/values-v26/values-v26.xml",
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+            "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v26/values-v26.xml",
+            "map": [
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/124468da406bf98fc8e91a4260c723bd/res/values-v26/values-v26.xml",
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "4,4",
@@ -72,9 +79,12 @@
                         "endColumns": "12,96",
                         "endOffsets": "1135,1325"
                     }
+<<<<<<< HEAD
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                 },
                 {
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-v26/values-v26.xml",
@@ -94,7 +104,10 @@
                         "endColumns": "74,86,12,12,12,92",
                         "endOffsets": "125,212,426,652,891,1228"
                     }
+<<<<<<< HEAD
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                 }
             ]
         }

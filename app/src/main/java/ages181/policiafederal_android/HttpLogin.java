@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.text.Editable;
 import android.util.Base64;
 
-import junit.framework.Test;
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -71,7 +69,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
                 Request requestSignup = new Request.Builder()
                         .addHeader("content-type", "application/json")
-                        .addHeader("x-access-token", token.getToken())
+                        .addHeader("x-access-token", StaticProperties.getToken())
                         .post(body_ocorrencia)
                         .url(StaticProperties.getUrl() + "signup")
                         .build();

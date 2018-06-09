@@ -30,6 +30,7 @@ public final class R {
     public static final int design_appbar_state_list_animator=0x7f020000;
   }
   public static final class array {
+<<<<<<< HEAD
     public static final int cidadeList=0x7f030000;
     public static final int estadoList=0x7f030001;
     public static final int localList=0x7f030002;
@@ -37,6 +38,14 @@ public final class R {
     public static final int tiposVestigios=0x7f030004;
     public static final int vestigioCapsula=0x7f030005;
     public static final int vestigioManchaSangue=0x7f030006;
+=======
+    public static final int estadoList=0x7f030000;
+    public static final int localList=0x7f030001;
+    public static final int tipo=0x7f030002;
+    public static final int tiposVestigios=0x7f030003;
+    public static final int vestigioCapsula=0x7f030004;
+    public static final int vestigioManchaSangue=0x7f030005;
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
   }
   public static final class attr {
     /**
@@ -3553,6 +3562,7 @@ public final class R {
     public static final int design_ic_visibility_off=0x7f08005f;
     public static final int design_password_eye=0x7f080060;
     public static final int design_snackbar_background=0x7f080061;
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
     public static final int ic_launcher_foreground=0x7f080062;
     public static final int navigation_empty_icon=0x7f080063;
@@ -3571,6 +3581,8 @@ public final class R {
     public static final int tooltip_frame_dark=0x7f080070;
     public static final int tooltip_frame_light=0x7f080071;
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
     public static final int gradient=0x7f080062;
     public static final int ic_launcher_background=0x7f080063;
     public static final int ic_launcher_foreground=0x7f080064;
@@ -3589,7 +3601,10 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f080071;
     public static final int tooltip_frame_dark=0x7f080072;
     public static final int tooltip_frame_light=0x7f080073;
+<<<<<<< HEAD
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
   }
   public static final class id {
     public static final int ALT=0x7f090000;
@@ -3646,6 +3661,7 @@ public final class R {
     public static final int checkBoxChupaCabra=0x7f090033;
     public static final int checkBoxCorreiosArma=0x7f090034;
     public static final int checkBoxCorreiosCortaAlarme=0x7f090035;
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
     public static final int checkBoxExplosivo=0x7f090036;
     public static final int checkBoxForcarPortaJanela=0x7f090037;
@@ -3886,6 +3902,8 @@ public final class R {
     public static final int wrap=0x7f090122;
     public static final int wrap_content=0x7f090123;
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
     public static final int checkBoxCorreiosDoisDeMoto=0x7f090036;
     public static final int checkBoxCorreiosSuperbonder=0x7f090037;
     public static final int checkBoxCorreiosVeiculoEnd=0x7f090038;
@@ -4129,7 +4147,10 @@ public final class R {
     public static final int withText=0x7f090126;
     public static final int wrap=0x7f090127;
     public static final int wrap_content=0x7f090128;
+<<<<<<< HEAD
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f0a0000;

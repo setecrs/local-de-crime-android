@@ -1,6 +1,7 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
             "outputFile": "C:\\Users\\joaoe\\StudioProjects\\PFA\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
@@ -27,6 +28,12 @@
 =======
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/f0e60911f2aff2cadc1eeab050070bb2/res/values-v23/values-v23.xml",
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+            "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/f0e60911f2aff2cadc1eeab050070bb2/res/values-v23/values-v23.xml",
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -43,8 +50,11 @@
                         "endColumns": "12",
                         "endOffsets": "2791"
                     }
+<<<<<<< HEAD
 <<<<<<< e7c63ecb9432ad349102a1a56eaf5ec6c561fe88
 =======
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                 },
                 {
                     "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-v23/values-v23.xml",
@@ -56,7 +66,10 @@
                         "endColumns": "134,134,74,86,12,12,126,104,114,106,112",
                         "endOffsets": "185,320,395,482,1272,2074,2201,2306,2421,2528,2641"
                     }
+<<<<<<< HEAD
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
+=======
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
                 }
             ]
         }

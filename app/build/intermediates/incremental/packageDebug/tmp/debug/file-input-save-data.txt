@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< 32ed65619c50715456c0efae5c0847a6f7596840
 #Internal package file, do not edit.
 <<<<<<< 048afe90f8297b4849e74317dfcc44b0d800b37e
@@ -64,3 +65,12 @@ count=4
 >>>>>>> Classe estática, TOAD de usário ou senha inválidos. (João Soares, Marc Hermann)
 =======
 >>>>>>> Correção do token na StaticProperties 2
+=======
+#Internal package file, do not edit.
+#Sat Jun 09 11:34:12 BRT 2018
+0.baseType=DIRECTORY
+0.base=/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/transforms/dexMerger/debug/0
+0.path=classes.dex
+0.set=DEX
+count=1
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855

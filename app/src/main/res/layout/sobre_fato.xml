@@ -7,16 +7,14 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="ages181.policiafederal_android.SobreFato">
+    tools:context="ages181.policiafederal_android.SobreOFato">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -57,8 +55,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxChupaCabra"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxChupaCabra" />
 
                 <TextView
                     android:id="@+id/textViewHoraProvavel"
@@ -80,8 +77,7 @@
                     android:text="Correios - Corta alarme - Leva DVR - Usa luvas"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxMoedaFalsa"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxMoedaFalsa" />
 
                 <CheckBox
                     android:id="@+id/checkBoxViolencia"
@@ -93,8 +89,7 @@
                     android:text="Com violência"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxMaoArmada"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxMaoArmada" />
 
                 <CheckBox
                     android:id="@+id/checkBoxNaoHouveDano"
@@ -102,12 +97,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
                     android:text="Não houve dano ou dano mínimo"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxFurtoPequenoValor"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxFurtoPequenoValor" />
 
                 <CheckBox
                     android:id="@+id/checkBoxForcarPortaJanela"
@@ -119,8 +113,7 @@
                     android:text="Forçar porta ou janela (sem quebrar vidro)"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxNaoHouveDano"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxNaoHouveDano" />
 
                 <CheckBox
                     android:id="@+id/checkBoxMaoArmada"
@@ -133,8 +126,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxLevarCofre"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxLevarCofre" />
 
                 <TextView
                     android:id="@+id/textViewTipoDeDelito"
@@ -167,8 +159,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxMacarico"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxMacarico" />
 
                 <EditText
                     android:id="@+id/editTextDataProvavel"
@@ -188,7 +179,7 @@
                 <CheckBox
                     android:id="@+id/checkBoxOutroModusOperandi"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -196,8 +187,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxNomeDadosDivergentes"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxNomeDadosDivergentes" />
 
                 <CheckBox
                     android:id="@+id/checkBoxOrganizacaoCriminosa"
@@ -209,8 +199,7 @@
                     android:text="Provável: organização criminosa"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxViolencia"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxViolencia" />
 
                 <CheckBox
                     android:id="@+id/checkBoxPeDeCabra"
@@ -222,8 +211,7 @@
                     android:text="Pé de cabra"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxBuracoNaParede"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxBuracoNaParede" />
 
                 <EditText
                     android:id="@+id/editTextOutroModusOperandi"
@@ -237,8 +225,7 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxOutroModusOperandi"
-                    android:onClick="onClickEditText"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxOutroModusOperandi" />
 
                 <CheckBox
                     android:id="@+id/checkBoxMacarico"
@@ -251,8 +238,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxExplosivo"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxExplosivo" />
 
                 <CheckBox
                     android:id="@+id/checkBoxQuebrouVidro"
@@ -264,8 +250,7 @@
                     android:text="Quebrou vidro"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxForcarPortaJanela"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxForcarPortaJanela" />
 
                 <CheckBox
                     android:id="@+id/checkBoxBuracoNaParede"
@@ -277,8 +262,7 @@
                     android:text="Buraco na parede"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxQuebrouVidro"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxQuebrouVidro" />
 
                 <TextView
                     android:id="@+id/textViewModusOperandi"
@@ -303,8 +287,7 @@
                     android:text="Chave mixa"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxPeDeCabra"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxPeDeCabra" />
 
                 <CheckBox
                     android:id="@+id/checkBoxCorreiosArma"
@@ -316,8 +299,7 @@
                     android:text="Correios - Arma - Pela porta giratória"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosCortaAlarme"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosCortaAlarme" />
 
                 <CheckBox
                     android:id="@+id/checkBoxChupaCabra"
@@ -330,7 +312,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
                     app:layout_constraintTop_toBottomOf="@+id/textViewModusOperandi"/>
+=======
+                    app:layout_constraintTop_toBottomOf="@+id/textViewModusOperandi" />
+>>>>>>> 79277b652fb9341b67e8bf01e7f0881d50850855
 
                 <EditText
                     android:id="@+id/editTextOutroTipoDelito"
@@ -348,17 +334,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/editTextTipoDeDelito" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxNomeDadosDivergentes"
+                    android:id="@+id/checkBoxCorreiosVeiculoEnd"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Nomes e dados divergentes no AFIS-PF"
+                    android:text="Correios - Veículo - Com endereço da abordagem"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosArma"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosArma" />
 
                 <CheckBox
                     android:id="@+id/checkBoxFurtoDescuido"
@@ -370,8 +355,7 @@
                     android:text="Furto por descuido"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxOrganizacaoCriminosa"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxOrganizacaoCriminosa" />
 
                 <CheckBox
                     android:id="@+id/checkBoxMoedaFalsa"
@@ -383,8 +367,7 @@
                     android:text="Moeda falsa"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxChaveMixa"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxChaveMixa" />
 
                 <EditText
                     android:id="@+id/editTextHoraProvavel"
@@ -411,8 +394,7 @@
                     android:text="Furto de pequeno valor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxFurtoCamera"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxFurtoCamera" />
 
                 <CheckBox
                     android:id="@+id/checkBoxFurtoCamera"
@@ -424,8 +406,72 @@
                     android:text="Furto de câmera ou monitor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxFurtoDescuido"
-                    android:onClick="onClickCheckboxListener"/>
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxFurtoDescuido" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCorreiosVeiculoZS"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Correios - Veículo - Zona Sul - Com endereço da abordagem"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosVeiculoZN" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNomeDadosDivergentes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Nomes e dados divergentes no AFIS-PF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosSuperbonder" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCorreiosSuperbonder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Correios - Superbonder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosDoisDeMoto" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCorreiosDoisDeMoto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Correios - Dois de moto"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosVeiculoZS" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCorreiosVeiculoZN"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Correios - Veículo - Zona norte Alvorada - Com endereço da abordagem"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxCorreiosVeiculoEnd" />
             </android.support.constraint.ConstraintLayout>
 
         </android.support.constraint.ConstraintLayout>
