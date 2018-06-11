@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -40,14 +42,21 @@ public class CarregarOcorrencia {
 
     static String testNome, testDoc, testFuncao, testEntrevista;
 
-
     public static void carregaOcorrencia(JSONObject ocorrencia){
         JSONObject auxJson;
         StringBuffer sb = new StringBuffer();
+        Date dateAux;
+        String aux;
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+
 
         try {
             dgNumeroOcorrencia = ocorrencia.getString("numeroOcorrencia");
-            dgSedeOcorrencia = ocorrencia.getString("sede");
+            auxJson = ocorrencia.getJSONObject("sede");
+            dgSedeOcorrencia = auxJson.getString("nome");
+
             dgPeritosAcionados = ocorrencia.getJSONArray("peritosAcionados");
             for(int i = 0; i < dgPeritosAcionados.length(); i++){
                 auxJson = dgPeritosAcionados.getJSONObject(i);
@@ -55,9 +64,14 @@ public class CarregarOcorrencia {
                 sb.append(", ");
             }
             dgPeritosOcorrencia = sb.toString();
-            endLocal = ocorrencia.getString("tipoLocal");
-            endEstado = ocorrencia.getString("estado");
-            endCidade = ocorrencia.getString("municipio");
+
+            auxJson = ocorrencia.getJSONObject("tipoLocal");
+            endLocal = (String)auxJson.get("tipoLocal");
+            auxJson = ocorrencia.getJSONObject("estado");
+            endEstado = auxJson.getString("nome");
+            auxJson = ocorrencia.getJSONObject("municipio");
+            endCidade = auxJson.getString("nome");
+
             endRua = ocorrencia.getString("logradouro");
             endComplemento = ocorrencia.getString("complemento");
             endNumero = ocorrencia.getString("numero");
@@ -70,7 +84,8 @@ public class CarregarOcorrencia {
             testDoc = ocorrencia.getString("documentoTestemunha");
             testEntrevista = ocorrencia.getString("entrevistaTestemunha");
             if((ocorrencia.getString("dataHoraChegada")).equals("null") || ocorrencia.getString("dataHoraChegada") == null) {
-
+                    sbDatachegada = "";
+                    sbHoraChegada = "";
             }else{
                 System.out.println("Data chegada = " + ocorrencia.getString("dataHoraChegada"));
                 String[] dataHora = parseData(ocorrencia.getString("dataHoraChegada"));
@@ -89,6 +104,11 @@ public class CarregarOcorrencia {
                 sfDataProvavel = dataHora[0];
                 sfHoraProvavel = dataHora[1];
             }
+            aux = ocorrencia.getString("dataOcorrencia");
+
+            dateAux = sdf.parse(aux);
+            calendar.setTime(dateAux);
+
             sfTipoDelito = ocorrencia.getString("tipoDelito");
             // ARRAY de modus operandi ---- sfModusOperandi =
             // VALOES SUBTRAIDOS ???
@@ -103,6 +123,8 @@ public class CarregarOcorrencia {
                 dgDataAcionamento = dataHora[0];
                 dgHoraAcionamento = dataHora[1];
             }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,6 +141,7 @@ public class CarregarOcorrencia {
         }
         return null;
     }
+
 
     public static String getDgNumeroOcorrencia() {
         return dgNumeroOcorrencia;
@@ -229,5 +252,52 @@ public class CarregarOcorrencia {
     public static String getTestEntrevista() {
         return testEntrevista;
     }
+
+    // ------- PARA TESTE -------
+
+
+    public static void testeData(){
+
+        Date dateAux = new Date();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        String dataOriginal = "2018-06-06T21:24:55.100Z";
+
+        try {
+            Date objetoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(dataOriginal);
+            String data = new SimpleDateFormat("dd/MM/yyyy").format(objetoDate);
+            String hora = new SimpleDateFormat("HH:mm").format(objetoDate);
+
+            sfHoraProvavel = hora;
+            sfDataProvavel = data;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+//        try {
+//            dateAux = sdf.parse("2018-06-06T21:24:55.100Z");
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        calendar.setTime(dateAux);
+//
+//        sfHoraProvavel = String.valueOf(calendar.HOUR) + ":" + String.valueOf(calendar.MINUTE);
+//        sfDataProvavel = String.valueOf(calendar.DAY_OF_MONTH + "/" + calendar.MONTH + "/" + calendar.YEAR);
+    }
+
+    public static void testeArray(JSONArray array){
+        sfModusOperandi = array;
+        sfTipoDelito = "Moeda falsa";
+        //sfHoraProvavel = "12:30";
+        //sfDataProvavel = "10/4/2001";
+    }
+
+
 }
+
+
+
+
 

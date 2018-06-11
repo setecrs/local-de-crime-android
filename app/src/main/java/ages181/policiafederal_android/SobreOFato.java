@@ -21,10 +21,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class SobreOFato extends Fragment {
     Calendar calendarHoraAtual;
-    EditText editTextHoraProvavel, editTextDataProvavel, editTextOutroTipoDelito, editTextOutroModusOperandi;
+    EditText editTextHoraProvavel, editTextDataProvavel, editTextOutroTipoDelito, editTextOutroModusOperandis;
     Spinner spinnerTipoDeDelito;
     CheckBox checkBoxExplosivo, checkBoxCorreiosCortaAlarme, checkBoxViolencia, checkBoxNaoHouveDano,
             checkBoxForcarPortaJanela, checkBoxMaoArmada, checkBoxLevarCofre, checkBoxOutroModusOperandi,
@@ -46,7 +49,7 @@ public class SobreOFato extends Fragment {
         editTextHoraProvavel = v.findViewById(R.id.editTextHoraProvavel);
         editTextDataProvavel = v.findViewById(R.id.editTextDataProvavel);
         editTextOutroTipoDelito = v.findViewById(R.id.editTextOutroTipoDelito);
-        editTextOutroModusOperandi = v.findViewById(R.id.editTextOutroModusOperandi);
+        editTextOutroModusOperandis = v.findViewById(R.id.editTextOutroModusOperandi);
         spinnerTipoDeDelito = v.findViewById(R.id.editTextTipoDeDelito);
 
         checkBoxExplosivo = v.findViewById(R.id.checkBoxExplosivo);
@@ -78,7 +81,7 @@ public class SobreOFato extends Fragment {
 
         editTextDataProvavel.setFocusable(false);
         editTextHoraProvavel.setFocusable(false);
-        editTextOutroModusOperandi.setVisibility(View.INVISIBLE);
+        editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
         showTimePickerDialog();
         showDatePickerDialog();
 
@@ -112,8 +115,12 @@ public class SobreOFato extends Fragment {
         onClickCheckboxListener(checkBoxCorreiosDoisDeMoto);
         onClickCheckboxListener(checkBoxCorreiosSuperbonder);
 
-        onClickEditText(editTextOutroModusOperandi);
+        onClickEditText(editTextOutroModusOperandis);
         onClickEditText(editTextOutroTipoDelito);
+
+        //arrayTeste();
+        //CarregarOcorrencia.testeArray(teste);
+        carregaSobreOFato();
 
         return v;
     }
@@ -142,12 +149,12 @@ public class SobreOFato extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && buttonView.isChecked()) {
 
-                    editTextOutroModusOperandi.setVisibility(View.VISIBLE);
+                    editTextOutroModusOperandis.setVisibility(View.VISIBLE);
 
                 }else if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && !(buttonView.isChecked())) {
 
-                    editTextOutroModusOperandi.setVisibility(View.INVISIBLE);
-                    editTextOutroModusOperandi.setText("");
+                    editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
+                    editTextOutroModusOperandis.setText("");
                 }
 
             }
@@ -213,44 +220,14 @@ public class SobreOFato extends Fragment {
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            editTextHoraProvavel.setText(hora+":"+minuto);
+            if(minuto < 10){
+                editTextHoraProvavel.setText(hora+":0"+minuto);
+            } else {
+                editTextHoraProvavel.setText(hora+":"+minuto);
+            }
             horaProvavel = editTextHoraProvavel.getText().toString();
         }
     };
-
-
-    private class ModusOperandiCheckbox{
-        String nomeCheckBox, outro;
-        boolean selecionado;
-
-        public ModusOperandiCheckbox(String nomeCheckBox, String outro, boolean selecionado){
-
-            this.nomeCheckBox = nomeCheckBox;
-            this.outro = outro;
-            this.selecionado = selecionado;
-        }
-
-        public String getNomeCheckBox(){
-            return nomeCheckBox;
-        }
-
-        public boolean getSelecionado(){
-            return selecionado;
-        }
-
-        public String getOutro(){
-            return outro;
-        }
-
-        public void setSelecionado(boolean selecionado){
-            this.selecionado = selecionado;
-        }
-
-        public void setOutro(String outro){
-            this.outro = outro;
-        }
-
-    }
 
     public void carregaSobreOFato(){
 
@@ -289,64 +266,64 @@ public class SobreOFato extends Fragment {
                 auxCheckBoxtexto = (String) auxJson.get("texto");
 
                 if(auxCheckBoxtexto.equals(checkBoxExplosivo.getText().toString())) {
-                    checkBoxExplosivo.setSelected(aux);
+                    checkBoxExplosivo.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosCortaAlarme.getText().toString())){
-                    checkBoxCorreiosCortaAlarme.setSelected(aux);
+                    checkBoxCorreiosCortaAlarme.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxViolencia.getText().toString())){
-                    checkBoxViolencia.setSelected(aux);
+                    checkBoxViolencia.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxNaoHouveDano.getText().toString())){
-                    checkBoxNaoHouveDano.setSelected(aux);
+                    checkBoxNaoHouveDano.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxForcarPortaJanela.getText().toString())){
-                    checkBoxForcarPortaJanela.setSelected(aux);
+                    checkBoxForcarPortaJanela.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxMaoArmada.getText().toString())){
-                    checkBoxMaoArmada.setSelected(aux);
+                    checkBoxMaoArmada.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxLevarCofre.getText().toString())){
-                    checkBoxLevarCofre.setSelected(aux);
+                    checkBoxLevarCofre.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxOrganizacaoCriminosa.getText().toString())){
-                    checkBoxOrganizacaoCriminosa.setSelected(aux);
+                    checkBoxOrganizacaoCriminosa.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxPeDeCabra.getText().toString())){
-                    checkBoxPeDeCabra.setSelected(aux);
+                    checkBoxPeDeCabra.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxMacarico.getText().toString())){
-                    checkBoxMacarico.setSelected(aux);
+                    checkBoxMacarico.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxQuebrouVidro.getText().toString())){
-                    checkBoxQuebrouVidro.setSelected(aux);
+                    checkBoxQuebrouVidro.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxBuracoNaParede.getText().toString())){
-                    checkBoxBuracoNaParede.setSelected(aux);
+                    checkBoxBuracoNaParede.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxChaveMixa.getText().toString())){
-                    checkBoxChaveMixa.setSelected(aux);
+                    checkBoxChaveMixa.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosArma.getText().toString())){
-                    checkBoxCorreiosArma.setSelected(aux);
+                    checkBoxCorreiosArma.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxChupaCabra.getText().toString())){
-                    checkBoxChupaCabra.setSelected(aux);
+                    checkBoxChupaCabra.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxNomeDadosDivergentes.getText().toString())){
-                    checkBoxNomeDadosDivergentes.setSelected(aux);
+                    checkBoxNomeDadosDivergentes.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxFurtoDescuido.getText().toString())){
-                    checkBoxFurtoDescuido.setSelected(aux);
+                    checkBoxFurtoDescuido.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxMoedaFalsa.getText().toString())){
-                    checkBoxMoedaFalsa.setSelected(aux);
+                    checkBoxMoedaFalsa.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxFurtoPequenoValor.getText().toString())){
-                    checkBoxFurtoPequenoValor.setSelected(aux);
+                    checkBoxFurtoPequenoValor.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxFurtoCamera.getText().toString())){
-                    checkBoxFurtoCamera.setSelected(aux);
+                    checkBoxFurtoCamera.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoComEnd.getText().toString())){
-                    checkBoxCorreiosVeiculoComEnd.setSelected(aux);
+                    checkBoxCorreiosVeiculoComEnd.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaNorte.getText().toString())){
-                    checkBoxCorreiosVeiculoZonaNorte.setSelected(aux);
+                    checkBoxCorreiosVeiculoZonaNorte.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaSul.getText().toString())){
-                    checkBoxCorreiosVeiculoZonaSul.setSelected(aux);
+                    checkBoxCorreiosVeiculoZonaSul.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosDoisDeMoto.getText().toString())){
-                    checkBoxCorreiosDoisDeMoto.setSelected(aux);
+                    checkBoxCorreiosDoisDeMoto.setChecked(aux);
                 }else if(auxCheckBoxtexto.equals(checkBoxCorreiosSuperbonder.getText().toString())){
-                    checkBoxCorreiosSuperbonder.setSelected(aux);
+                    checkBoxCorreiosSuperbonder.setChecked(aux);
                 }else{
                     if (aux) {
-                        checkBoxOutroModusOperandi.setSelected(aux);
-                        editTextOutroModusOperandi.setVisibility(View.VISIBLE);
-                        editTextOutroModusOperandi.setText(auxCheckBoxtexto);
+                        checkBoxOutroModusOperandi.setChecked(aux);
+                        editTextOutroModusOperandis.setVisibility(View.VISIBLE);
+                        editTextOutroModusOperandis.setText(auxCheckBoxtexto);
                     } else {
-                        checkBoxOutroModusOperandi.setSelected(aux);
-                        editTextOutroModusOperandi.setVisibility(View.INVISIBLE);
-                        editTextOutroModusOperandi.setText("");
+                        checkBoxOutroModusOperandi.setChecked(aux);
+                        editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
+                        editTextOutroModusOperandis.setText("");
                     }
                 }
             }
@@ -362,5 +339,60 @@ public class SobreOFato extends Fragment {
 
         SobreOFato f = new SobreOFato();
         return f;
+    }
+
+    // --------  PARA TESTE  --------
+    JSONArray teste = new JSONArray();
+    JSONObject checkBoxTest = new JSONObject();
+
+    public void arrayTeste(){
+
+        try {
+            checkBoxTest.put("texto", checkBoxExplosivo.getText().toString());
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxCorreiosCortaAlarme.getText().toString());
+            checkBoxTest.put("ativado", false);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxNaoHouveDano.getText().toString());
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxForcarPortaJanela.getText().toString());
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxCorreiosVeiculoComEnd.getText().toString());
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxFurtoPequenoValor.getText().toString());
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxCorreiosDoisDeMoto.getText().toString());
+            checkBoxTest.put("ativado", false);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", "Chave mixa");
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", checkBoxQuebrouVidro.getText().toString());
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+            checkBoxTest = new JSONObject();
+            checkBoxTest.put("texto", "teste outro!");
+            checkBoxTest.put("ativado", true);
+            teste.put(checkBoxTest);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 }
