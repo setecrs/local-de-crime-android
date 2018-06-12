@@ -240,7 +240,7 @@ public class SobreOFato extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
-        if(itemSpinner.equals("")){
+        if(itemSpinner == null){
             spinnerTipoDeDelito.setSelection(0);
         } else {
             for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
@@ -260,70 +260,72 @@ public class SobreOFato extends Fragment {
         modusOperandi = CarregarOcorrencia.getSfModusOperandi();
 
         try {
-            for (int i = 0; i < modusOperandi.length(); i++) {
-                auxJson = modusOperandi.getJSONObject(i);
-                aux = (boolean) auxJson.get("ativado");
-                auxCheckBoxtexto = (String) auxJson.get("texto");
+            if (modusOperandi.length() != 0) {
+                for (int i = 0; i < modusOperandi.length(); i++) {
+                    auxJson = modusOperandi.getJSONObject(i);
+                    aux = (boolean) auxJson.get("ativado");
+                    auxCheckBoxtexto = (String) auxJson.get("texto");
 
-                if(auxCheckBoxtexto.equals(checkBoxExplosivo.getText().toString())) {
-                    checkBoxExplosivo.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosCortaAlarme.getText().toString())){
-                    checkBoxCorreiosCortaAlarme.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxViolencia.getText().toString())){
-                    checkBoxViolencia.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxNaoHouveDano.getText().toString())){
-                    checkBoxNaoHouveDano.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxForcarPortaJanela.getText().toString())){
-                    checkBoxForcarPortaJanela.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxMaoArmada.getText().toString())){
-                    checkBoxMaoArmada.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxLevarCofre.getText().toString())){
-                    checkBoxLevarCofre.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxOrganizacaoCriminosa.getText().toString())){
-                    checkBoxOrganizacaoCriminosa.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxPeDeCabra.getText().toString())){
-                    checkBoxPeDeCabra.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxMacarico.getText().toString())){
-                    checkBoxMacarico.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxQuebrouVidro.getText().toString())){
-                    checkBoxQuebrouVidro.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxBuracoNaParede.getText().toString())){
-                    checkBoxBuracoNaParede.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxChaveMixa.getText().toString())){
-                    checkBoxChaveMixa.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosArma.getText().toString())){
-                    checkBoxCorreiosArma.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxChupaCabra.getText().toString())){
-                    checkBoxChupaCabra.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxNomeDadosDivergentes.getText().toString())){
-                    checkBoxNomeDadosDivergentes.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxFurtoDescuido.getText().toString())){
-                    checkBoxFurtoDescuido.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxMoedaFalsa.getText().toString())){
-                    checkBoxMoedaFalsa.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxFurtoPequenoValor.getText().toString())){
-                    checkBoxFurtoPequenoValor.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxFurtoCamera.getText().toString())){
-                    checkBoxFurtoCamera.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoComEnd.getText().toString())){
-                    checkBoxCorreiosVeiculoComEnd.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaNorte.getText().toString())){
-                    checkBoxCorreiosVeiculoZonaNorte.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaSul.getText().toString())){
-                    checkBoxCorreiosVeiculoZonaSul.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosDoisDeMoto.getText().toString())){
-                    checkBoxCorreiosDoisDeMoto.setChecked(aux);
-                }else if(auxCheckBoxtexto.equals(checkBoxCorreiosSuperbonder.getText().toString())){
-                    checkBoxCorreiosSuperbonder.setChecked(aux);
-                }else{
-                    if (aux) {
-                        checkBoxOutroModusOperandi.setChecked(aux);
-                        editTextOutroModusOperandis.setVisibility(View.VISIBLE);
-                        editTextOutroModusOperandis.setText(auxCheckBoxtexto);
+                    if (auxCheckBoxtexto.equals(checkBoxExplosivo.getText().toString())) {
+                        checkBoxExplosivo.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosCortaAlarme.getText().toString())) {
+                        checkBoxCorreiosCortaAlarme.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxViolencia.getText().toString())) {
+                        checkBoxViolencia.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxNaoHouveDano.getText().toString())) {
+                        checkBoxNaoHouveDano.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxForcarPortaJanela.getText().toString())) {
+                        checkBoxForcarPortaJanela.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxMaoArmada.getText().toString())) {
+                        checkBoxMaoArmada.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxLevarCofre.getText().toString())) {
+                        checkBoxLevarCofre.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxOrganizacaoCriminosa.getText().toString())) {
+                        checkBoxOrganizacaoCriminosa.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxPeDeCabra.getText().toString())) {
+                        checkBoxPeDeCabra.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxMacarico.getText().toString())) {
+                        checkBoxMacarico.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxQuebrouVidro.getText().toString())) {
+                        checkBoxQuebrouVidro.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxBuracoNaParede.getText().toString())) {
+                        checkBoxBuracoNaParede.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxChaveMixa.getText().toString())) {
+                        checkBoxChaveMixa.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosArma.getText().toString())) {
+                        checkBoxCorreiosArma.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxChupaCabra.getText().toString())) {
+                        checkBoxChupaCabra.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxNomeDadosDivergentes.getText().toString())) {
+                        checkBoxNomeDadosDivergentes.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxFurtoDescuido.getText().toString())) {
+                        checkBoxFurtoDescuido.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxMoedaFalsa.getText().toString())) {
+                        checkBoxMoedaFalsa.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxFurtoPequenoValor.getText().toString())) {
+                        checkBoxFurtoPequenoValor.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxFurtoCamera.getText().toString())) {
+                        checkBoxFurtoCamera.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoComEnd.getText().toString())) {
+                        checkBoxCorreiosVeiculoComEnd.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaNorte.getText().toString())) {
+                        checkBoxCorreiosVeiculoZonaNorte.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaSul.getText().toString())) {
+                        checkBoxCorreiosVeiculoZonaSul.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosDoisDeMoto.getText().toString())) {
+                        checkBoxCorreiosDoisDeMoto.setChecked(aux);
+                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosSuperbonder.getText().toString())) {
+                        checkBoxCorreiosSuperbonder.setChecked(aux);
                     } else {
-                        checkBoxOutroModusOperandi.setChecked(aux);
-                        editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-                        editTextOutroModusOperandis.setText("");
+                        if (aux) {
+                            checkBoxOutroModusOperandi.setChecked(aux);
+                            editTextOutroModusOperandis.setVisibility(View.VISIBLE);
+                            editTextOutroModusOperandis.setText(auxCheckBoxtexto);
+                        } else {
+                            checkBoxOutroModusOperandi.setChecked(aux);
+                            editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
+                            editTextOutroModusOperandis.setText("");
+                        }
                     }
                 }
             }

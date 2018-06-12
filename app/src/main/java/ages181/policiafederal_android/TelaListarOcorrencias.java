@@ -32,8 +32,6 @@ public class TelaListarOcorrencias extends AppCompatActivity {
             @Override
             public void onItemClick(int position) throws JSONException {
                 System.out.println("Posição item clicado: "+position);
-                Toast.makeText(TelaListarOcorrencias.this, "Posição clicada: "+
-                        position, Toast.LENGTH_LONG).show();
                 posicaoClicada = position;
                 pegarObjeto();
                 Intent i = new Intent (TelaListarOcorrencias.this, MainActivity.class);

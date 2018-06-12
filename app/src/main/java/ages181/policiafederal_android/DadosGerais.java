@@ -58,15 +58,10 @@ public class DadosGerais extends Fragment {
     }
 
     public void carregaDadosGerais(){
-        String sede;
-        if(CarregarOcorrencia.getDgSedeOcorrencia().equals("null")){
-            sede = "";
-        }else{
-            sede = CarregarOcorrencia.getDgSedeOcorrencia();
-        }
+
 
         numOcorrencia.setText(CarregarOcorrencia.getDgNumeroOcorrencia());
-        sedeOcorrencia.setText(sede);
+        sedeOcorrencia.setText(CarregarOcorrencia.getDgSedeOcorrencia());
         peritoOcorrencia.setText(CarregarOcorrencia.getDgPeritosOcorrencia());
         dataOcorrencia.setText(CarregarOcorrencia.getDgDataAcionamento());
         horaOcorrencia.setText(CarregarOcorrencia.getDgHoraAcionamento());

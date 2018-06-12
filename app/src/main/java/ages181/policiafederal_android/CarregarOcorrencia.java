@@ -1,15 +1,15 @@
 package ages181.policiafederal_android;
 
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 
 public class CarregarOcorrencia {
@@ -18,7 +18,7 @@ public class CarregarOcorrencia {
 
     static String dgNumeroOcorrencia, dgSedeOcorrencia,  dgHoraAcionamento, dgDataAcionamento, dgPeritosOcorrencia;
     // LISTA DE MAIS DE UM PERITO, ARRUMAR CLASSE DADOSGERAIS COM AUTOCOMPLETE ===>>
-    static JSONArray dgPeritosAcionados;
+
 
     // Reponsavel
 
@@ -44,34 +44,47 @@ public class CarregarOcorrencia {
 
     public static void carregaOcorrencia(JSONObject ocorrencia){
         JSONObject auxJson;
+        JSONArray auxArrayJson;
         StringBuffer sb = new StringBuffer();
-        Date dateAux;
-        String aux;
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-
-
 
         try {
             dgNumeroOcorrencia = ocorrencia.getString("numeroOcorrencia");
-            auxJson = ocorrencia.getJSONObject("sede");
-            dgSedeOcorrencia = auxJson.getString("nome");
-
-            dgPeritosAcionados = ocorrencia.getJSONArray("peritosAcionados");
-            for(int i = 0; i < dgPeritosAcionados.length(); i++){
-                auxJson = dgPeritosAcionados.getJSONObject(i);
-                sb.append(auxJson.get("name"));
-                sb.append(", ");
+            if (!ocorrencia.isNull("sede")){
+                auxJson = ocorrencia.getJSONObject("sede");
+                dgSedeOcorrencia = auxJson.getString("nome");
+            } else {
+                dgSedeOcorrencia = "";
             }
-            dgPeritosOcorrencia = sb.toString();
+            auxArrayJson = ocorrencia.getJSONArray("policiaisAcionados");
+            if (auxArrayJson.length() == 0) {
+                dgPeritosOcorrencia = "";
+            } else {
+                for (int i = 0; i < auxArrayJson.length(); i++) {
+                    auxJson = auxArrayJson.getJSONObject(i);
+                    sb.append(auxJson.getString("name"));
+                    sb.append(", ");
+                }
+                dgPeritosOcorrencia = sb.toString();
+            }
+            if (!ocorrencia.isNull("tipoLocal")){
+                auxJson = ocorrencia.getJSONObject("tipoLocal");
+                endLocal = auxJson.getString("tipoLocal");
+            } else {
+                endLocal = "";
+            }
 
-            auxJson = ocorrencia.getJSONObject("tipoLocal");
-            endLocal = (String)auxJson.get("tipoLocal");
-            auxJson = ocorrencia.getJSONObject("estado");
-            endEstado = auxJson.getString("nome");
-            auxJson = ocorrencia.getJSONObject("municipio");
-            endCidade = auxJson.getString("nome");
-
+            if (!ocorrencia.isNull("estado")){
+                auxJson = ocorrencia.getJSONObject("estado");
+                endEstado = auxJson.getString("nome");
+            } else {
+                endEstado = "";
+            }
+            if (!ocorrencia.isNull("municipio")){
+                auxJson = ocorrencia.getJSONObject("municipio");
+                endCidade = auxJson.getString("nome");
+            } else {
+                endCidade = "";
+            }
             endRua = ocorrencia.getString("logradouro");
             endComplemento = ocorrencia.getString("complemento");
             endNumero = ocorrencia.getString("numero");
@@ -83,42 +96,35 @@ public class CarregarOcorrencia {
             testFuncao = ocorrencia.getString("cargoTestemunha");
             testDoc = ocorrencia.getString("documentoTestemunha");
             testEntrevista = ocorrencia.getString("entrevistaTestemunha");
-            if((ocorrencia.getString("dataHoraChegada")).equals("null") || ocorrencia.getString("dataHoraChegada") == null) {
+
+            if(ocorrencia.isNull("dataHoraChegada")) {
                     sbDatachegada = "";
                     sbHoraChegada = "";
             }else{
-                System.out.println("Data chegada = " + ocorrencia.getString("dataHoraChegada"));
                 String[] dataHora = parseData(ocorrencia.getString("dataHoraChegada"));
                 sbDatachegada = dataHora[0];
                 sbHoraChegada = dataHora[1];
             }
             sbCondicoesLocal = ocorrencia.getString("condicaoLocal");
-            sbInfo = ocorrencia.getString("informacoesAdicionais");
-            // receber date e separar em data e hota (OCORRENCIA)
-            if((ocorrencia.getString("dataOcorrencia")).equals("null") || ocorrencia.getString("dataOcorrencia") == null){
+            sbInfo = ocorrencia.getString("InformacoesAdicionais");
+
+            if(ocorrencia.isNull("dataOcorrencia")){
                 sfDataProvavel= "";
                 sfHoraProvavel = "";
             }else{
-                System.out.println("Data ocorrencia = " + ocorrencia.getString("dataOcorrencia"));
                 String[] dataHora = parseData(ocorrencia.getString("dataOcorrencia"));
                 sfDataProvavel = dataHora[0];
                 sfHoraProvavel = dataHora[1];
             }
-            aux = ocorrencia.getString("dataOcorrencia");
-
-            dateAux = sdf.parse(aux);
-            calendar.setTime(dateAux);
 
             sfTipoDelito = ocorrencia.getString("tipoDelito");
-            // ARRAY de modus operandi ---- sfModusOperandi =
-            // VALOES SUBTRAIDOS ???
+
             // VESTIGIOS ARRAY
-            // data hora acionamento
-            if((ocorrencia.getString("dataHoraAcionamento")).equals("null") || ocorrencia.getString("dataHoraAcionamento") == null) {
+
+            if(ocorrencia.isNull("dataHoraAcionamento")) {
                 dgDataAcionamento = "";
                 dgHoraAcionamento = "";
             }else{
-                System.out.println("Data acionamento = " + ocorrencia.getString("dataHoraAcionamento"));
                 String[] dataHora = parseData(ocorrencia.getString("dataHoraAcionamento"));
                 dgDataAcionamento = dataHora[0];
                 dgHoraAcionamento = dataHora[1];
@@ -151,7 +157,9 @@ public class CarregarOcorrencia {
         return dgSedeOcorrencia;
     }
 
-    public static String getDgPeritosOcorrencia() { return dgPeritosOcorrencia; }
+    public static String getDgPeritosOcorrencia() {
+        return dgPeritosOcorrencia;
+    }
 
     public static String getDgHoraAcionamento() {
         return dgHoraAcionamento;

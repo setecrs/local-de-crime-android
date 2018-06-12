@@ -59,7 +59,7 @@ public class TelaEndereco extends Fragment{
     public void onClickSpinner(View v) {
 
         if (v.getId() == R.id.spinnerEstado) {
-            if (((Spinner) v).getSelectedItem().toString().equals("RS")) {
+            if (((Spinner) v).getSelectedItem().toString().equals("Rio Grande do Sul")) {
                 adapter = new ArrayAdapter<>(this.getContext(),
                         android.R.layout.simple_list_item_1, cidadesRS);
                 autoCompleteTextViewCidade.setAdapter(adapter);
@@ -109,10 +109,6 @@ public class TelaEndereco extends Fragment{
 
         itemSpinner = CarregarOcorrencia.getEndEstado();
         if(itemSpinner == null){
-            itemSpinner = "";
-        }
-
-        if(itemSpinner.equals("")){
             spinnerEstado.setSelection(0);
         } else {
             for(int i = 1; i < spinnerEstado.getAdapter().getCount(); i++){
@@ -122,11 +118,9 @@ public class TelaEndereco extends Fragment{
                 }
             }
         }
-        if(CarregarOcorrencia.getEndCidade().equals("null")){
-            autoCompleteTextViewCidade.setText("");
-        }else{
-            autoCompleteTextViewCidade.setText(CarregarOcorrencia.endCidade);
-        }
+
+        autoCompleteTextViewCidade.setText("");
+
 
 
         itemSpinner = CarregarOcorrencia.getEndLocal();
