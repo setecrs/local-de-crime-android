@@ -118,8 +118,7 @@ public class SobreOFato extends Fragment {
         onClickEditText(editTextOutroModusOperandis);
         onClickEditText(editTextOutroTipoDelito);
 
-        //arrayTeste();
-        //CarregarOcorrencia.testeArray(teste);
+
         carregaSobreOFato();
 
         return v;
@@ -240,7 +239,7 @@ public class SobreOFato extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
-        if(itemSpinner == null){
+        if(itemSpinner.equals("")){
             spinnerTipoDeDelito.setSelection(0);
         } else {
             for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
