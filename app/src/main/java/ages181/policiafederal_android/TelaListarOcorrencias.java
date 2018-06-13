@@ -26,8 +26,18 @@ public class TelaListarOcorrencias extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        oa = new OcorrenciaAdapter(this, ListaOcorrencia.getLista());
-        rv.setAdapter(oa);
+        if(ListaOcorrencia.getLista()!=null) {
+            oa = new OcorrenciaAdapter(this, ListaOcorrencia.getLista());
+            rv.setAdapter(oa);
+        }
+        else {
+            ListaOcorrencia.setLista(new ArrayList<Ocorrencia>());
+            oa = new OcorrenciaAdapter(this, ListaOcorrencia.getLista());
+            rv.setAdapter(oa);
+        }
+
+
+
         oa.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int position) throws JSONException {
