@@ -42,6 +42,10 @@ public class CarregarOcorrencia {
 
     static String testNome, testDoc, testFuncao, testEntrevista;
 
+    // Vestígios
+
+    static JSONArray vestigios;
+
     public static void carregaOcorrencia(JSONObject ocorrencia){
         JSONObject auxJson;
         JSONArray auxArrayJson;
@@ -93,7 +97,7 @@ public class CarregarOcorrencia {
             respDoc = ocorrencia.getString("documentoResponsavel");
             respEntrevista = ocorrencia.getString("entrevistaResponsavel");
             testNome = ocorrencia.getString("nomeTestemunha");
-            testFuncao = ocorrencia.getString("cargoTestemunha");
+            testFuncao = ocorrencia.getString("funcaoTestemunha");
             testDoc = ocorrencia.getString("documentoTestemunha");
             testEntrevista = ocorrencia.getString("entrevistaTestemunha");
 
@@ -106,7 +110,7 @@ public class CarregarOcorrencia {
                 sbHoraChegada = dataHora[1];
             }
             sbCondicoesLocal = ocorrencia.getString("condicaoLocal");
-            sbInfo = ocorrencia.getString("InformacoesAdicionais");
+            sbInfo = ocorrencia.getString("informacoesAdicionais");
 
             if(ocorrencia.isNull("dataOcorrencia")){
                 sfDataProvavel= "";
@@ -116,10 +120,15 @@ public class CarregarOcorrencia {
                 sfDataProvavel = dataHora[0];
                 sfHoraProvavel = dataHora[1];
             }
-
-            sfTipoDelito = ocorrencia.getString("tipoDelito");
+            if (!ocorrencia.isNull("tipoDelito")){
+                auxJson = ocorrencia.getJSONObject("tipoDelito");
+                sfTipoDelito = auxJson.getString("tipoDelito");
+            } else {
+                sfTipoDelito = "";
+            }
 
             // VESTIGIOS ARRAY
+            vestigios = ocorrencia.getJSONArray("vestigios");
 
             if(ocorrencia.isNull("dataHoraAcionamento")) {
                 dgDataAcionamento = "";
@@ -261,48 +270,11 @@ public class CarregarOcorrencia {
         return testEntrevista;
     }
 
-    // ------- PARA TESTE -------
-
-
-    public static void testeData(){
-
-        Date dateAux = new Date();
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-
-        String dataOriginal = "2018-06-06T21:24:55.100Z";
-
-        try {
-            Date objetoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(dataOriginal);
-            String data = new SimpleDateFormat("dd/MM/yyyy").format(objetoDate);
-            String hora = new SimpleDateFormat("HH:mm").format(objetoDate);
-
-            sfHoraProvavel = hora;
-            sfDataProvavel = data;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-//        try {
-//            dateAux = sdf.parse("2018-06-06T21:24:55.100Z");
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        calendar.setTime(dateAux);
-//
-//        sfHoraProvavel = String.valueOf(calendar.HOUR) + ":" + String.valueOf(calendar.MINUTE);
-//        sfDataProvavel = String.valueOf(calendar.DAY_OF_MONTH + "/" + calendar.MONTH + "/" + calendar.YEAR);
+    public static JSONArray getVestigios(){
+        return vestigios;
     }
 
-    public static void testeArray(JSONArray array){
-        sfModusOperandi = array;
-        sfTipoDelito = "Moeda falsa";
-        //sfHoraProvavel = "12:30";
-        //sfDataProvavel = "10/4/2001";
-    }
-
-
+    
 }
 
 

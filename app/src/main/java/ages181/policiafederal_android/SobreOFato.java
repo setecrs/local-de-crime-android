@@ -333,8 +333,6 @@ public class SobreOFato extends Fragment {
             e.printStackTrace();
         }
 
-
-
     }
 
     public static SobreOFato newInstance() {
@@ -343,58 +341,4 @@ public class SobreOFato extends Fragment {
         return f;
     }
 
-    // --------  PARA TESTE  --------
-    JSONArray teste = new JSONArray();
-    JSONObject checkBoxTest = new JSONObject();
-
-    public void arrayTeste(){
-
-        try {
-            checkBoxTest.put("texto", checkBoxExplosivo.getText().toString());
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxCorreiosCortaAlarme.getText().toString());
-            checkBoxTest.put("ativado", false);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxNaoHouveDano.getText().toString());
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxForcarPortaJanela.getText().toString());
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxCorreiosVeiculoComEnd.getText().toString());
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxFurtoPequenoValor.getText().toString());
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxCorreiosDoisDeMoto.getText().toString());
-            checkBoxTest.put("ativado", false);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", "Chave mixa");
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", checkBoxQuebrouVidro.getText().toString());
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-            checkBoxTest = new JSONObject();
-            checkBoxTest.put("texto", "teste outro!");
-            checkBoxTest.put("ativado", true);
-            teste.put(checkBoxTest);
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-    }
 }
