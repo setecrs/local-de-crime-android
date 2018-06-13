@@ -74,7 +74,11 @@ public class SobreOLocal extends Fragment {
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            horaChegada.setText(hora+":"+minuto);
+            if(minuto < 10){
+                horaChegada.setText(hora+":0"+minuto);
+            } else {
+                horaChegada.setText(hora+":"+minuto);
+            }
         }
     };
 
@@ -98,9 +102,7 @@ public class SobreOLocal extends Fragment {
     public void carregaSobreOLocal(){
 
         itemSpinner = CarregarOcorrencia.getSbCondicoesLocal();
-        if(itemSpinner == null){
-            itemSpinner = "";
-        }
+
         if(itemSpinner.equals("")){
             spCondicoesLocal.setSelection(0);
         } else {

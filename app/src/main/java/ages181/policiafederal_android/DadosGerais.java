@@ -99,7 +99,12 @@ public class DadosGerais extends Fragment {
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            horaOcorrencia.setText(hora+":"+minuto);
+            if(minuto < 10){
+                horaOcorrencia.setText(hora+":0"+minuto);
+            } else {
+                horaOcorrencia.setText(hora+":"+minuto);
+            }
+
         }
     };
 
