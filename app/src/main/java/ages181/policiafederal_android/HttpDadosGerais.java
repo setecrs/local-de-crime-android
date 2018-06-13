@@ -43,7 +43,9 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         try {
 
-            String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"sede\": \""+ sedeOcorrencia + "\", \"peritosAcionados\" : \"" + peritosAcionados + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
+            //String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"sede\": \""+ sedeOcorrencia + "\", \"peritosAcionados\" : \"" + peritosAcionados + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
+
+            String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"sede\": \""+ sedeOcorrencia + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
 
             RequestBody body = RequestBody.create(JSON, json);
 

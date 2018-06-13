@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -46,6 +47,19 @@ public class DadosGerais extends Fragment {
 
         showTimePickerDialog();
         showDatePickerDialog();
+
+        Button button = (Button) v.findViewById(R.id.buttonSaveDadosGerais);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //TODO: Data de acionamento e Peritos acionados
+                HttpDadosGerais http_dados_gerais = new HttpDadosGerais(numOcorrencia.getText().toString(), "5b218f029bbe6c0014537081", "a", new Date());
+                http_dados_gerais.execute();
+
+            }
+        });
 
         carregaDadosGerais();
         return v;
