@@ -108,7 +108,7 @@ public class TelaEndereco extends Fragment{
         boolean aux = false;
 
         itemSpinner = CarregarOcorrencia.getEndEstado();
-        if(itemSpinner == ""){
+        if(itemSpinner == null){
             spinnerEstado.setSelection(0);
         } else {
             for(int i = 1; i < spinnerEstado.getAdapter().getCount(); i++){
@@ -125,7 +125,7 @@ public class TelaEndereco extends Fragment{
 
         itemSpinner = CarregarOcorrencia.getEndLocal();
 
-        if(itemSpinner.equals("")){
+        if(itemSpinner == null){
             spinnerLocal.setSelection(0);
         } else {
             for(int i = 1; i < spinnerLocal.getAdapter().getCount(); i++){

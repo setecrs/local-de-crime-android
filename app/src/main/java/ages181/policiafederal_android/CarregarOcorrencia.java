@@ -70,25 +70,16 @@ public class CarregarOcorrencia {
                 }
                 dgPeritosOcorrencia = sb.toString();
             }
-            if (!ocorrencia.isNull("tipoLocal")){
-                auxJson = ocorrencia.getJSONObject("tipoLocal");
-                endLocal = auxJson.getString("tipoLocal");
-            } else {
-                endLocal = "";
-            }
 
-            if (!ocorrencia.isNull("estado")){
-                auxJson = ocorrencia.getJSONObject("estado");
-                endEstado = auxJson.getString("nome");
-            } else {
-                endEstado = "";
-            }
-            if (!ocorrencia.isNull("municipio")){
-                auxJson = ocorrencia.getJSONObject("municipio");
-                endCidade = auxJson.getString("nome");
-            } else {
-                endCidade = "";
-            }
+            endLocal = ocorrencia.getString("tipoLocal");
+
+
+
+            endEstado = ocorrencia.getString("estado");
+
+
+            endCidade = ocorrencia.getString("municipio");
+
             endRua = ocorrencia.getString("logradouro");
             endComplemento = ocorrencia.getString("complemento");
             endNumero = ocorrencia.getString("numero");
