@@ -27,10 +27,12 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     private Editable usuario;
     private Editable senha;
 
-    public HttpLogin (Editable usuario, Editable senha){
+    public HttpLogin(Editable usuario, Editable senha) {
         this.usuario = usuario;
         this.senha = senha;
-    };
+    }
+
+    ;
 
     private Exception exception;
 
@@ -44,7 +46,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
             // GET /login
             String credentials = usuario + ":" + senha;
-            String basic = "Basic " + Base64.encodeToString(credentials.getBytes(),Base64.NO_WRAP);
+            String basic = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
 
             Request requestLogin = new Request.Builder()
                     .addHeader("content-type", "application/json")
@@ -67,20 +69,17 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
                 RequestBody body_ocorrencia = RequestBody.create(JSON, json);
 
-                Request requestOcorrencia = new Request.Builder()
+                Request requestSignup = new Request.Builder()
                         .addHeader("content-type", "application/json")
                         .addHeader("x-access-token", StaticProperties.getToken())
                         .post(body_ocorrencia)
-                        .url(StaticProperties.getUrl() + "ocorrencias")
+                        .url(StaticProperties.getUrl() + "signup")
                         .build();
 
-                Response responseOcorrencia = client.newCall(requestOcorrencia).execute();
+                Response responseSignup = client.newCall(requestSignup).execute();
 
-                String bodyOcorrencia = responseOcorrencia.body().string();
 
-                JSONObject responseObjectOcorrencia = new JSONObject(bodyOcorrencia);
-
-                StaticProperties.setId((String) responseObjectOcorrencia.get("_id").toString());
+                System.out.println(responseSignup.body().string());
 
             } else {
                 StaticProperties.setToken(null);
@@ -89,12 +88,9 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
 
         }
-
     }
-
 }
-
