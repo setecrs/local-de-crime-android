@@ -27,8 +27,16 @@ public class TelaListarOcorrencias extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        oa = new OcorrenciaAdapter(this, ListaOcorrencia.getLista());
-        rv.setAdapter(oa);
+        if(ListaOcorrencia.getLista()!=null) {
+            oa = new OcorrenciaAdapter(this, ListaOcorrencia.getLista());
+            rv.setAdapter(oa);
+        }
+        else {
+            ListaOcorrencia.setLista(new ArrayList<Ocorrencia>());
+            oa = new OcorrenciaAdapter(this, ListaOcorrencia.getLista());
+            rv.setAdapter(oa);
+        }
+
         oa.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int position) throws JSONException {
@@ -47,7 +55,6 @@ public class TelaListarOcorrencias extends AppCompatActivity {
             if(ListaOcorrencia.getLista().get(posicaoClicada).getId()==StaticJson.getJsinho().getJSONObject(i).getString("_id")){
                 System.out.println("ACHEEEEI: "+ListaOcorrencia.getLista().get(posicaoClicada).getId());
                 CarregarOcorrencia.carregaOcorrencia(StaticJson.getJsinho().getJSONObject(i));
-                Log.i("testarCarregar", "pegarObj");
             }
         }
     }

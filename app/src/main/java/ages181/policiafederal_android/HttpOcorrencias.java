@@ -34,7 +34,7 @@ public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
     private Editable senha;
 
     public HttpOcorrencias (){
-    };
+    }
 
 
     private Exception exception;

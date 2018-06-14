@@ -88,7 +88,6 @@ public class CarregarOcorrencia {
             testFuncao = ocorrencia.getString("funcaoTestemunha");
             testDoc = ocorrencia.getString("documentoTestemunha");
             testEntrevista = ocorrencia.getString("entrevistaTestemunha");
-            Log.i("testarCarregar", respCargo);
             if(ocorrencia.isNull("dataHoraChegada")) {
                     sbDatachegada = "";
                     sbHoraChegada = "";
