@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class TelaListarOcorrencias extends AppCompatActivity {
             if(ListaOcorrencia.getLista().get(posicaoClicada).getId()==StaticJson.getJsinho().getJSONObject(i).getString("_id")){
                 System.out.println("ACHEEEEI: "+ListaOcorrencia.getLista().get(posicaoClicada).getId());
                 CarregarOcorrencia.carregaOcorrencia(StaticJson.getJsinho().getJSONObject(i));
+                Log.i("testarCarregar", "pegarObj");
             }
         }
     }

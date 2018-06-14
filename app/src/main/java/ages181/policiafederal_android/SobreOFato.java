@@ -239,7 +239,7 @@ public class SobreOFato extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
-        if(itemSpinner == null){
+        if(itemSpinner.equals("")){
             spinnerTipoDeDelito.setSelection(0);
         } else {
             for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
@@ -259,7 +259,7 @@ public class SobreOFato extends Fragment {
         modusOperandi = CarregarOcorrencia.getSfModusOperandi();
 
         try {
-            if (modusOperandi.length() != 0) {
+            if (modusOperandi != null) {
                 for (int i = 0; i < modusOperandi.length(); i++) {
                     auxJson = modusOperandi.getJSONObject(i);
                     aux = (boolean) auxJson.get("ativado");

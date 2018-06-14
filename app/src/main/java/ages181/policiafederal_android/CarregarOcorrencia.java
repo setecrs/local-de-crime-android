@@ -53,12 +53,9 @@ public class CarregarOcorrencia {
 
         try {
             dgNumeroOcorrencia = ocorrencia.getString("numeroOcorrencia");
-            if (!ocorrencia.isNull("sede")){
-                auxJson = ocorrencia.getJSONObject("sede");
-                dgSedeOcorrencia = auxJson.getString("nome");
-            } else {
-                dgSedeOcorrencia = "";
-            }
+
+            dgSedeOcorrencia = ocorrencia.getString("sede");
+
             auxArrayJson = ocorrencia.getJSONArray("policiaisAcionados");
             if (auxArrayJson.length() == 0) {
                 dgPeritosOcorrencia = "";
@@ -71,15 +68,15 @@ public class CarregarOcorrencia {
                 dgPeritosOcorrencia = sb.toString();
             }
 
-            endLocal = ocorrencia.getString("tipoLocal");
-
-
+            if (!ocorrencia.isNull("tipoLocal")){
+                auxJson = ocorrencia.getJSONObject("tipoLocal");
+                endLocal = auxJson.getString("tipolocal");
+            } else {
+                endLocal = "";
+            }
 
             endEstado = ocorrencia.getString("estado");
-
-
             endCidade = ocorrencia.getString("municipio");
-
             endRua = ocorrencia.getString("logradouro");
             endComplemento = ocorrencia.getString("complemento");
             endNumero = ocorrencia.getString("numero");
@@ -91,7 +88,7 @@ public class CarregarOcorrencia {
             testFuncao = ocorrencia.getString("funcaoTestemunha");
             testDoc = ocorrencia.getString("documentoTestemunha");
             testEntrevista = ocorrencia.getString("entrevistaTestemunha");
-
+            Log.i("testarCarregar", respCargo);
             if(ocorrencia.isNull("dataHoraChegada")) {
                     sbDatachegada = "";
                     sbHoraChegada = "";
@@ -129,6 +126,7 @@ public class CarregarOcorrencia {
                 dgDataAcionamento = dataHora[0];
                 dgHoraAcionamento = dataHora[1];
             }
+
 
 
         } catch (Exception e) {

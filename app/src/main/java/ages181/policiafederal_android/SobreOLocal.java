@@ -103,7 +103,7 @@ public class SobreOLocal extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSbCondicoesLocal();
 
-        if(itemSpinner == null){
+        if(itemSpinner.equals("")){
             spCondicoesLocal.setSelection(0);
         } else {
             for(int i = 1; i < spCondicoesLocal.getAdapter().getCount(); i++){
