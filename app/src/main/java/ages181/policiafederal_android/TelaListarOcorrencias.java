@@ -37,6 +37,8 @@ public class TelaListarOcorrencias extends AppCompatActivity {
             rv.setAdapter(oa);
         }
 
+
+
         oa.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int position) throws JSONException {
