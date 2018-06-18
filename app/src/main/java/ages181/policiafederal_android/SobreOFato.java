@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -120,6 +121,19 @@ public class SobreOFato extends Fragment {
 
 
         carregaSobreOFato();
+
+        Button button = (Button) v.findViewById(R.id.buttonSobreOFato);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //TODO: Add params
+                HttpSobreOFato http_sobre_o_fato = new HttpSobreOFato("a");
+                http_sobre_o_fato.execute();
+            }
+        });
+
 
         return v;
     }
