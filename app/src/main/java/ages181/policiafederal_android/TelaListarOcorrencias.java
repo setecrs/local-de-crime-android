@@ -53,7 +53,7 @@ public class TelaListarOcorrencias extends AppCompatActivity {
     public void pegarObjeto() throws JSONException {
         for (int i = 0; i < StaticJson.getJsinho().length(); i++) {
             if(ListaOcorrencia.getLista().get(posicaoClicada).getId()==StaticJson.getJsinho().getJSONObject(i).getString("_id")){
-                System.out.println("ACHEEEEI: "+ListaOcorrencia.getLista().get(posicaoClicada).getId());
+                StaticProperties.setId(StaticJson.getJsinho().getJSONObject(i).getString("_id"));
                 CarregarOcorrencia.carregaOcorrencia(StaticJson.getJsinho().getJSONObject(i));
             }
         }
