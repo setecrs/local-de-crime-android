@@ -49,8 +49,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:backgroundTint="@color/lightBlue"
+            android:onClick="sendMessage"
             android:text="GRAVAR"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="296dp" />
     </android.support.v7.widget.Toolbar>
 
 
@@ -58,17 +60,17 @@
         android:id="@+id/switchVestigioColetado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="Vestígio coletado"
         android:textColor="#5A6986"
-        app:layout_constraintBottom_toTopOf="@+id/textViewNumeroEtiqueta"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
-
 
 
     <TextView
@@ -77,8 +79,10 @@
         android:layout_height="23dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="Número da etiqueta ou placa do vestígio"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumeroEtiqueta"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,15 +92,15 @@
         android:id="@+id/editTextNumeroEtiqueta"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="38dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="2dp"
         android:ems="10"
+        android:hint="Digite aqui o número do vestígio"
         android:inputType="textPersonName"
         android:textColor="#5A6986"
-        android:hint="Digite aqui o número do vestígio"
-        app:layout_constraintBottom_toTopOf="@+id/textViewNomeVestigio"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNumeroEtiqueta" />
 
@@ -107,44 +111,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="Nome do vestígio"
 
+        android:text="Tipo do Vestígio"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumeroEtiqueta" />
 
-    <EditText
-        android:id="@+id/editTextNomeVestigio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Digite aqui o nome do vestígio"
-        android:textColor="#5A6986"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerTipoVestigio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeVestigio"
-        app:layout_constraintVertical_bias="0.13999999"
-        app:layout_constraintVertical_chainStyle="packed" />
-
     <Spinner
-        android:id="@+id/spinnerTipoVestigio"
+        android:id="@+id/spinnerNomeVestigios"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:entries="@array/tiposVestigios"
+        android:layout_marginTop="8dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textViewInformacoes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNomeVestigio" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoVestigios" />
 
     <TextView
         android:id="@+id/textViewInformacoes"
@@ -152,17 +137,19 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:text="Informações adicionais"
-        app:layout_constraintBottom_toTopOf="@+id/editTextInformacoes"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoVestigio" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerNomeVestigios" />
 
     <EditText
         android:id="@+id/editTextInformacoes"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:ems="10"
@@ -170,39 +157,22 @@
         android:inputType="textMultiLine|textPersonName"
         android:paddingBottom="40dp"
         android:textColor="#5A6986"
-        app:layout_constraintBottom_toTopOf="@+id/switchGeolocalizacao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInformacoes" />
-
-    <Switch
-        android:id="@+id/switchGeolocalizacao"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:text="Geolocalização"
-        android:textColor="#5A6986"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextInformacoes"
-        app:layout_constraintVertical_bias="0.827" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewInformacoes"
+        app:layout_constraintVertical_bias="0.141" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButtonAdicionarVestigio"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spinnerTipoVestigios"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:clickable="true"
-        android:backgroundTint="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeVestigio" />
 
 </android.support.constraint.ConstraintLayout>

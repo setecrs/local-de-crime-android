@@ -35,8 +35,7 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Oc
         LayoutInflater inflater = LayoutInflater.from(context);
 
 
-        View view = inflater.inflate(R.layout.layout_lista, null);
-
+        View view = inflater.inflate(R.layout.list_layout, null);
 
         return new OcorrenciaViewHolder(view);
     }
@@ -50,7 +49,7 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Oc
         else
             holder.tvNumOcorrencia.setText("Número Ocorrência: "+oc.getNumeroOcorrencia().substring(0,3));
 
-        holder.tvDataAc.setText("Data/Hora Acionamento: "+oc.formatarDataHora());
+        holder.tvDataAc.setText("Data e Hora Acionamento: "+oc.formatarDataHora());
         holder.tvTipoLocal.setText("Tipo Local: "+oc.getTipoLocal());
     }
 

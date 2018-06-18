@@ -2,7 +2,7 @@ package ages181.policiafederal_android;
 
 public class Ocorrencia {
 
-    private String id,numeroOcorrencia, dataHoraAcionamento, tipoLocal;
+    private String id, numeroOcorrencia, dataHoraAcionamento, tipoLocal;
 
     public Ocorrencia(String id, String numeroOcorrencia, String dataHoraAcionamento, String tipoLocal) {
         this.id = id;
@@ -43,11 +43,16 @@ public class Ocorrencia {
         this.id = id;
     }
 
-    public String formatarDataHora(){
-        String data = getDataHoraAcionamento().substring(0,10);
+    public String formatarDataHora() {
+        String ano = getDataHoraAcionamento().substring(0, 4);
+        String mes = getDataHoraAcionamento().substring(5, 7);
+        String dia = getDataHoraAcionamento().substring(8, 10);
+
+        String data = dia + "/" + mes + "/" + ano;
+
         String hora = getDataHoraAcionamento().substring(11, 16);
 
-        String datahora = data+" / "+hora;
+        String datahora = data + " | " + hora;
         return datahora;
     }
 
