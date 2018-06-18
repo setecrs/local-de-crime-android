@@ -1,13 +1,17 @@
 package ages181.policiafederal_android;
 
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.util.Base64;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -30,14 +34,9 @@ import okhttp3.Response;
 
 public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
 
-    private Editable usuario;
-    private Editable senha;
-
-    public HttpOcorrencias (){
-    }
-
-
-    private Exception exception;
+    //Construtor
+    public HttpOcorrencias ( ){
+    };
 
     OkHttpClient client = new OkHttpClient();
 
@@ -46,44 +45,46 @@ public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
 
     protected List<Ocorrencia> doInBackground(Void... params) {
         try {
-
-
-            String json = "";
-
-            RequestBody body_ocorrencia = RequestBody.create(JSON, json);
-
+            //Requisição para listar as ocorrências
             Request requestSignup = new Request.Builder()
-                    .addHeader("content-type", "application/json")
-                    .addHeader("x-access-token", StaticProperties.getToken())
-                    .url("https://ages-pf.herokuapp.com/ocorrencias")
-                    .build();
+                        .addHeader("content-type", "application/json")
+                        .addHeader("x-access-token", StaticProperties.getToken())
+                        .url("https://ages-pf.herokuapp.com/ocorrencias")
+                        .build();
 
+            //Capturando resposta da requisição
             Response responseSignup = client.newCall(requestSignup).execute();
 
+            //Quebrando a resposta em um JSONArray para manipula-la como um Array
             JSONArray ocorrenciaArray = new JSONArray(responseSignup.body().string());
-            StaticJson.setJsinho(ocorrenciaArray);
 
+            //Enviando o JSONArray para um método static para poder carregar os dados das ocorrências
+            StaticProperties.setJsonArrayOcorrencias(ocorrenciaArray);
+
+            //Criando uma lista que será listada na tela de ocorrências
             List<Ocorrencia> lista = new ArrayList<>();
+
+            //Percorrendo todos elementos contidos no Array JSON recebido
             for (int i = 0; i < ocorrenciaArray.length(); i++) {
-                System.out.println(ocorrenciaArray.getJSONObject(i).toString());
+                //Adicionando dados que serão exibidos na tela de ocorrências na lista
                 lista.add(new Ocorrencia(
-                        ocorrenciaArray.getJSONObject(i).getString("_id"),
-                        ocorrenciaArray.getJSONObject(i).getString("numeroOcorrencia"),
-                        ocorrenciaArray.getJSONObject(i).getString("dataHoraAcionamento"),
-                        ocorrenciaArray.getJSONObject(i).getString("tipoLocal")));
+                            ocorrenciaArray.getJSONObject(i).getString("_id"),
+                            ocorrenciaArray.getJSONObject(i).getString("numeroOcorrencia"),
+                            ocorrenciaArray.getJSONObject(i).getString("dataHoraAcionamento"),
+                            ocorrenciaArray.getJSONObject(i).getString("tipoLocal")));
             }
 
-            Collections.sort(lista, new Comparator<Ocorrencia>()
-            {
-                public int compare(Ocorrencia p1, Ocorrencia p2)
-                {
+            //Ordenando lista de acordo com a data
+            Collections.sort(lista, new Comparator<Ocorrencia>() {
+                public int compare(Ocorrencia p1, Ocorrencia p2) {
                     return p2.getDataHoraAcionamento().compareTo(p1.getDataHoraAcionamento());
                 }
             });
 
+            //Setando lista static de ocorrências
+            StaticProperties.setListaOcorrencias(lista);
 
-            ListaOcorrencia.setLista(lista);
-
+            //Retornando a lista para poder lista-la na tela de ocorrências
             return lista;
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,5 +94,6 @@ public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
         }
 
     }
+
 
 }
