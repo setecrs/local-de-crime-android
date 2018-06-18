@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -55,6 +56,17 @@ public class SobreOLocal extends Fragment {
         spCondicoesLocal.setAdapter(adapter);
 
         carregaSobreOLocal();
+
+        Button button = (Button) v.findViewById(R.id.buttonSobreOLocal);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                HttpSobreOLocal http_sobre_o_local = new HttpSobreOLocal(infoAdicional.getText().toString());
+                http_sobre_o_local.execute();
+            }
+        });
 
         return v;
     }
