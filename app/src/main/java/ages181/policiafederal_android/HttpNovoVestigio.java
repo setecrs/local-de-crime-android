@@ -75,11 +75,7 @@ public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
             RequestBody body_vestigio = RequestBody.create(JSON, json);
 
             //Comparação para verificar se a é uma nova ocorrencia ou uma existe, e capturar corretamente o ID do mesmo
-            if (CarregarOcorrencia.getIdOcorrencia()==null){
-                idOcorrencia = StaticProperties.getIdOcorrencia();
-            }else{
-                idOcorrencia = CarregarOcorrencia.getIdOcorrencia();
-            }
+                idOcorrencia = StaticProperties.getId();
 
             //Criando a requisição com a rota para criar um novo vestígio
             Request requestSignup = new Request.Builder()
