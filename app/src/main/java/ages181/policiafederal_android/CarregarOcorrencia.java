@@ -70,7 +70,11 @@ public class CarregarOcorrencia {
 
             if (!ocorrencia.isNull("tipoLocal")){
                 auxJson = ocorrencia.getJSONObject("tipoLocal");
-                endLocal = auxJson.getString("tipolocal");
+                if(!auxJson.getString("tipoLocal").equals("Outro")) {
+                    endLocal = auxJson.getString("tipoLocal");
+                } else {
+                    endLocal = ocorrencia.getString("outroTipoLocal");
+                }
             } else {
                 endLocal = "";
             }
@@ -109,7 +113,11 @@ public class CarregarOcorrencia {
             }
             if (!ocorrencia.isNull("tipoDelito")){
                 auxJson = ocorrencia.getJSONObject("tipoDelito");
-                sfTipoDelito = auxJson.getString("tipoDelito");
+                if(!auxJson.getString("tipoDelito").equals("Outro")) {
+                    sfTipoDelito = auxJson.getString("tipoDelito");
+                } else {
+                    sfTipoDelito = ocorrencia.getString("outroTipoDelito");
+                }
             } else {
                 sfTipoDelito = "";
             }
