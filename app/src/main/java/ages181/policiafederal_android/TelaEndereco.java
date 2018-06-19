@@ -76,11 +76,14 @@ public class TelaEndereco extends Fragment{
                 adapter = new ArrayAdapter<>(this.getContext(),
                         android.R.layout.simple_list_item_1, cidadesRS);
                 autoCompleteTextViewCidade.setAdapter(adapter);
-            } else {
+            } else if(spinnerEstado.getSelectedItem().toString().equals("Santa Catarina")){
                 adapter = new ArrayAdapter<>(this.getContext(),
                         android.R.layout.simple_list_item_1, cidadesSC);
                 autoCompleteTextViewCidade.setAdapter(adapter);
-            }
+             } else {
+                String[] autoCompleteVazio = {};
+                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, autoCompleteVazio);
+            } 
         } else {
             if (((Spinner) v).getSelectedItem().toString().equals("Outro")) {
                 editTextOutro.setVisibility(View.VISIBLE);
@@ -88,14 +91,6 @@ public class TelaEndereco extends Fragment{
                 editTextOutro.setVisibility(View.GONE);
                 editTextOutro.setText("");
             }
-        }
-    }
-
-    public String localSelecionado(){
-        if(spinnerLocal.getSelectedItem().toString().equals("Outro")){
-            return editTextOutro.toString();
-        } else {
-            return spinnerLocal.getSelectedItem().toString();
         }
     }
 
@@ -110,28 +105,43 @@ public class TelaEndereco extends Fragment{
         boolean aux = false;
 
         itemSpinner = CarregarOcorrencia.getEndEstado();
-        if(itemSpinner.equals("")){
+        if(itemSpinner == null){
             spinnerEstado.setSelection(0);
         } else {
             for(int i = 1; i < spinnerEstado.getAdapter().getCount(); i++){
-                if(itemSpinner.equals(spinnerEstado.getItemAtPosition(i).toString())) {
+                if(itemSpinner.equalsIgnoreCase(spinnerEstado.getItemAtPosition(i).toString())) {
                     spinnerEstado.setSelection(i);
+                    if (spinnerEstado.getSelectedItem().toString().equals("Rio Grande do Sul")) {
+                        adapter = new ArrayAdapter<>(getContext(),
+                                android.R.layout.simple_list_item_1, cidadesRS);
+                        autoCompleteTextViewCidade.setAdapter(adapter);
+                    } else if(spinnerEstado.getSelectedItem().toString().equals("Santa Catarina")){
+                        adapter = new ArrayAdapter<>(getContext(),
+                                android.R.layout.simple_list_item_1, cidadesSC);
+                        autoCompleteTextViewCidade.setAdapter(adapter);
+                    } else {
+                        String[] autoCompleteVazio = {};
+                        adapter = new ArrayAdapter<>(getContext(),
+                                android.R.layout.simple_list_item_1, autoCompleteVazio);
+                        autoCompleteTextViewCidade.setAdapter(adapter);
+                    }
                     break;
+
                 }
             }
         }
 
-        autoCompleteTextViewCidade.setText("");
+        autoCompleteTextViewCidade.setText(CarregarOcorrencia.getEndCidade());
 
 
 
         itemSpinner = CarregarOcorrencia.getEndLocal();
 
-        if(itemSpinner.equals("")){
+        if(itemSpinner == null){
             spinnerLocal.setSelection(0);
         } else {
             for(int i = 1; i < spinnerLocal.getAdapter().getCount(); i++){
-                if(itemSpinner.equals(spinnerLocal.getItemAtPosition(i).toString())){
+                if(itemSpinner.equalsIgnoreCase(spinnerLocal.getItemAtPosition(i).toString())){
                     spinnerLocal.setSelection(i);
                     aux = true;
                     break;

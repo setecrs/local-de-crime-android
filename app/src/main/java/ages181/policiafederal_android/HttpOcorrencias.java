@@ -44,6 +44,11 @@ public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
             = MediaType.parse("application/json; charset=utf-8");
 
     protected List<Ocorrencia> doInBackground(Void... params) {
+
+        String aux;
+        String json = "";
+
+
         try {
             //Requisição para listar as ocorrências
             Request requestSignup = new Request.Builder()
@@ -66,12 +71,17 @@ public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
 
             //Percorrendo todos elementos contidos no Array JSON recebido
             for (int i = 0; i < ocorrenciaArray.length(); i++) {
-                //Adicionando dados que serão exibidos na tela de ocorrências na lista
+                if(ocorrenciaArray.getJSONObject(i).isNull("tipoLocal")){
+                    aux = "";
+                } else {
+                    aux = ocorrenciaArray.getJSONObject(i).getJSONObject("tipoLocal").getString("tipoLocal");
+                }
                 lista.add(new Ocorrencia(
-                            ocorrenciaArray.getJSONObject(i).getString("_id"),
-                            ocorrenciaArray.getJSONObject(i).getString("numeroOcorrencia"),
-                            ocorrenciaArray.getJSONObject(i).getString("dataHoraAcionamento"),
-                            ocorrenciaArray.getJSONObject(i).getString("tipoLocal")));
+                        ocorrenciaArray.getJSONObject(i).getString("_id"),
+                        ocorrenciaArray.getJSONObject(i).getString("numeroOcorrencia"),
+                        ocorrenciaArray.getJSONObject(i).getString("dataHoraAcionamento"),
+                        aux));
+
             }
 
             //Ordenando lista de acordo com a data

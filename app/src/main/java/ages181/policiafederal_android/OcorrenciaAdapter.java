@@ -44,11 +44,7 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Oc
     public void onBindViewHolder(@NonNull OcorrenciaViewHolder holder, int position) {
         Ocorrencia oc = listaOcorrencia.get(position);
         holder.tvId.setText("Id: "+oc.getId().substring(oc.getId().length()-5, oc.getId().length()));
-        if(oc.getNumeroOcorrencia().equals(""))
-            holder.tvNumOcorrencia.setText("Número Ocorrência: "+oc.getNumeroOcorrencia());
-        else
-            holder.tvNumOcorrencia.setText("Número Ocorrência: "+oc.getNumeroOcorrencia().substring(0,3));
-
+        holder.tvNumOcorrencia.setText("Número Ocorrência: "+oc.getNumeroOcorrencia());
         holder.tvDataAc.setText("Data e Hora Acionamento: "+oc.formatarDataHora());
         holder.tvTipoLocal.setText("Tipo Local: "+oc.getTipoLocal());
     }

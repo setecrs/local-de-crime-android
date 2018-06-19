@@ -253,11 +253,11 @@ public class SobreOFato extends Fragment {
 
         itemSpinner = CarregarOcorrencia.getSfTipoDelito();
 
-        if(itemSpinner.equals("")){
+        if(itemSpinner == null){
             spinnerTipoDeDelito.setSelection(0);
         } else {
             for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
-                if(itemSpinner.equals(spinnerTipoDeDelito.getItemAtPosition(i).toString())){
+                if(itemSpinner.equalsIgnoreCase(spinnerTipoDeDelito.getItemAtPosition(i).toString())){
                     spinnerTipoDeDelito.setSelection(i);
                     aux = true;
                     break;
