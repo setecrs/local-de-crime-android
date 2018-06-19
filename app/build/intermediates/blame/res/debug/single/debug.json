@@ -64,12 +64,12 @@
         "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/f62eff4eb0affa9ac9604de92c7bdd70/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
-        "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/drawable-xxhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/res/merged/debug/drawable_abc_ic_go_search_api_material.xml.flat",
         "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/drawable/abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
+        "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/drawable-xxhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_checkbox.xml.flat",
