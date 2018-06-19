@@ -159,5 +159,4 @@ public class TelaEndereco extends Fragment{
         editTextComplemento.setText(CarregarOcorrencia.getEndComplemento());
     }
 
-
 }
