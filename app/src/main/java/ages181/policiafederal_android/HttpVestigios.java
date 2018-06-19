@@ -51,10 +51,7 @@ public class HttpVestigios extends AsyncTask<Void, Void, List<Vestigio>> {
             String idOcorrencia;
 
             //Comparação para verificar se é uma nova ocorrência ou uma existente
-            if(CarregarOcorrencia.getIdOcorrencia()==null)
-                idOcorrencia = StaticProperties.getIdOcorrencia();
-            else
-                idOcorrencia = CarregarOcorrencia.getIdOcorrencia();
+            idOcorrencia = StaticProperties.getId();
 
             //Requisição para capturar os vestígios da ocorrência acessada
             Request requestSignup = new Request.Builder()
