@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/15104313/AndroidStudioProjects/Policia Federal Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/home/17180512/Documentos/Android2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a7253efd57582b7938c096d7ce717ea/res/values-land/values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
-                    }
-                },
-                {
-                    "source": "/home/15104313/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/124468da406bf98fc8e91a4260c723bd/res/values-land/values-land.xml",
+                    "source": "/home/17180512/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/51f15050a41a0ffd322c54c3019a8d53/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "9",
                         "endColumns": "12",
                         "endOffsets": "505"
+                    }
+                },
+                {
+                    "source": "/home/17180512/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/0f5eb8e2ea113429c13868400513b199/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
                     }
                 }
             ]

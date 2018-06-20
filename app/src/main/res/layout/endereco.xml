@@ -8,166 +8,191 @@
     tools:context="ages181.policiafederal_android.TelaEndereco"
     tools:layout_editor_absoluteY="81dp">
 
-    <Spinner
-        android:id="@+id/spinnerLocal"
-        android:layout_width="230dp"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/localList"
-        android:prompt="@string/localPrompt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLocal" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Spinner
-        android:id="@+id/spinnerEstado"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/estadoList"
-        android:prompt="@string/estadoPrompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEstado" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textViewLocal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Local"
-        app:layout_constraintStart_toStartOf="@+id/spinnerLocal"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewCidade" />
+            <Spinner
+                android:id="@+id/spinnerLocal"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:entries="@array/localList"
+                android:prompt="@string/localPrompt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLocal" />
 
-    <TextView
-        android:id="@+id/textViewEstado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="Estado"
-        app:layout_constraintStart_toStartOf="@+id/spinnerEstado"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Spinner
+                android:id="@+id/spinnerEstado"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:entries="@array/estadoList"
+                android:prompt="@string/estadoPrompt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEstado" />
 
-    <TextView
-        android:id="@+id/textViewCidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Cidade"
-        app:layout_constraintStart_toStartOf="@+id/autoCompleteTextViewCidade"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerEstado" />
+            <TextView
+                android:id="@+id/textViewLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Local"
+                app:layout_constraintStart_toStartOf="@+id/spinnerLocal"
+                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewCidade" />
 
-    <TextView
-        android:id="@+id/textViewRua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Rua/Avenida"
-        app:layout_constraintStart_toStartOf="@+id/editTextRua"
-        app:layout_constraintTop_toBottomOf="@+id/editTextOutro" />
+            <TextView
+                android:id="@+id/textViewEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:text="Estado"
+                app:layout_constraintStart_toStartOf="@+id/spinnerEstado"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextRua"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Digite o nome da rua"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRua" />
+            <TextView
+                android:id="@+id/textViewCidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Cidade"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextViewCidade"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerEstado" />
 
-    <TextView
-        android:id="@+id/textViewComplemento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Complemento"
-        app:layout_constraintStart_toStartOf="@+id/editTextComplemento"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumero" />
+            <TextView
+                android:id="@+id/textViewRua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Rua/Avenida"
+                app:layout_constraintStart_toStartOf="@+id/editTextRua"
+                app:layout_constraintTop_toBottomOf="@+id/editTextOutro" />
 
-    <EditText
-        android:id="@+id/editTextComplemento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Digite o complemento"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComplemento" />
+            <EditText
+                android:id="@+id/editTextRua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Digite o nome da rua"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRua" />
 
-    <TextView
-        android:id="@+id/textViewNumero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Número"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumero"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRua" />
+            <TextView
+                android:id="@+id/textViewComplemento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Complemento"
+                app:layout_constraintStart_toStartOf="@+id/editTextComplemento"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNumero" />
 
-    <EditText
-        android:id="@+id/editTextNumero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Digite o número"
-        android:inputType="textPersonName|number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNumero" />
+            <EditText
+                android:id="@+id/editTextComplemento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Digite o complemento"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewComplemento" />
 
-    <EditText
-        android:id="@+id/editTextOutro"
-        android:layout_width="230dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Digite outro local"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerLocal" />
+            <TextView
+                android:id="@+id/textViewNumero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Número"
+                app:layout_constraintStart_toStartOf="@+id/editTextNumero"
+                app:layout_constraintTop_toBottomOf="@+id/editTextRua" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextViewCidade"
-        android:layout_width="230dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Digite a cidade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCidade" />
+            <EditText
+                android:id="@+id/editTextNumero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Digite o número"
+                android:inputType="textPersonName|number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNumero" />
 
-    <Button
-        android:id="@+id/buttonSaveEndereco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+            <EditText
+                android:id="@+id/editTextOutro"
+                android:layout_width="230dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Digite outro local"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerLocal" />
 
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewCidade"
+                android:layout_width="230dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Digite a cidade"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCidade" />
+
+            <Button
+                android:id="@+id/buttonSaveEndereco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/blue"
+                android:text="Salvar"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextComplemento" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
