@@ -154,10 +154,7 @@ public class TelaAdicionarVestigio extends AppCompatActivity {
             botaoVoltar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(TelaAdicionarVestigio.this, MainActivity.class);
-                    int strNum = 5;
-                    i.putExtra("frgToLoad", strNum);
-                    startActivity(i);
+                    TelaAdicionarVestigio.super.onBackPressed();
                 }
             });
 
@@ -169,18 +166,23 @@ public class TelaAdicionarVestigio extends AppCompatActivity {
     public void sendMessage(View view) {
         try {
             //Instanciando a classe HTTP que faz a integração da API com o Android
-            HttpNovoVestigio t = new HttpNovoVestigio(coletado, etEtiqueta.getText(),
-                    etInfoAdd.getText(), itemSelecionado, nomeSelecionado);
+            HttpNovoVestigio t = new HttpNovoVestigio(switchColetado.isChecked(), etEtiqueta.getText().toString(),
+                    etInfoAdd.getText().toString(), spTipo.getSelectedItem().toString(),
+                    spNome.getSelectedItem().toString());
             //Executando o método que faz a integração
-            t.execute().get();
-            //Chamando uma Activity para abrir após a gravação do vestígio
-            Intent i = new Intent(TelaAdicionarVestigio.this,MainActivity.class);
-                int strNum = 5;
-                i.putExtra("frgToLoad", strNum);
-            startActivity(i);
+            t.execute();
+            finish();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                HttpVestigios t = new HttpVestigios();
+                t.execute().get();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

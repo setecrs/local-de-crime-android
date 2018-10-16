@@ -54,14 +54,21 @@ public class HttpOcorrencias extends AsyncTask<Void, Void, List<Ocorrencia>> {
             Request requestSignup = new Request.Builder()
                         .addHeader("content-type", "application/json")
                         .addHeader("x-access-token", StaticProperties.getToken())
-                        .url("https://ages-pf.herokuapp.com/ocorrencias")
+                        .url(StaticProperties.getUrl()+"ocorrencias")
                         .build();
 
             //Capturando resposta da requisição
             Response responseSignup = client.newCall(requestSignup).execute();
 
             //Quebrando a resposta em um JSONArray para manipula-la como um Array
-            JSONArray ocorrenciaArray = new JSONArray(responseSignup.body().string());
+            JSONArray ocorrenciaArray;
+            try {
+                ocorrenciaArray = new JSONArray(responseSignup.body().string());
+            }catch (Exception e){
+                ocorrenciaArray = new JSONArray();
+                e.printStackTrace();
+            }
+
 
             //Enviando o JSONArray para um método static para poder carregar os dados das ocorrências
             StaticProperties.setJsonArrayOcorrencias(ocorrenciaArray);

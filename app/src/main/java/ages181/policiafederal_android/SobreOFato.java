@@ -17,12 +17,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -128,14 +131,66 @@ public class SobreOFato extends Fragment {
             @Override
             public void onClick(View v)
             {
-                //TODO: Add params
-                HttpSobreOFato http_sobre_o_fato = new HttpSobreOFato("a");
-                http_sobre_o_fato.execute();
+                salvaSobreOFato();
             }
         });
 
 
         return v;
+    }
+
+    public void salvaSobreOFato(){
+        if(!verificaAlteracao()) return;
+
+        try {
+            Date dataOcorrencia = null;
+
+            if (!editTextHoraProvavel.getText().toString().trim().equals("") &&
+                    !editTextDataProvavel.getText().toString().trim().equals("")) {
+                dataOcorrencia = StaticProperties.formataDataHora(editTextDataProvavel.getText().toString(),
+                        editTextHoraProvavel.getText().toString());
+            }
+            HttpSobreOFato htp = new HttpSobreOFato(editTextOutroTipoDelito.getText().toString(),
+                    spinnerTipoDeDelito.getSelectedItem().toString(), dataOcorrencia);
+            htp.execute().get();
+
+            //VERIFICA RETORNO
+            if(htp.getStatusCode() == 200){
+                atualizaOcorrenciaLocal();
+                Toast toast = Toast.makeText(this.getContext(), "Dados salvos!", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                Toast toast = Toast.makeText(this.getContext(), "Erro: "+htp.getStatusCode(), Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        } catch (Exception e){
+            Toast toast = Toast.makeText(this.getContext(), "Erro interno", Toast.LENGTH_SHORT);
+            toast.show();
+            e.printStackTrace();
+        }
+    }
+
+    public boolean verificaAlteracao(){
+        String txtTipoDelito;
+        if(spinnerTipoDeDelito.getSelectedItemPosition() == 0)
+            txtTipoDelito = "";
+        else
+            txtTipoDelito = spinnerTipoDeDelito.getSelectedItem().toString();
+
+        if(!editTextDataProvavel.getText().toString().equals(CarregarOcorrencia.getSfDataProvavel()) ||
+                !editTextHoraProvavel.getText().toString().equals(CarregarOcorrencia.getSfHoraProvavel()) ||
+                !txtTipoDelito.equals(CarregarOcorrencia.getSfTipoDelito())||
+                !editTextOutroTipoDelito.getText().toString().equals(CarregarOcorrencia.getOutroTipodeDelito())){
+            return true;
+        } else
+            return false;
+    }
+
+    public void atualizaOcorrenciaLocal(){
+        CarregarOcorrencia.sfDataProvavel = editTextDataProvavel.getText().toString();
+        CarregarOcorrencia.sfHoraProvavel = editTextHoraProvavel.getText().toString();
+        CarregarOcorrencia.sfTipoDelito = spinnerTipoDeDelito.getSelectedItem().toString();
+        CarregarOcorrencia.outroTipodeDelito = editTextOutroTipoDelito.getText().toString();
     }
 
     public void onClickSpinner(View v) {
@@ -259,14 +314,12 @@ public class SobreOFato extends Fragment {
             for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
                 if(itemSpinner.equalsIgnoreCase(spinnerTipoDeDelito.getItemAtPosition(i).toString())){
                     spinnerTipoDeDelito.setSelection(i);
-                    aux = true;
                     break;
                 }
             }
-            if(!aux){
-                spinnerTipoDeDelito.setSelection(spinnerTipoDeDelito.getAdapter().getCount()-1);
+            if(itemSpinner.equals("Outro")){
                 editTextOutroTipoDelito.setVisibility(View.VISIBLE);
-                editTextOutroTipoDelito.setText(itemSpinner);
+                editTextOutroTipoDelito.setText(CarregarOcorrencia.getOutroTipodeDelito());
             }
         }
 

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VestigioAdapter extends RecyclerView.Adapter<VestigioAdapter.VestigioViewHolder> {
@@ -23,7 +24,10 @@ public class VestigioAdapter extends RecyclerView.Adapter<VestigioAdapter.Vestig
 
     public VestigioAdapter(Context context, List<Vestigio> listaVestigio) {
         this.context = context;
-        this.listaVestigio = listaVestigio;
+        if(listaVestigio == null)
+            this.listaVestigio = new ArrayList<>();
+        else
+            this.listaVestigio = listaVestigio;
     }
 
 

@@ -69,15 +69,6 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
                 RequestBody body_ocorrencia = RequestBody.create(JSON, json);
 
-                Request requestSignup = new Request.Builder()
-                        .addHeader("content-type", "application/json")
-                        .addHeader("x-access-token", StaticProperties.getToken())
-                        .post(body_ocorrencia)
-                        .url(StaticProperties.getUrl() + "signup")
-                        .build();
-
-                Response responseSignup = client.newCall(requestSignup).execute();
-
                 Request requestListas = new Request.Builder()
                         .addHeader("content-type", "application/json")
                         .addHeader("x-access-token", StaticProperties.getToken())
@@ -88,9 +79,6 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
                 JSONObject listas = new JSONObject(responseListas.body().string());
 
                 StaticProperties.setJsonListas(listas);
-
-
-                System.out.println(responseSignup.body().string());
 
             } else {
                 StaticProperties.setToken(null);

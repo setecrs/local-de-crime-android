@@ -16,22 +16,75 @@ import android.text.Editable;
 import android.view.View;
 
 public class MainActivity extends FragmentActivity {
+    private MyPagerAdapter adapter;
+
+    private DadosGerais dadosGerais;
+    private TelaEndereco telaEndereco;
+    private Responsavel responsavel;
+    private SobreOLocal sobreOLocal;
+    private SobreOFato sobreOFato;
+    private TelaListaVestigios telaListaVestigios;
+    private TelaTestemunhas telaTestemunhas;
+
+    private int telaAnterior = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Editable usuario;
-        Editable senha;
         setContentView(R.layout.activity_main);
-        ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
-        pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        final ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+
+        adapter = new MyPagerAdapter(getSupportFragmentManager());
+        pager.setAdapter(adapter);
+
+        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (telaAnterior){
+                    case 0:
+                        dadosGerais.salvarDadosGerais();
+                        break;
+                    case 1:
+                        telaEndereco.salvaTelaEndereco();
+                        break;
+                    case 2:
+                        responsavel.salvaResponsavel();
+                        break;
+                    case 3:
+                        sobreOLocal.salvaSobreOLocal();
+                        break;
+                    case 4:
+                        sobreOFato.salvaSobreOFato();
+                        break;
+                }
+                telaAnterior = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(pager);
 
-        if(getIntent().getExtras() != null) {
+        if (getIntent().getExtras() != null) {
             int intentFragment = getIntent().getExtras().getInt("frgToLoad");
             pager.setCurrentItem(intentFragment);
         }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
     }
 
@@ -41,27 +94,36 @@ public class MainActivity extends FragmentActivity {
             super(fm);
         }
 
-        private String tabTitles[] = new String[] { "Dados Gerais", "Endereço", "Responsável do Local", "Sobre o Local","Sobre o Fato", "Vestigios", "Testemunhas" };
+        private String tabTitles[] = new String[]{"Dados Gerais", "Endereço", "Responsável do Local", "Sobre o Local", "Sobre o Fato", "Vestigios", "Testemunhas"};
+
         @Override
         public Fragment getItem(int pos) {
             switch (pos) {
 
                 case 0:
-                    return DadosGerais.newInstance();
+                    dadosGerais = DadosGerais.newInstance();
+                    return dadosGerais;
                 case 1:
-                    return TelaEndereco.newInstance();
+                    telaEndereco = TelaEndereco.newInstance();
+                    return telaEndereco;
                 case 2:
-                    return Responsavel.newInstance();
+                    responsavel = Responsavel.newInstance();
+                    return responsavel;
                 case 3:
-                    return SobreOLocal.newInstance();
+                    sobreOLocal = SobreOLocal.newInstance();
+                    return sobreOLocal;
                 case 4:
-                    return SobreOFato.newInstance();
+                    sobreOFato = SobreOFato.newInstance();
+                    return sobreOFato;
                 case 5:
-                    return TelaListaVestigios.newInstance();
+                    telaListaVestigios = TelaListaVestigios.newInstance();
+                    return telaListaVestigios;
                 case 6:
-                    return TelaTestemunhas.newInstance();
+                    telaTestemunhas = TelaTestemunhas.newInstance();
+                    return telaTestemunhas;
                 default:
-                    return TelaEndereco.newInstance();
+                    telaEndereco = TelaEndereco.newInstance();
+                    return telaEndereco;
             }
         }
 

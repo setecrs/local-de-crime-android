@@ -6,6 +6,8 @@ package ages181.policiafederal_android;
 import android.os.AsyncTask;
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -23,10 +25,11 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
 
     private String numOcorrencia;
     private String sedeOcorrencia;
-    private String peritosAcionados;
+    private JSONArray peritosAcionados;
     private Date dataHoraAcionamento;
+    private int status;
 
-    public HttpDadosGerais(String numOcorrencia, String sedeOcorrencia, String peritosAcionados, Date dataHoraAcionamento){
+    public HttpDadosGerais(String numOcorrencia, String sedeOcorrencia, JSONArray peritosAcionados, Date dataHoraAcionamento){
         this.numOcorrencia = numOcorrencia;
         this.sedeOcorrencia = sedeOcorrencia;
         this.peritosAcionados = peritosAcionados;
@@ -45,26 +48,30 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
 
             //String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"sede\": \""+ sedeOcorrencia + "\", \"peritosAcionados\" : \"" + peritosAcionados + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
 
-            String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"sede\": \""+ sedeOcorrencia + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
-
+            String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"policiaisAcionados\": " + peritosAcionados + ", \"sede\": \""+ sedeOcorrencia + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
             RequestBody body = RequestBody.create(JSON, json);
 
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
-                    .url(StaticProperties.getUrl() + "dados_gerais/" + StaticProperties.getId())
+                    .url(StaticProperties.getUrl() + "dados_gerais/" + StaticProperties.getIdOcorrencia())
                     .patch(body)
                     .build();
 
             Response response = client.newCall(request).execute();
 
-            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println("Responde body Http dados Gerais: " + response.body().string());
+            status = response.code();
 
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
             return null;
         }
+    }
+
+    public int getStatusCode(){
+        return status;
     }
 }

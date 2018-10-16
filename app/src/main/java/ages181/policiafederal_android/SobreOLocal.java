@@ -25,6 +25,7 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 
 public class SobreOLocal extends Fragment {
     private EditText horaChegada, dataChegada, infoAdicional;
@@ -32,6 +33,7 @@ public class SobreOLocal extends Fragment {
     private Calendar horarioAtual = Calendar.getInstance();
     private Context context;
     private String itemSpinner;
+    private Date dataHoraChegada;
 
 
     private static final String[] condicoesLocal = { "Condições do Local",
@@ -63,12 +65,62 @@ public class SobreOLocal extends Fragment {
             @Override
             public void onClick(View v)
             {
-                HttpSobreOLocal http_sobre_o_local = new HttpSobreOLocal(infoAdicional.getText().toString());
-                http_sobre_o_local.execute();
+                salvaSobreOLocal();
             }
         });
 
         return v;
+    }
+
+    public void salvaSobreOLocal(){
+        if(!verificaAlteracao()) return;
+        try {
+            dataHoraChegada = null;
+            if (!dataChegada.getText().toString().equals("") &&
+                    !horaChegada.getText().toString().equals("")) {
+                dataHoraChegada = StaticProperties.formataDataHora(dataChegada.getText().toString(),
+                        horaChegada.getText().toString());
+            }
+            HttpSobreOLocal htp = new HttpSobreOLocal(infoAdicional.getText().toString(), dataHoraChegada,
+                    spCondicoesLocal.getSelectedItem().toString());
+            htp.execute().get();
+
+            //VERIFICA RETORNO
+            if(htp.getStatusCode() == 200){
+                atualizaOcorrenciaLocal();
+                Toast toast = Toast.makeText(this.getContext(), "Dados salvos!", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                Toast toast = Toast.makeText(this.getContext(), "Erro: "+htp.getStatusCode(), Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }catch (Exception e){
+            Toast toast = Toast.makeText(this.getContext(), "Erro interno", Toast.LENGTH_SHORT);
+            toast.show();
+            e.printStackTrace();
+        }
+    }
+
+    public boolean verificaAlteracao(){
+        String txtCondLocal;
+        if(spCondicoesLocal.getSelectedItemPosition() == 0)
+            txtCondLocal = "";
+        else
+            txtCondLocal = spCondicoesLocal.getSelectedItem().toString();
+        if(!dataChegada.getText().toString().equals(CarregarOcorrencia.getSbDatachegada()) ||
+                !horaChegada.getText().toString().equals(CarregarOcorrencia.getSbHoraChegada()) ||
+                !infoAdicional.getText().toString().equals(CarregarOcorrencia.getSbInfo())||
+                !txtCondLocal.equals(CarregarOcorrencia.getSbCondicoesLocal())){
+            return true;
+        } else
+            return false;
+    }
+
+    public void atualizaOcorrenciaLocal(){
+        CarregarOcorrencia.sbDatachegada= dataChegada.getText().toString();
+        CarregarOcorrencia.sbHoraChegada = horaChegada.getText().toString();
+        CarregarOcorrencia.sbInfo = infoAdicional.getText().toString();
+        CarregarOcorrencia.sbCondicoesLocal = spCondicoesLocal.getSelectedItem().toString();
     }
 
     public void showTimePickerDialog(){

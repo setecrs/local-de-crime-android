@@ -13,12 +13,17 @@ public class HttpResponsavel extends AsyncTask<Void, Void, Void> {
 
     private Exception exception;
     private String nome, cargo, documento, entrevista;
+    private int status;
     public HttpResponsavel(String nome, String cargo, String documento, String entrevista) {
 
         this.nome = nome;
         this.cargo = cargo;
         this.documento = documento;
         this.entrevista = entrevista;
+    }
+
+    public int getStatusCode(){
+        return status;
     }
 
 
@@ -41,13 +46,14 @@ public class HttpResponsavel extends AsyncTask<Void, Void, Void> {
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .patch(body_responsavel)
-                    .url(StaticProperties.getUrl()+ "responsavel_local/" + StaticProperties.getId())
+                    .url(StaticProperties.getUrl()+ "responsavel_local/" + StaticProperties.getIdOcorrencia())
                     .build();
 
             Response responseResponsavel = client.newCall(requestResponsavel ).execute();
 
-            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println(responseResponsavel.body().string());
+            status = responseResponsavel.code();
 
         } catch (Exception e) {
             e.printStackTrace();

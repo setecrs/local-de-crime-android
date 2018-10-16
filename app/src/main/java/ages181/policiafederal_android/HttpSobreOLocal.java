@@ -15,10 +15,18 @@ import okhttp3.Response;
 
 public class HttpSobreOLocal extends AsyncTask<Void, Void, Void> {
 
-    private String infoAdicional;
+    private String infoAdicional, condicaoLocal;
+    private Date dataHoraChegada;
+    private int status;
 
-    public HttpSobreOLocal(String infoAdicional){
+    public HttpSobreOLocal(String infoAdicional, Date dataHoraChegada, String condicaoLocal){
         this.infoAdicional = infoAdicional;
+        this.dataHoraChegada = dataHoraChegada;
+        this.condicaoLocal = condicaoLocal;
+     }
+
+     public int getStatusCode(){
+        return status;
      }
 
     private Exception exception;
@@ -30,7 +38,9 @@ public class HttpSobreOLocal extends AsyncTask<Void, Void, Void> {
 
     protected Void doInBackground(Void... params) {
         try {
-            String json = "{\"informacoesAdicionais\": \"" + infoAdicional + "\"}";
+            String json = "{\"informacoesAdicionais\": \"" + infoAdicional + "\"," +
+                    "\"dataHoraChegada\": \"" + dataHoraChegada + "\"," +
+                    "\"condicaoLocal\": \"" + condicaoLocal + "\"}";
 
             // String json = "{\"informacoesAdicionais\": \"" + infoAdicional + "\", \"sede\": \""+ sedeOcorrencia + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
 
@@ -39,14 +49,15 @@ public class HttpSobreOLocal extends AsyncTask<Void, Void, Void> {
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
-                    .url(StaticProperties.getUrl() + "sobre_local/" + StaticProperties.getId())
+                    .url(StaticProperties.getUrl() + "sobre_local/" + StaticProperties.getIdOcorrencia())
                     .patch(body)
                     .build();
 
             Response response = client.newCall(request).execute();
 
-            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println("Response body Http sobre o Local: " + response.body().string());
+            status = response.code();
 
         } catch (Exception e) {
             e.printStackTrace();

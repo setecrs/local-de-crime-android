@@ -12,6 +12,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -38,6 +41,7 @@ public class HttpNovaOcorrencia extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         try {
             //Definindo o JSON para criar uma ocorrência em branco
+
             String json = "";
 
             //Setando o JSON que será enviado ao banco
@@ -62,6 +66,7 @@ public class HttpNovaOcorrencia extends AsyncTask<Void, Void, Void> {
 
             //Setando o ID de uma nova ocorrência em um método static
             StaticProperties.setIdOcorrencia(responseObject.getString("_id"));
+            CarregarOcorrencia.zeraTela(responseObject);
 
         } catch (Exception e) {
             e.printStackTrace();

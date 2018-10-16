@@ -15,12 +15,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class TelaLogin extends AppCompatActivity {
-
-    private EditText usuario;
     private EditText senha;
     ImageView imagem;
     private AutoCompleteTextView actvUsuario;
-    private String[] listaLogin = {"Afonsa", "Barrichela", "Josnel" };
+    private String[] listaLogin = {"admin"};
 
 
     @Override
@@ -30,7 +28,6 @@ public class TelaLogin extends AppCompatActivity {
         imagem = (ImageView) findViewById(R.id.imageView);
         imagem.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher_foreground));
 
-        usuario = (EditText) findViewById(R.id.editText);
         senha = (EditText) findViewById(R.id.editText2);
         actvUsuario = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextViewUsuario);
 
@@ -55,6 +52,8 @@ public class TelaLogin extends AppCompatActivity {
             t.execute().get();
 
             if (StaticProperties.getToken() != null){
+                actvUsuario.setText("");
+                senha.setText("");
                 Intent k = new Intent(TelaLogin.this, TelaListarOcorrencias.class);
                 startActivity(k);
             } else {

@@ -3,13 +3,15 @@ package ages181.policiafederal_android;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class StaticProperties {
 
-    private static String url = "http://ages-pf.herokuapp.com/";
+    private static String url = "http://192.168.0.101:3009/";
     private static String token;
-    private static String id;
     private static String idOcorrencia;
     private static JSONObject jsonListas;
     private static List<Vestigio> listaVestigios;
@@ -74,10 +76,6 @@ public class StaticProperties {
         StaticProperties.idOcorrencia = idOcorrencia;
     }
 
-    public static String getId(){
-        return id;
-    }
-
     public static String getUrl() {
         return url;
     }
@@ -90,7 +88,23 @@ public class StaticProperties {
         token = tokenNovo;
     }
 
-    public static void setId(String idNovo){
-        id = idNovo;
+    /**
+     * Recebe dois parametros nos formatos dd/MM/yyyy e HH:MM e passa para
+     * o formato Date.
+     *
+     * @param data recebe string com formato da data dd/MM/yyyy
+     * @param hora recebe string com formato da hora HH:mm
+     * @return Date formatado
+     * */
+    public static Date formataDataHora(String data, String hora){
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        String[] dataSplit = data.split("/");
+        String[] horaSplit = hora.split(":");
+        cal.set(Calendar.YEAR, Integer.parseInt(dataSplit[2]));
+        cal.set(Calendar.MONTH, Integer.parseInt(dataSplit[1])-1);
+        cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dataSplit[0]));
+        cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horaSplit[0]));
+        cal.set(Calendar.MINUTE, Integer.parseInt(horaSplit[1]));
+        return cal.getTime();
     }
 }

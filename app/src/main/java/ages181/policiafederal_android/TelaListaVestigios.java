@@ -23,8 +23,6 @@ public class TelaListaVestigios extends Fragment {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.activity_tela_listar_vestigios, container, false);
 
-        sendMessage();
-
         fabCriarVestigio = v.findViewById(R.id.fabCriarVestigio);
         rv = v.findViewById(R.id.rvVestigios);
         rv.setHasFixedSize(true);
@@ -58,14 +56,11 @@ public class TelaListaVestigios extends Fragment {
         }
     }
 
-    public void sendMessage() {
-        try {
-            HttpVestigios t = new HttpVestigios();
-            t.execute().get();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void onResume() {
+        super.onResume();
+        va = new VestigioAdapter(this.getContext(), StaticProperties.getListaVestigios());
+        rv.setAdapter(va);
     }
 
     public void configuraBotaoAdiciona(View v) {

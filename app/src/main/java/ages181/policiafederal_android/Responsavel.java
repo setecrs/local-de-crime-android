@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.LinkedList;
 
 public class Responsavel extends Fragment {
-
-    private EditText editTextNomeResponsavel, editTextCargoResponsavel, editTextDocResponsavel, editTextEntrevistaResponsavel;
     private EditText nome, cargo, documento, entrevista;
 
     @Override
@@ -30,8 +31,7 @@ public class Responsavel extends Fragment {
             @Override
             public void onClick(View v)
             {
-                HttpResponsavel http_responsavel = new HttpResponsavel(nome.getText().toString(), cargo.getText().toString(), documento.getText().toString(), entrevista.getText().toString());
-                http_responsavel.execute();
+                salvaResponsavel();
             }
         });
 
@@ -39,6 +39,46 @@ public class Responsavel extends Fragment {
 
 
         return v;
+    }
+
+    public void salvaResponsavel(){
+        if(!verificaAlteracao()) return;
+
+        try{
+            HttpResponsavel http_responsavel = new HttpResponsavel(nome.getText().toString(), cargo.getText().toString(), documento.getText().toString(), entrevista.getText().toString());
+            http_responsavel.execute().get();
+
+            //VERIFICA RETORNO
+            if(http_responsavel.getStatusCode() == 200){
+                atualizaOcorrenciaLocal();
+                Toast toast = Toast.makeText(this.getContext(), "Dados salvos!", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                Toast toast = Toast.makeText(this.getContext(), "Erro: "+http_responsavel.getStatusCode(), Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }catch (Exception e){
+            Toast toast = Toast.makeText(this.getContext(), "Erro interno", Toast.LENGTH_SHORT);
+            toast.show();
+            e.printStackTrace();
+        }
+    }
+
+    public void atualizaOcorrenciaLocal(){
+        CarregarOcorrencia.respNome = nome.getText().toString();
+        CarregarOcorrencia.respCargo = cargo.getText().toString();
+        CarregarOcorrencia.respDoc = documento.getText().toString();
+        CarregarOcorrencia.respEntrevista = entrevista.getText().toString();
+    }
+
+    public boolean verificaAlteracao(){
+        if(!nome.getText().toString().equals(CarregarOcorrencia.getRespNome()) ||
+                !cargo.getText().toString().equals(CarregarOcorrencia.getRespCargo()) ||
+                !documento.getText().toString().equals(CarregarOcorrencia.getRespDoc())||
+                !entrevista.getText().toString().equals(CarregarOcorrencia.getRespEntrevista())){
+            return true;
+        } else
+            return false;
     }
 
     public void carregaResponsavel(){

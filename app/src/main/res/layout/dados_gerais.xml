@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context="ages181.policiafederal_android.MainActivity"
     tools:layout_editor_absoluteY="81dp">
+
     <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:layout_width="0px"
-        android:layout_height="0px"></LinearLayout>
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true"></LinearLayout>
 
 
     <TextView
@@ -54,15 +55,15 @@
     <TextView
         android:id="@+id/textViewCargo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="18dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Data da Ocorrência"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/peritosEnvolvidosId" />
+        app:layout_constraintTop_toBottomOf="@+id/lista" />
 
     <TextView
         android:id="@+id/textViewDoc"
@@ -96,10 +97,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDoc" />
 
@@ -137,16 +139,15 @@
 
     <EditText
         android:id="@+id/peritosEnvolvidosId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="292dp"
+        android:layout_height="43dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Digite aqui os Peritos Envolvidos"
+        android:hint="@string/peritosEnvolvidos"
         android:inputType="textPersonName"
-        android:text="@string/peritosEnvolvidos"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAddPerito"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -156,12 +157,37 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="@color/blue"
         android:text="Salvar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horaOcorrenciaId" />
+
+    <Button
+        android:id="@+id/buttonAddPerito"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="+"
+        app:layout_constraintBottom_toTopOf="@+id/lista"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+        android:id="@+id/lista"
+        android:layout_width="344dp"
+        android:layout_height="88dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/peritosEnvolvidosId">
+
+    </ListView>
 
 </android.support.constraint.ConstraintLayout>

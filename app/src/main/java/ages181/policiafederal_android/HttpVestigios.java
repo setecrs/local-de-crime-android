@@ -51,13 +51,13 @@ public class HttpVestigios extends AsyncTask<Void, Void, List<Vestigio>> {
             String idOcorrencia;
 
             //Comparação para verificar se é uma nova ocorrência ou uma existente
-            idOcorrencia = StaticProperties.getId();
+            idOcorrencia = StaticProperties.getIdOcorrencia();
 
             //Requisição para capturar os vestígios da ocorrência acessada
             Request requestSignup = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
-                    .url("https://ages-pf.herokuapp.com/vestigios/"+idOcorrencia)
+                    .url(StaticProperties.getUrl()+"vestigios/"+idOcorrencia)
                     .build();
 
             //Capturando resposta

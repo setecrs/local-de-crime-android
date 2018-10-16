@@ -41,13 +41,13 @@ public class HttpTestemunha extends AsyncTask<Void, Void, Void> {
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
-                    .url(StaticProperties.getUrl() + "testemunhas/" + StaticProperties.getId())
+                    .url(StaticProperties.getUrl() + "testemunhas/" + StaticProperties.getIdOcorrencia())
                     .patch(body)
                     .build();
 
             Response response = client.newCall(request).execute();
 
-            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println("Responde body Testemunhas: " + response.body().string());
 
         } catch (Exception e) {

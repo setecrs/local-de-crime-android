@@ -1,5 +1,12 @@
 package ages181.policiafederal_android;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 public class Ocorrencia {
 
     private String id, numeroOcorrencia, dataHoraAcionamento, tipoLocal;
@@ -54,6 +61,7 @@ public class Ocorrencia {
 
         String datahora = data + " | " + hora;
         return datahora;
+
     }
 
 

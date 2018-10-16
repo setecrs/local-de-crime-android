@@ -28,12 +28,12 @@ import okhttp3.Response;
 public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
 
     //Variáveis que o usuário informou na tela de adicionar vestígios
-    private Editable etiqueta, informacoesAdicionais;
+    private String etiqueta, informacoesAdicionais;
     private boolean coletado;
     private String tipoVestigio, nomeVestigio;
 
     //Construtor
-    public HttpNovoVestigio (boolean coletadoN, Editable etiquetaN, Editable informacoesAdicionaisN, String tipo, String nomeVest){
+    public HttpNovoVestigio (boolean coletadoN, String etiquetaN, String informacoesAdicionaisN, String tipo, String nomeVest){
         this.coletado = coletadoN;
         this.etiqueta = etiquetaN;
         this.informacoesAdicionais = informacoesAdicionaisN;
@@ -43,7 +43,6 @@ public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
 
     //Variáveis locais
     private String idTipoVestigio;
-    private String idOcorrencia;
 
 
     OkHttpClient client = new OkHttpClient();
@@ -57,36 +56,37 @@ public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
                 //Percorrendo todos os tiposVestigios
                 for (int i = 0; i < jsonVestigios.length(); i++) {
                         //Comparando cada vestigio com o nome informado pelo usuário
-                    if (nomeVestigio.equalsIgnoreCase(jsonVestigios
-                            .getJSONObject(i).getString("nomeVestigio"))) {
+                    if (nomeVestigio.equals(jsonVestigios.getJSONObject(i).getString("nomeVestigio")) &&
+                            tipoVestigio.equals(jsonVestigios.getJSONObject(i).getString("tipoVestigio"))) {
                         //Setando o ID do tipoVestigio na variável local idTipoVestigio
                         idTipoVestigio = jsonVestigios.getJSONObject(i).getString("_id");
+                        break;
                     }
                 }
 
 
             //Criando o JSON que será enviado ao banco para criar um novo vestígio
             String json = "{\"tipo\":\"" + idTipoVestigio + "\"," +
-                    "\"coletado\":\"" + this.coletado + "\"," +
-                    "\"etiqueta\":\"" + this.etiqueta + "\"," +
-                    "\"informacoesAdicionais\":\"" + this.informacoesAdicionais + "\"}";
+                    "\"coletado\":\"" + coletado + "\"," +
+                    "\"etiqueta\":\"" + etiqueta + "\"," +
+                    "\"informacoesAdicionais\":\"" + informacoesAdicionais + "\"}";
 
             //Setando a requisição JSON criada acima
             RequestBody body_vestigio = RequestBody.create(JSON, json);
 
-            //Comparação para verificar se a é uma nova ocorrencia ou uma existe, e capturar corretamente o ID do mesmo
-                idOcorrencia = StaticProperties.getId();
-
             //Criando a requisição com a rota para criar um novo vestígio
-            Request requestSignup = new Request.Builder()
+            Request requestNovoVestigio = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .post(body_vestigio)
-                    .url(StaticProperties.getUrl() + "vestigios/"+idOcorrencia)
+                    .url(StaticProperties.getUrl() + "vestigios/"+StaticProperties.getIdOcorrencia())
                     .build();
 
             //Capturando a resposta da requisição
-            Response responseSignup = client.newCall(requestSignup).execute();
+            Response responseNovoVestigio = client.newCall(requestNovoVestigio).execute();
+
+            System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
+            System.out.println(responseNovoVestigio.body().string());
 
         } catch (Exception e) {
             e.printStackTrace();

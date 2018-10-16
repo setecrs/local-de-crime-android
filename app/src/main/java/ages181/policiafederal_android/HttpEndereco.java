@@ -19,10 +19,12 @@ import okhttp3.Response;
 public class HttpEndereco extends AsyncTask<Void, Void, Void> {
 
     private Exception exception;
-    private String local, estado, cidade, rua, numero, complemento;
-    public HttpEndereco(String local, String estado, String cidade, String rua, String numero, String complemento) {
+    private String tipoLocal, outroTipoLocal, estado, cidade, rua, numero, complemento;
+    private int status;
+    public HttpEndereco(String tipoLocal,String outroTipoLocal, String estado, String cidade, String rua, String numero, String complemento) {
 
-        this.local = local;
+        this.tipoLocal = tipoLocal;
+        this.outroTipoLocal = outroTipoLocal;
         this.estado = estado;
         this.cidade = cidade;
         this.rua = rua;
@@ -30,6 +32,9 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
         this.complemento = complemento;
     }
 
+    public int getStatusCode(){
+        return status;
+    }
 
     OkHttpClient client = new OkHttpClient();
 
@@ -39,11 +44,10 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
 
     protected Void doInBackground(Void... params) {
         try {
-
-            // TODO: Implementar Município
-            String json = "{\"tipolocal\": \""+ local +"\", \"estado\": \""+ estado +
-            "\", \"logradouro\": \""+ rua + "\", \"complemento\": \""+ complemento +
-            "\", \"numero\": \""+ numero +"\"}";
+            String json = "{\"tipoLocal\": \"" + tipoLocal + "\", \"estado\": \"" + estado +
+                    "\", \"logradouro\": \"" + rua + "\", \"complemento\": \"" + complemento +
+                    "\", \"numero\": \"" + numero + "\", \"municipio\": \"" + cidade + "\"," +
+                    " \"outroTipoLocal\": \"" + outroTipoLocal + "\"}";
 
             RequestBody body_endereco = RequestBody.create(JSON, json);
 
@@ -51,17 +55,18 @@ public class HttpEndereco extends AsyncTask<Void, Void, Void> {
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .patch(body_endereco)
-                    .url(StaticProperties.getUrl()+ "endereco/" + StaticProperties.getId())
+                    .url(StaticProperties.getUrl() + "endereco/" + StaticProperties.getIdOcorrencia())
                     .build();
 
             Response response = client.newCall(request).execute();
 
-            System.out.println("ID ocorrencia: " + StaticProperties.getId());
+            System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println(response.body().string());
+            status = response.code();
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
         }
     }

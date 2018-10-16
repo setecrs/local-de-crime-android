@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">policiaFederal-Android</string>
+    <string name="app_name2">Registro de Ocorrências Polícia Federal</string>
     <string name="num_ocorrencia" />
     <string name="numOcorrencia" />
     <string name="sedeOcorrencia" />
-    <string name="peritosEnvolvidos" />
+    <string name="peritosEnvolvidos" >Nome do perito</string>
     <string name="nome_do_respons_vel_presente_no_local">Nome do responsável presente no local</string>
     <string name="digite_aqui_o_nome_do_respons_vel">Digite aqui o nome do Responsável</string>
     <string name="cargo_do_respons_vel_presente_do_local">Cargo do responsável presente do local</string>
