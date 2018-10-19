@@ -10,7 +10,8 @@ import java.util.TimeZone;
 
 public class StaticProperties {
 
-    private static String url = "http://192.168.0.101:3009/";
+//    private static String url = "http://192.168.0.101:3009/";
+    private static String url = "http://www.hml.ages.pucrs.br:4601/";
     private static String token;
     private static String idOcorrencia;
     private static JSONObject jsonListas;

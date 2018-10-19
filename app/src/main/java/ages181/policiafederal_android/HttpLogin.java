@@ -3,13 +3,16 @@ package ages181.policiafederal_android;
 import android.os.AsyncTask;
 import android.text.Editable;
 import android.util.Base64;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 
 import okhttp3.MediaType;
@@ -85,9 +88,9 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
                 System.out.println("Login inválido");
             }
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             return null;
 
         }
