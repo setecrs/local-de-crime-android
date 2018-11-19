@@ -4,14 +4,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
 public class StaticProperties {
 
-    private static String url = "http://192.168.0.101:3009/";
-   // private static String url = "http://www.hml.ages.pucrs.br:4601/";
+    private static String url = "https://192.168.0.199:3009/";
+    // private static String url = "http://www.hml.ages.pucrs.br:4601/";
     private static String token;
     private static String idOcorrencia;
     private static JSONObject jsonListas;
@@ -42,7 +41,7 @@ public class StaticProperties {
     }
 
     public static void setJsonArrayOcorrencias(JSONArray jsinho) {
-        StaticProperties.jsonArrayOcorrencias= jsinho;
+        StaticProperties.jsonArrayOcorrencias = jsinho;
     }
 
     public static List<Ocorrencia> getListaOcorrencias() {
@@ -96,16 +95,17 @@ public class StaticProperties {
      * @param data recebe string com formato da data dd/MM/yyyy
      * @param hora recebe string com formato da hora HH:mm
      * @return Date formatado
-     * */
-    public static Date formataDataHora(String data, String hora){
+     */
+    public static Long formataDataHora(String data, String hora) {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         String[] dataSplit = data.split("/");
         String[] horaSplit = hora.split(":");
         cal.set(Calendar.YEAR, Integer.parseInt(dataSplit[2]));
-        cal.set(Calendar.MONTH, Integer.parseInt(dataSplit[1])-1);
+        cal.set(Calendar.MONTH, Integer.parseInt(dataSplit[1]) - 1);
         cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dataSplit[0]));
         cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horaSplit[0]));
         cal.set(Calendar.MINUTE, Integer.parseInt(horaSplit[1]));
-        return cal.getTime();
+        cal.getTimeInMillis();
+        return cal.getTimeInMillis();
     }
 }

@@ -18,13 +18,13 @@ public class VestigioAdapter extends RecyclerView.Adapter<VestigioAdapter.Vestig
     private List<Vestigio> listaVestigio;
     private static ItemClickListener itemClickListener;
 
-    public void setOnItemClickListener(ItemClickListener itemClickListener){
-        this.itemClickListener = itemClickListener;
+    public void setOnItemClickListener(ItemClickListener itemClickListener) {
+        VestigioAdapter.itemClickListener = itemClickListener;
     }
 
     public VestigioAdapter(Context context, List<Vestigio> listaVestigio) {
         this.context = context;
-        if(listaVestigio == null)
+        if (listaVestigio == null)
             this.listaVestigio = new ArrayList<>();
         else
             this.listaVestigio = listaVestigio;
@@ -41,7 +41,7 @@ public class VestigioAdapter extends RecyclerView.Adapter<VestigioAdapter.Vestig
     @Override
     public void onBindViewHolder(VestigioViewHolder holder, int position) {
         Vestigio oc = listaVestigio.get(position);
-        holder.tvTipoVestigio.setText(oc.getNumId()+" - "+oc.getEtiqueta()+"("+oc.getNomeVestigio()+")");
+        holder.tvTipoVestigio.setText(oc.getNumId() + " - " + oc.getEtiqueta() + "(" + oc.getNomeVestigio() + ")");
         holder.tvInformacoesAdicionais.setText(oc.getInformacoesAdicionais());
     }
 
@@ -63,9 +63,10 @@ public class VestigioAdapter extends RecyclerView.Adapter<VestigioAdapter.Vestig
             tvInformacoesAdicionais = itemView.findViewById(R.id.tvInformacaoAdicional);
             itemView.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View v) {
-            if(itemClickListener != null) {
+            if (itemClickListener != null) {
                 try {
                     itemClickListener.onItemClick(getAdapterPosition());
                 } catch (JSONException e) {

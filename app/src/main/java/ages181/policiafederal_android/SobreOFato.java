@@ -1,48 +1,45 @@
 package ages181.policiafederal_android;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.support.v4.app.Fragment;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
+import java.util.List;
 
 public class SobreOFato extends Fragment {
     Calendar calendarHoraAtual;
-    EditText editTextHoraProvavel, editTextDataProvavel, editTextOutroTipoDelito, editTextOutroModusOperandis;
+    EditText editTextHoraProvavel, editTextDataProvavel, editTextOutroTipoDelito,
+            editTextPossiveisSuspeitos, editTextValoresSub;
     Spinner spinnerTipoDeDelito;
-    CheckBox checkBoxExplosivo, checkBoxCorreiosCortaAlarme, checkBoxViolencia, checkBoxNaoHouveDano,
-            checkBoxForcarPortaJanela, checkBoxMaoArmada, checkBoxLevarCofre, checkBoxOutroModusOperandi,
-            checkBoxOrganizacaoCriminosa, checkBoxPeDeCabra, checkBoxMacarico, checkBoxQuebrouVidro,
-            checkBoxBuracoNaParede, checkBoxChaveMixa, checkBoxCorreiosArma, checkBoxChupaCabra,
-            checkBoxNomeDadosDivergentes, checkBoxFurtoDescuido, checkBoxMoedaFalsa, checkBoxFurtoPequenoValor,
-            checkBoxFurtoCamera, checkBoxCorreiosVeiculoComEnd, checkBoxCorreiosVeiculoZonaNorte,
-            checkBoxCorreiosVeiculoZonaSul, checkBoxCorreiosDoisDeMoto, checkBoxCorreiosSuperbonder;
 
-    String dataProvavel, horaProvavel, outroTipoDelito, outroTipoModusOperandi, itemSpinner;
-    JSONArray modusOperandi;
+    String dataProvavel, horaProvavel, outroTipoDelito, itemSpinner;
+
+    private List<String> listaDelitos;
+    private ArrayAdapter<String> adapter;
+    private ListView listaViewDelitos;
+
+    private Button button;
 
 
     @Override
@@ -53,84 +50,85 @@ public class SobreOFato extends Fragment {
         editTextHoraProvavel = v.findViewById(R.id.editTextHoraProvavel);
         editTextDataProvavel = v.findViewById(R.id.editTextDataProvavel);
         editTextOutroTipoDelito = v.findViewById(R.id.editTextOutroTipoDelito);
-        editTextOutroModusOperandis = v.findViewById(R.id.editTextOutroModusOperandi);
         spinnerTipoDeDelito = v.findViewById(R.id.editTextTipoDeDelito);
-
-        checkBoxExplosivo = v.findViewById(R.id.checkBoxExplosivo);
-        checkBoxCorreiosCortaAlarme = v.findViewById(R.id.checkBoxCorreiosCortaAlarme);
-        checkBoxViolencia = v.findViewById(R.id.checkBoxViolencia);
-        checkBoxNaoHouveDano = v.findViewById(R.id.checkBoxNaoHouveDano);
-        checkBoxForcarPortaJanela = v.findViewById(R.id.checkBoxForcarPortaJanela);
-        checkBoxMaoArmada = v.findViewById(R.id.checkBoxMaoArmada);
-        checkBoxLevarCofre = v.findViewById(R.id.checkBoxLevarCofre);
-        checkBoxOutroModusOperandi = v.findViewById(R.id.checkBoxOutroModusOperandi);
-        checkBoxOrganizacaoCriminosa = v.findViewById(R.id.checkBoxOrganizacaoCriminosa);
-        checkBoxPeDeCabra = v.findViewById(R.id.checkBoxPeDeCabra);
-        checkBoxMacarico = v.findViewById(R.id.checkBoxMacarico);
-        checkBoxQuebrouVidro = v.findViewById(R.id.checkBoxQuebrouVidro);
-        checkBoxBuracoNaParede = v.findViewById(R.id.checkBoxBuracoNaParede);
-        checkBoxChaveMixa = v.findViewById(R.id.checkBoxChaveMixa);
-        checkBoxCorreiosArma = v.findViewById(R.id.checkBoxCorreiosArma);
-        checkBoxChupaCabra = v.findViewById(R.id.checkBoxChupaCabra);
-        checkBoxNomeDadosDivergentes = v.findViewById(R.id.checkBoxNomeDadosDivergentes);
-        checkBoxFurtoDescuido = v.findViewById(R.id.checkBoxFurtoDescuido);
-        checkBoxMoedaFalsa = v.findViewById(R.id.checkBoxMoedaFalsa);
-        checkBoxFurtoPequenoValor = v.findViewById(R.id.checkBoxFurtoPequenoValor);
-        checkBoxFurtoCamera = v.findViewById(R.id.checkBoxFurtoCamera);
-        checkBoxCorreiosVeiculoComEnd = v.findViewById(R.id.checkBoxCorreiosVeiculoEnd);
-        checkBoxCorreiosVeiculoZonaNorte = v.findViewById(R.id.checkBoxCorreiosVeiculoZN);
-        checkBoxCorreiosVeiculoZonaSul = v.findViewById(R.id.checkBoxCorreiosVeiculoZS);
-        checkBoxCorreiosDoisDeMoto = v.findViewById(R.id.checkBoxCorreiosDoisDeMoto);
-        checkBoxCorreiosSuperbonder = v.findViewById(R.id.checkBoxCorreiosSuperbonder);
-
+        editTextPossiveisSuspeitos = v.findViewById(R.id.possiveisSuspeitos);
+        editTextValoresSub = v.findViewById(R.id.valoresSubtraidos);
+        button = v.findViewById(R.id.buttonSobreOFato);
         editTextDataProvavel.setFocusable(false);
         editTextHoraProvavel.setFocusable(false);
-        editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
         showTimePickerDialog();
         showDatePickerDialog();
+
+        try {
+            JSONArray js = StaticProperties.getJsonListas().getJSONArray("tipoDelitos");
+
+            String[] arraySpinner = new String[js.length() + 1];
+
+            arraySpinner[0] = "Selecione os delitos";
+
+            for (int i = 0; i < js.length(); i++) {
+                arraySpinner[i + 1] = js.getJSONObject(i).get("tipoDelito").toString();
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
+                    android.R.layout.simple_spinner_dropdown_item, arraySpinner);
+
+            spinnerTipoDeDelito.setAdapter(adapter);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         onClickSpinner(spinnerTipoDeDelito);
 
-        onClickCheckboxListener(checkBoxExplosivo );
-        onClickCheckboxListener(checkBoxCorreiosCortaAlarme);
-        onClickCheckboxListener(checkBoxViolencia);
-        onClickCheckboxListener(checkBoxNaoHouveDano);
-        onClickCheckboxListener(checkBoxForcarPortaJanela);
-        onClickCheckboxListener(checkBoxMaoArmada);
-        onClickCheckboxListener(checkBoxLevarCofre);
-        onClickCheckboxListener(checkBoxOutroModusOperandi);
-        onClickCheckboxListener(checkBoxOrganizacaoCriminosa);
-        onClickCheckboxListener(checkBoxPeDeCabra);
-        onClickCheckboxListener(checkBoxMacarico);
-        onClickCheckboxListener(checkBoxQuebrouVidro);
-        onClickCheckboxListener(checkBoxBuracoNaParede);
-        onClickCheckboxListener(checkBoxChaveMixa);
-        onClickCheckboxListener(checkBoxCorreiosArma);
-        onClickCheckboxListener(checkBoxChupaCabra);
-        onClickCheckboxListener(checkBoxNomeDadosDivergentes);
-        onClickCheckboxListener(checkBoxFurtoDescuido);
-        onClickCheckboxListener(checkBoxMoedaFalsa);
-        onClickCheckboxListener(checkBoxFurtoPequenoValor);
-        onClickCheckboxListener(checkBoxFurtoCamera);
-        onClickCheckboxListener(checkBoxCorreiosVeiculoComEnd);
-        onClickCheckboxListener(checkBoxCorreiosVeiculoZonaNorte);
-        onClickCheckboxListener(checkBoxCorreiosVeiculoZonaSul);
-        onClickCheckboxListener(checkBoxCorreiosDoisDeMoto);
-        onClickCheckboxListener(checkBoxCorreiosSuperbonder);
-
-        onClickEditText(editTextOutroModusOperandis);
-        onClickEditText(editTextOutroTipoDelito);
-
 
         carregaSobreOFato();
 
-        Button button = (Button) v.findViewById(R.id.buttonSobreOFato);
-        button.setOnClickListener(new View.OnClickListener()
-        {
+        //Lista de delitos
+        listaViewDelitos = v.findViewById(R.id.listaDelitos);
+
+        listaViewDelitos.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                String delitoSelecionado = (String) listaViewDelitos.getItemAtPosition(position);
+
+                //CAIXA DE CONFIRMACAO
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                listaDelitos.remove(position);
+                                adapter.notifyDataSetChanged();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                //ALERTA
+                if (!CarregarOcorrencia.isEncerrada) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+                    builder.setMessage("Deseja remover '" + delitoSelecionado + "'?").setPositiveButton("Sim", dialogClickListener)
+                            .setNegativeButton("Não", dialogClickListener).show();
+                }
+            }
+        });
+
+        adapter = new ArrayAdapter<String>(this.getContext(),
+                android.R.layout.simple_list_item_1, listaDelitos);
+
+        listaViewDelitos.setAdapter(adapter);
+
+        //Fim lista de delitos
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 salvaSobreOFato();
             }
         });
@@ -139,118 +137,87 @@ public class SobreOFato extends Fragment {
         return v;
     }
 
-    public void salvaSobreOFato(){
-        if(!verificaAlteracao()) return;
+    public void salvaSobreOFato() {
+        if (!verificaAlteracao()) return;
 
         try {
-            Date dataOcorrencia = null;
+            Long dataOcorrencia = null;
 
             if (!editTextHoraProvavel.getText().toString().trim().equals("") &&
                     !editTextDataProvavel.getText().toString().trim().equals("")) {
                 dataOcorrencia = StaticProperties.formataDataHora(editTextDataProvavel.getText().toString(),
                         editTextHoraProvavel.getText().toString());
             }
+
             HttpSobreOFato htp = new HttpSobreOFato(editTextOutroTipoDelito.getText().toString(),
-                    spinnerTipoDeDelito.getSelectedItem().toString(), dataOcorrencia);
+                    new JSONArray(listaDelitos), dataOcorrencia, editTextValoresSub.getText().toString(),
+                    editTextPossiveisSuspeitos.getText().toString());
             htp.execute().get();
 
             //VERIFICA RETORNO
-            if(htp.getStatusCode() == 200){
+            if (htp.getStatusCode() == 200) {
                 atualizaOcorrenciaLocal();
                 Toast toast = Toast.makeText(this.getContext(), "Dados salvos!", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
-                Toast toast = Toast.makeText(this.getContext(), "Erro: "+htp.getStatusCode(), Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this.getContext(), "Erro: " + htp.getStatusCode(), Toast.LENGTH_SHORT);
                 toast.show();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             Toast toast = Toast.makeText(this.getContext(), "Erro interno", Toast.LENGTH_SHORT);
             toast.show();
             e.printStackTrace();
         }
     }
 
-    public boolean verificaAlteracao(){
-        String txtTipoDelito;
-        if(spinnerTipoDeDelito.getSelectedItemPosition() == 0)
-            txtTipoDelito = "";
-        else
-            txtTipoDelito = spinnerTipoDeDelito.getSelectedItem().toString();
-
-        if(!editTextDataProvavel.getText().toString().equals(CarregarOcorrencia.getSfDataProvavel()) ||
+    public boolean verificaAlteracao() {
+        return !editTextDataProvavel.getText().toString().equals(CarregarOcorrencia.getSfDataProvavel()) ||
                 !editTextHoraProvavel.getText().toString().equals(CarregarOcorrencia.getSfHoraProvavel()) ||
-                !txtTipoDelito.equals(CarregarOcorrencia.getSfTipoDelito())||
-                !editTextOutroTipoDelito.getText().toString().equals(CarregarOcorrencia.getOutroTipodeDelito())){
-            return true;
-        } else
-            return false;
+                !listaDelitos.equals(CarregarOcorrencia.getListaDelitos()) ||
+                !editTextOutroTipoDelito.getText().toString().equals(CarregarOcorrencia.getOutroTipodeDelito()) ||
+                !editTextValoresSub.getText().toString().equals(CarregarOcorrencia.getValoresSubtraidos()) ||
+                !editTextPossiveisSuspeitos.getText().toString().equals(CarregarOcorrencia.getPossiveisSuspeitos());
     }
 
-    public void atualizaOcorrenciaLocal(){
+    public void atualizaOcorrenciaLocal() {
         CarregarOcorrencia.sfDataProvavel = editTextDataProvavel.getText().toString();
         CarregarOcorrencia.sfHoraProvavel = editTextHoraProvavel.getText().toString();
-        CarregarOcorrencia.sfTipoDelito = spinnerTipoDeDelito.getSelectedItem().toString();
+
+        String tipoDelito = spinnerTipoDeDelito.getSelectedItem().toString();
+        if (spinnerTipoDeDelito.getSelectedItemPosition() == 0) {
+            tipoDelito = "";
+        }
+        CarregarOcorrencia.listaDelitos = new LinkedList<String>(listaDelitos);
         CarregarOcorrencia.outroTipodeDelito = editTextOutroTipoDelito.getText().toString();
+        CarregarOcorrencia.valoresSubtraidos = editTextValoresSub.getText().toString();
+        CarregarOcorrencia.possiveisSuspeitos = editTextPossiveisSuspeitos.getText().toString();
     }
 
     public void onClickSpinner(View v) {
-        ((Spinner)v).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ((Spinner) v).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int posicao, long id) {
                 itemSpinner = parent.getSelectedItem().toString();
-                if (parent.getSelectedItem().toString().equals("Outro")) {
-                    editTextOutroTipoDelito.setVisibility(View.VISIBLE);
-                } else {
-                    editTextOutroTipoDelito.setVisibility(View.GONE);
-                    editTextOutroTipoDelito.setText("");
+                if (parent.getSelectedItemPosition() != 0) {
+                    if (!listaDelitos.contains(parent.getSelectedItem().toString())) {
+                        listaDelitos.add(parent.getSelectedItem().toString());
+                        parent.setSelection(0);
+                        adapter.notifyDataSetChanged();
+                        listaViewDelitos.setSelection(listaViewDelitos.getCount() - 1);
+                    } else {
+                        parent.setSelection(0);
+                    }
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
     }
 
-    public void onClickCheckboxListener(View v) {
-        ((CheckBox)v).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && buttonView.isChecked()) {
 
-                    editTextOutroModusOperandis.setVisibility(View.VISIBLE);
-
-                }else if (buttonView.getId() == R.id.checkBoxOutroModusOperandi && !(buttonView.isChecked())) {
-
-                    editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-                    editTextOutroModusOperandis.setText("");
-                }
-
-            }
-        });
-    }
-
-    public void onClickEditText(View v){
-        final EditText aux = (EditText)v;
-        ((EditText)v).addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {  }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {  }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(aux.getId() == R.id.checkBoxOutroModusOperandi){
-                    outroTipoModusOperandi = editable.toString();
-                } else {
-                    outroTipoDelito = editable.toString();
-                }
-            }
-        });
-
-    }
-
-    public void showDatePickerDialog(){
+    public void showDatePickerDialog() {
         editTextDataProvavel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -265,20 +232,19 @@ public class SobreOFato extends Fragment {
     protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            editTextDataProvavel.setText(day+"/"+(month+1)+"/"+year);
+            editTextDataProvavel.setText(day + "/" + (month + 1) + "/" + year);
             dataProvavel = editTextDataProvavel.getText().toString();
         }
     };
 
 
+    public void showTimePickerDialog() {
 
-    public void showTimePickerDialog(){
-
-        editTextHoraProvavel.setOnClickListener(new View.OnClickListener(){
+        editTextHoraProvavel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 new TimePickerDialog(getActivity(), captarHorario, calendarHoraAtual.get(Calendar.HOUR_OF_DAY),
-                        calendarHoraAtual.get(Calendar.MINUTE),true).show();
+                        calendarHoraAtual.get(Calendar.MINUTE), true).show();
             }
 
         });
@@ -288,16 +254,16 @@ public class SobreOFato extends Fragment {
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            if(minuto < 10){
-                editTextHoraProvavel.setText(hora+":0"+minuto);
+            if (minuto < 10) {
+                editTextHoraProvavel.setText(hora + ":0" + minuto);
             } else {
-                editTextHoraProvavel.setText(hora+":"+minuto);
+                editTextHoraProvavel.setText(hora + ":" + minuto);
             }
             horaProvavel = editTextHoraProvavel.getText().toString();
         }
     };
 
-    public void carregaSobreOFato(){
+    public void carregaSobreOFato() {
 
         boolean aux = false;
         JSONObject auxJson;
@@ -306,99 +272,28 @@ public class SobreOFato extends Fragment {
         editTextHoraProvavel.setText(CarregarOcorrencia.getSfHoraProvavel());
         editTextDataProvavel.setText(CarregarOcorrencia.getSfDataProvavel());
 
-        itemSpinner = CarregarOcorrencia.getSfTipoDelito();
+        listaDelitos = new LinkedList<String>(CarregarOcorrencia.getListaDelitos());
 
-        if(itemSpinner == null){
-            spinnerTipoDeDelito.setSelection(0);
-        } else {
-            for(int i = 1; i < spinnerTipoDeDelito.getAdapter().getCount(); i++){
-                if(itemSpinner.equalsIgnoreCase(spinnerTipoDeDelito.getItemAtPosition(i).toString())){
-                    spinnerTipoDeDelito.setSelection(i);
-                    break;
-                }
-            }
-            if(itemSpinner.equals("Outro")){
-                editTextOutroTipoDelito.setVisibility(View.VISIBLE);
-                editTextOutroTipoDelito.setText(CarregarOcorrencia.getOutroTipodeDelito());
-            }
+        editTextOutroTipoDelito.setText(CarregarOcorrencia.getOutroTipodeDelito());
+
+        editTextPossiveisSuspeitos.setText(CarregarOcorrencia.getPossiveisSuspeitos());
+        editTextValoresSub.setText(CarregarOcorrencia.getValoresSubtraidos());
+
+        verificaEncerrada();
+    }
+
+    public void verificaEncerrada() {
+        if (CarregarOcorrencia.isEncerrada) {
+            editTextDataProvavel.setEnabled(false);
+            editTextHoraProvavel.setEnabled(false);
+            spinnerTipoDeDelito.setEnabled(false);
+            editTextOutroTipoDelito.setEnabled(false);
+            editTextPossiveisSuspeitos.setEnabled(false);
+            editTextValoresSub.setEnabled(false);
+
+            button.setEnabled(false);
+            button.setVisibility(View.GONE);
         }
-
-        modusOperandi = CarregarOcorrencia.getSfModusOperandi();
-
-        try {
-            if (modusOperandi != null) {
-                for (int i = 0; i < modusOperandi.length(); i++) {
-                    auxJson = modusOperandi.getJSONObject(i);
-                    aux = (boolean) auxJson.get("ativado");
-                    auxCheckBoxtexto = (String) auxJson.get("texto");
-
-                    if (auxCheckBoxtexto.equals(checkBoxExplosivo.getText().toString())) {
-                        checkBoxExplosivo.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosCortaAlarme.getText().toString())) {
-                        checkBoxCorreiosCortaAlarme.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxViolencia.getText().toString())) {
-                        checkBoxViolencia.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxNaoHouveDano.getText().toString())) {
-                        checkBoxNaoHouveDano.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxForcarPortaJanela.getText().toString())) {
-                        checkBoxForcarPortaJanela.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxMaoArmada.getText().toString())) {
-                        checkBoxMaoArmada.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxLevarCofre.getText().toString())) {
-                        checkBoxLevarCofre.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxOrganizacaoCriminosa.getText().toString())) {
-                        checkBoxOrganizacaoCriminosa.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxPeDeCabra.getText().toString())) {
-                        checkBoxPeDeCabra.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxMacarico.getText().toString())) {
-                        checkBoxMacarico.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxQuebrouVidro.getText().toString())) {
-                        checkBoxQuebrouVidro.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxBuracoNaParede.getText().toString())) {
-                        checkBoxBuracoNaParede.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxChaveMixa.getText().toString())) {
-                        checkBoxChaveMixa.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosArma.getText().toString())) {
-                        checkBoxCorreiosArma.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxChupaCabra.getText().toString())) {
-                        checkBoxChupaCabra.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxNomeDadosDivergentes.getText().toString())) {
-                        checkBoxNomeDadosDivergentes.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxFurtoDescuido.getText().toString())) {
-                        checkBoxFurtoDescuido.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxMoedaFalsa.getText().toString())) {
-                        checkBoxMoedaFalsa.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxFurtoPequenoValor.getText().toString())) {
-                        checkBoxFurtoPequenoValor.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxFurtoCamera.getText().toString())) {
-                        checkBoxFurtoCamera.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoComEnd.getText().toString())) {
-                        checkBoxCorreiosVeiculoComEnd.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaNorte.getText().toString())) {
-                        checkBoxCorreiosVeiculoZonaNorte.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosVeiculoZonaSul.getText().toString())) {
-                        checkBoxCorreiosVeiculoZonaSul.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosDoisDeMoto.getText().toString())) {
-                        checkBoxCorreiosDoisDeMoto.setChecked(aux);
-                    } else if (auxCheckBoxtexto.equals(checkBoxCorreiosSuperbonder.getText().toString())) {
-                        checkBoxCorreiosSuperbonder.setChecked(aux);
-                    } else {
-                        if (aux) {
-                            checkBoxOutroModusOperandi.setChecked(aux);
-                            editTextOutroModusOperandis.setVisibility(View.VISIBLE);
-                            editTextOutroModusOperandis.setText(auxCheckBoxtexto);
-                        } else {
-                            checkBoxOutroModusOperandi.setChecked(aux);
-                            editTextOutroModusOperandis.setVisibility(View.INVISIBLE);
-                            editTextOutroModusOperandis.setText("");
-                        }
-                    }
-                }
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
     }
 
     public static SobreOFato newInstance() {

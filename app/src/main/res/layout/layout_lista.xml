@@ -11,8 +11,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@android:color/holo_blue_dark"
-        />
+        android:background="@android:color/holo_blue_dark" />
 
     <TextView
         android:id="@+id/numOcorrencia"

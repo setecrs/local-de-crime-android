@@ -25,11 +25,11 @@ public class TelaLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        imagem = (ImageView) findViewById(R.id.imageView);
+        imagem = findViewById(R.id.imageView);
         imagem.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher_foreground));
 
-        senha = (EditText) findViewById(R.id.editText2);
-        actvUsuario = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextViewUsuario);
+        senha = findViewById(R.id.editText2);
+        actvUsuario = findViewById(R.id.autoCompleteTextViewUsuario);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listaLogin);
@@ -39,7 +39,7 @@ public class TelaLogin extends AppCompatActivity {
 
     }
 
-    private void carregaConteudoAutoComplete(String nomeAutoCompleteTextView, AutoCompleteTextView autoCompleteTextView){
+    private void carregaConteudoAutoComplete(String nomeAutoCompleteTextView, AutoCompleteTextView autoCompleteTextView) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         String texto = sp.getString(nomeAutoCompleteTextView, null);
         autoCompleteTextView.setText(texto);
@@ -51,7 +51,7 @@ public class TelaLogin extends AppCompatActivity {
             HttpLogin t = new HttpLogin(actvUsuario.getText(), senha.getText());
             t.execute().get();
 
-            if (StaticProperties.getToken() != null){
+            if (StaticProperties.getToken() != null) {
                 actvUsuario.setText("");
                 senha.setText("");
                 Intent k = new Intent(TelaLogin.this, TelaListarOcorrencias.class);
@@ -62,6 +62,8 @@ public class TelaLogin extends AppCompatActivity {
             }
 
         } catch (Exception e) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Verifique sua conexão", Toast.LENGTH_SHORT);
+            toast.show();
             e.printStackTrace();
         }
     }

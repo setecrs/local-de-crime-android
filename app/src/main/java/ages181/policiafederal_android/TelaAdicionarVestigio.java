@@ -1,13 +1,7 @@
 package ages181.policiafederal_android;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.nfc.Tag;
-import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,9 +16,7 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class TelaAdicionarVestigio extends AppCompatActivity {
@@ -35,36 +27,36 @@ public class TelaAdicionarVestigio extends AppCompatActivity {
     Spinner spTipo, spNome;
     String itemSelecionado, nomeSelecionado;
     ImageButton botaoVoltar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adicionar_vestigio);
 
 
-
         //Buscando Elementos do layout
-        spTipo = (Spinner) findViewById(R.id.spinnerTipoVestigios);
-        spNome = (Spinner) findViewById(R.id.spinnerNomeVestigios);
-        botaoVoltar = (ImageButton) findViewById(R.id.imageButtonVoltar);
-        etEtiqueta = (EditText) findViewById(R.id.editTextNumeroEtiqueta);
-        etInfoAdd = (EditText) findViewById(R.id.editTextInformacoes);
-        gravar = (Button) findViewById(R.id.buttonGravar);
-        switchColetado = (Switch) findViewById(R.id.switchVestigioColetado);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        spTipo = findViewById(R.id.spinnerTipoVestigios);
+        spNome = findViewById(R.id.spinnerNomeVestigios);
+        botaoVoltar = findViewById(R.id.imageButtonVoltar);
+        etEtiqueta = findViewById(R.id.editTextNumeroEtiqueta);
+        etInfoAdd = findViewById(R.id.editTextInformacoes);
+        gravar = findViewById(R.id.buttonGravar);
+        switchColetado = findViewById(R.id.switchVestigioColetado);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
 
-        if(getIntent().getExtras() != null) {
+        if (getIntent().getExtras() != null) {
             gravar.setVisibility(View.INVISIBLE);
-            TextView tvTitle = (TextView) findViewById(R.id.toolbar_title);
+            TextView tvTitle = findViewById(R.id.toolbar_title);
             tvTitle.setText("Visualizar Vestígio");
             String colExtra = getIntent().getStringExtra("coletado");
             String etiquetaExtra = getIntent().getStringExtra("etiqueta");
             String tipoExtra = getIntent().getStringExtra("tipo");
             String nomeExtra = getIntent().getStringExtra("nome");
             String infoExtra = getIntent().getStringExtra("infoAdicional");
-            if(colExtra.equalsIgnoreCase("false")){
+            if (colExtra.equalsIgnoreCase("false")) {
                 switchColetado.setChecked(false);
                 switchColetado.setEnabled(false);
-            }else{
+            } else {
                 switchColetado.setChecked(true);
                 switchColetado.setEnabled(false);
             }
@@ -86,7 +78,7 @@ public class TelaAdicionarVestigio extends AppCompatActivity {
             etInfoAdd.setFocusable(false);
 
 
-        }else {
+        } else {
 
 
             //Declarando ArrayLists para popular os Spinners
@@ -151,12 +143,12 @@ public class TelaAdicionarVestigio extends AppCompatActivity {
                 }
             });
         }
-            botaoVoltar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    TelaAdicionarVestigio.super.onBackPressed();
-                }
-            });
+        botaoVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TelaAdicionarVestigio.super.onBackPressed();
+            }
+        });
 
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -167,7 +159,7 @@ public class TelaAdicionarVestigio extends AppCompatActivity {
         try {
             //Instanciando a classe HTTP que faz a integração da API com o Android
             HttpNovoVestigio t = new HttpNovoVestigio(switchColetado.isChecked(), etEtiqueta.getText().toString(),
-                    etInfoAdd.getText().toString(), spTipo.getSelectedItem().toString(),
+                    etInfoAdd.getText().toString().replace("\n", ""), spTipo.getSelectedItem().toString(),
                     spNome.getSelectedItem().toString());
             //Executando o método que faz a integração
             t.execute();

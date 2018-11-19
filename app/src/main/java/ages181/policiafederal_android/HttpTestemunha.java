@@ -3,9 +3,18 @@ package ages181.policiafederal_android;
 /**
  * Created by arthu on 28/04/2018.
  */
+
 import android.os.AsyncTask;
 
-import java.util.Date;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -15,13 +24,14 @@ import okhttp3.Response;
 
 public class HttpTestemunha extends AsyncTask<Void, Void, Void> {
 
-    private String nome, documento, funcao,  entrevista;
+    private String nome, documento, funcao, entrevista;
+    private int status;
 
-    public HttpTestemunha(String nome, String documento, String funcao, String entrevista){
-        this.nome = nome;
-        this.documento = documento;
-        this.funcao = funcao;
-        this.entrevista = entrevista;
+    public HttpTestemunha(String nome, String documento, String funcao, String entrevista) {
+        this.nome = nome.replace("\"", "\\\"");
+        this.documento = documento.replace("\"", "\\\"");
+        this.funcao = funcao.replace("\"", "\\\"");
+        this.entrevista = entrevista.replace("\"", "\\\"");
     }
 
     private Exception exception;
@@ -34,7 +44,7 @@ public class HttpTestemunha extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         try {
 
-            String json = "{\"nomeTestemunha\": \"" + nome + "\", \"documentoTestemunha\": \""+ documento + "\", \"funcaoTestemunha\": \"" + funcao + "\", \"entrevistaTestemunha\": \"" + entrevista + "\"}";
+            String json = "{\"nomeTestemunha\": \"" + nome + "\", \"documentoTestemunha\": \"" + documento + "\", \"funcaoTestemunha\": \"" + funcao + "\", \"entrevistaTestemunha\": \"" + entrevista + "\"}";
 
             RequestBody body = RequestBody.create(JSON, json);
 
@@ -45,15 +55,60 @@ public class HttpTestemunha extends AsyncTask<Void, Void, Void> {
                     .patch(body)
                     .build();
 
-            Response response = client.newCall(request).execute();
+            //------------------------SSL
+
+            OkHttpClient.Builder clientBuilder = client.newBuilder().readTimeout(60, TimeUnit.SECONDS);
+
+            boolean allowUntrusted = true;
+
+            if (  allowUntrusted) {
+                final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        X509Certificate[] cArrr = new X509Certificate[0];
+                        return cArrr;
+                    }
+
+                    @Override
+                    public void checkServerTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+
+                    @Override
+                    public void checkClientTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+                }};
+
+                SSLContext sslContext = SSLContext.getInstance("SSL");
+
+                sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+                clientBuilder.sslSocketFactory(sslContext.getSocketFactory());
+
+                HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String hostname, SSLSession session) {
+                        return true;
+                    }
+                };
+                clientBuilder.hostnameVerifier( hostnameVerifier);
+            }
+
+            //------------------------SSL
+
+            Response response = clientBuilder.build().newCall(request).execute();
 
             System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println("Responde body Testemunhas: " + response.body().string());
-
+            status = response.code();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
         }
+    }
+
+    public int getStatusCode() {
+        return status;
     }
 }

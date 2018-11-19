@@ -20,8 +20,8 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Oc
     private List<Ocorrencia> listaOcorrencia;
     private static ItemClickListener itemClickListener;
 
-    public void setOnItemClickListener(ItemClickListener itemClickListener){
-        this.itemClickListener = itemClickListener;
+    public void setOnItemClickListener(ItemClickListener itemClickListener) {
+        OcorrenciaAdapter.itemClickListener = itemClickListener;
     }
 
     public OcorrenciaAdapter(Context context, List<Ocorrencia> listaOcorrencia) {
@@ -43,12 +43,11 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Oc
     @Override
     public void onBindViewHolder(@NonNull OcorrenciaViewHolder holder, int position) {
         Ocorrencia oc = listaOcorrencia.get(position);
-        holder.tvId.setText("Id: "+oc.getId().substring(oc.getId().length()-5, oc.getId().length()));
-        holder.tvNumOcorrencia.setText("Número Ocorrência: "+oc.getNumeroOcorrencia());
-        holder.tvDataAc.setText("Data e Hora Acionamento: "+oc.formatarDataHora());
-        holder.tvTipoLocal.setText("Tipo Local: "+oc.getTipoLocal());
+        holder.tvId.setText("Id: " + oc.getId().substring(oc.getId().length() - 5, oc.getId().length()));
+        holder.tvNumOcorrencia.setText("Número Ocorrência: " + oc.getNumeroOcorrencia());
+        holder.tvDataAc.setText("Data e Hora Acionamento: " + oc.formatarDataHora());
+        holder.tvTipoLocal.setText("Tipo Local: " + oc.getTipoLocal());
     }
-
 
 
     @Override
@@ -64,15 +63,16 @@ public class OcorrenciaAdapter extends RecyclerView.Adapter<OcorrenciaAdapter.Oc
         public OcorrenciaViewHolder(View itemView) {
             super(itemView);
 
-            tvId = (TextView) itemView.findViewById(R.id.idOcorrencia);
-            tvDataAc = (TextView) itemView.findViewById(R.id.tvDataHoraAcionamento);
-            tvNumOcorrencia = (TextView) itemView.findViewById(R.id.numOcorrencia);
-            tvTipoLocal = (TextView) itemView.findViewById(R.id.tvTipoLocal);
+            tvId = itemView.findViewById(R.id.idOcorrencia);
+            tvDataAc = itemView.findViewById(R.id.tvDataHoraAcionamento);
+            tvNumOcorrencia = itemView.findViewById(R.id.numOcorrencia);
+            tvTipoLocal = itemView.findViewById(R.id.tvTipoLocal);
             itemView.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View v) {
-            if(itemClickListener != null) {
+            if (itemClickListener != null) {
                 try {
                     itemClickListener.onItemClick(getAdapterPosition());
                 } catch (JSONException e) {

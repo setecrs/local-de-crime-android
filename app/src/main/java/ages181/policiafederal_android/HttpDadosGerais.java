@@ -3,17 +3,20 @@ package ages181.policiafederal_android;
 /**
  * Created by arthu on 28/04/2018.
  */
-import android.os.AsyncTask;
+
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Date;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -26,12 +29,12 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
     private String numOcorrencia;
     private String sedeOcorrencia;
     private JSONArray peritosAcionados;
-    private Date dataHoraAcionamento;
+    private Long dataHoraAcionamento;
     private int status;
 
-    public HttpDadosGerais(String numOcorrencia, String sedeOcorrencia, JSONArray peritosAcionados, Date dataHoraAcionamento){
-        this.numOcorrencia = numOcorrencia;
-        this.sedeOcorrencia = sedeOcorrencia;
+    public HttpDadosGerais(String numOcorrencia, String sedeOcorrencia, JSONArray peritosAcionados, Long dataHoraAcionamento) {
+        this.numOcorrencia = numOcorrencia.replace("\"", "\\\"");
+        this.sedeOcorrencia = sedeOcorrencia.replace("\"", "\\\"");
         this.peritosAcionados = peritosAcionados;
         this.dataHoraAcionamento = dataHoraAcionamento;
     }
@@ -48,9 +51,8 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
 
             //String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"sede\": \""+ sedeOcorrencia + "\", \"peritosAcionados\" : \"" + peritosAcionados + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
 
-            String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"policiaisAcionados\": " + peritosAcionados + ", \"sede\": \""+ sedeOcorrencia + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
+            String json = "{\"numeroOcorrencia\": \"" + numOcorrencia + "\", \"policiaisAcionados\": " + peritosAcionados + ", \"sede\": \"" + sedeOcorrencia + "\", \"dataHoraAcionamento\" : \"" + dataHoraAcionamento + "\"}";
             RequestBody body = RequestBody.create(JSON, json);
-
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
@@ -58,7 +60,49 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
                     .patch(body)
                     .build();
 
-            Response response = client.newCall(request).execute();
+            //------------------------SSL
+
+            OkHttpClient.Builder clientBuilder = client.newBuilder().readTimeout(60, TimeUnit.SECONDS);
+
+            boolean allowUntrusted = true;
+
+            if (  allowUntrusted) {
+                final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        X509Certificate[] cArrr = new X509Certificate[0];
+                        return cArrr;
+                    }
+
+                    @Override
+                    public void checkServerTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+
+                    @Override
+                    public void checkClientTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+                }};
+
+                SSLContext sslContext = SSLContext.getInstance("SSL");
+
+                sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+                clientBuilder.sslSocketFactory(sslContext.getSocketFactory());
+
+                HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String hostname, SSLSession session) {
+                        return true;
+                    }
+                };
+                clientBuilder.hostnameVerifier( hostnameVerifier);
+            }
+
+            //------------------------SSL
+
+            Response response = clientBuilder.build().newCall(request).execute();
+
 
             System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
             System.out.println("Responde body Http dados Gerais: " + response.body().string());
@@ -66,12 +110,12 @@ public class HttpDadosGerais extends AsyncTask<Void, Void, Void> {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
         }
     }
 
-    public int getStatusCode(){
+    public int getStatusCode() {
         return status;
     }
 }

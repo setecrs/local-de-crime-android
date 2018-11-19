@@ -3,29 +3,20 @@ package ages181.policiafederal_android;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
 
 public class SobreOLocal extends Fragment {
     private EditText horaChegada, dataChegada, infoAdicional;
@@ -33,11 +24,12 @@ public class SobreOLocal extends Fragment {
     private Calendar horarioAtual = Calendar.getInstance();
     private Context context;
     private String itemSpinner;
-    private Date dataHoraChegada;
+    private Long dataHoraChegada;
+    private Button button;
 
 
-    private static final String[] condicoesLocal = { "Condições do Local",
-            "Preservado", "Não preservado" };
+    private static final String[] condicoesLocal = {"Condições do Local",
+            "Preservado", "Não preservado"};
 
 
     @Override
@@ -49,22 +41,21 @@ public class SobreOLocal extends Fragment {
         dataChegada = v.findViewById(R.id.etDataChegada);
         spCondicoesLocal = v.findViewById(R.id.spCondicoesLocal);
         infoAdicional = v.findViewById(R.id.etInfoAdicional);
+        button = v.findViewById(R.id.buttonSobreOLocal);
         dataChegada.setFocusable(false);
         horaChegada.setFocusable(false);
         showTimePickerDialog();
         showDatePickerDialog();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context,android.R.layout.simple_list_item_1, condicoesLocal);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, condicoesLocal);
         spCondicoesLocal.setAdapter(adapter);
 
         carregaSobreOLocal();
 
-        Button button = (Button) v.findViewById(R.id.buttonSobreOLocal);
-        button.setOnClickListener(new View.OnClickListener()
-        {
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 salvaSobreOLocal();
             }
         });
@@ -72,8 +63,8 @@ public class SobreOLocal extends Fragment {
         return v;
     }
 
-    public void salvaSobreOLocal(){
-        if(!verificaAlteracao()) return;
+    public void salvaSobreOLocal() {
+        if (!verificaAlteracao()) return;
         try {
             dataHoraChegada = null;
             if (!dataChegada.getText().toString().equals("") &&
@@ -81,55 +72,63 @@ public class SobreOLocal extends Fragment {
                 dataHoraChegada = StaticProperties.formataDataHora(dataChegada.getText().toString(),
                         horaChegada.getText().toString());
             }
+
+            String condLocal = spCondicoesLocal.getSelectedItem().toString();
+            if (spCondicoesLocal.getSelectedItemPosition() == 0) {
+                condLocal = "";
+            }
             HttpSobreOLocal htp = new HttpSobreOLocal(infoAdicional.getText().toString(), dataHoraChegada,
-                    spCondicoesLocal.getSelectedItem().toString());
+                    condLocal);
             htp.execute().get();
 
             //VERIFICA RETORNO
-            if(htp.getStatusCode() == 200){
+            if (htp.getStatusCode() == 200) {
                 atualizaOcorrenciaLocal();
                 Toast toast = Toast.makeText(this.getContext(), "Dados salvos!", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
-                Toast toast = Toast.makeText(this.getContext(), "Erro: "+htp.getStatusCode(), Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this.getContext(), "Erro: " + htp.getStatusCode(), Toast.LENGTH_SHORT);
                 toast.show();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast toast = Toast.makeText(this.getContext(), "Erro interno", Toast.LENGTH_SHORT);
             toast.show();
             e.printStackTrace();
         }
     }
 
-    public boolean verificaAlteracao(){
+    public boolean verificaAlteracao() {
         String txtCondLocal;
-        if(spCondicoesLocal.getSelectedItemPosition() == 0)
+        if (spCondicoesLocal.getSelectedItemPosition() == 0)
             txtCondLocal = "";
         else
             txtCondLocal = spCondicoesLocal.getSelectedItem().toString();
-        if(!dataChegada.getText().toString().equals(CarregarOcorrencia.getSbDatachegada()) ||
+        return !dataChegada.getText().toString().equals(CarregarOcorrencia.getSbDatachegada()) ||
                 !horaChegada.getText().toString().equals(CarregarOcorrencia.getSbHoraChegada()) ||
-                !infoAdicional.getText().toString().equals(CarregarOcorrencia.getSbInfo())||
-                !txtCondLocal.equals(CarregarOcorrencia.getSbCondicoesLocal())){
-            return true;
-        } else
-            return false;
+                !infoAdicional.getText().toString().equals(CarregarOcorrencia.getSbInfo()) ||
+                !txtCondLocal.equals(CarregarOcorrencia.getSbCondicoesLocal());
     }
 
-    public void atualizaOcorrenciaLocal(){
-        CarregarOcorrencia.sbDatachegada= dataChegada.getText().toString();
+    public void atualizaOcorrenciaLocal() {
+        CarregarOcorrencia.sbDatachegada = dataChegada.getText().toString();
         CarregarOcorrencia.sbHoraChegada = horaChegada.getText().toString();
         CarregarOcorrencia.sbInfo = infoAdicional.getText().toString();
-        CarregarOcorrencia.sbCondicoesLocal = spCondicoesLocal.getSelectedItem().toString();
+
+
+        String condLocal = spCondicoesLocal.getSelectedItem().toString();
+        if (spCondicoesLocal.getSelectedItemPosition() == 0) {
+            condLocal = "";
+        }
+        CarregarOcorrencia.sbCondicoesLocal = condLocal;
     }
 
-    public void showTimePickerDialog(){
+    public void showTimePickerDialog() {
 
-        horaChegada.setOnClickListener(new View.OnClickListener(){
+        horaChegada.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 new TimePickerDialog(context, captarHorario, horarioAtual.get(Calendar.HOUR_OF_DAY),
-                        horarioAtual.get(Calendar.MINUTE),true).show();
+                        horarioAtual.get(Calendar.MINUTE), true).show();
             }
 
         });
@@ -138,15 +137,15 @@ public class SobreOLocal extends Fragment {
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            if(minuto < 10){
-                horaChegada.setText(hora+":0"+minuto);
+            if (minuto < 10) {
+                horaChegada.setText(hora + ":0" + minuto);
             } else {
-                horaChegada.setText(hora+":"+minuto);
+                horaChegada.setText(hora + ":" + minuto);
             }
         }
     };
 
-    public void showDatePickerDialog(){
+    public void showDatePickerDialog() {
         dataChegada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,19 +158,19 @@ public class SobreOLocal extends Fragment {
     protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            dataChegada.setText(day+"/"+(month+1)+"/"+year);
+            dataChegada.setText(day + "/" + (month + 1) + "/" + year);
         }
     };
 
-    public void carregaSobreOLocal(){
+    public void carregaSobreOLocal() {
 
         itemSpinner = CarregarOcorrencia.getSbCondicoesLocal();
 
-        if(itemSpinner == null){
+        if (itemSpinner == null) {
             spCondicoesLocal.setSelection(0);
         } else {
-            for(int i = 1; i < spCondicoesLocal.getAdapter().getCount(); i++){
-                if(itemSpinner.equalsIgnoreCase(spCondicoesLocal.getItemAtPosition(i).toString())) {
+            for (int i = 1; i < spCondicoesLocal.getAdapter().getCount(); i++) {
+                if (itemSpinner.equalsIgnoreCase(spCondicoesLocal.getItemAtPosition(i).toString())) {
                     spCondicoesLocal.setSelection(i);
                     break;
                 }
@@ -180,6 +179,19 @@ public class SobreOLocal extends Fragment {
         dataChegada.setText(CarregarOcorrencia.getSbDatachegada());
         horaChegada.setText(CarregarOcorrencia.getSbHoraChegada());
         infoAdicional.setText(CarregarOcorrencia.getSbInfo());
+
+        verificaEncerrada();
+    }
+
+    public void verificaEncerrada() {
+        if (CarregarOcorrencia.isEncerrada) {
+            dataChegada.setEnabled(false);
+            horaChegada.setEnabled(false);
+            spCondicoesLocal.setEnabled(false);
+            infoAdicional.setEnabled(false);
+            button.setEnabled(false);
+            button.setVisibility(View.GONE);
+        }
     }
 
     public static SobreOLocal newInstance() {
@@ -187,7 +199,6 @@ public class SobreOLocal extends Fragment {
         SobreOLocal f = new SobreOLocal();
         return f;
     }
-
 
 
     @Override

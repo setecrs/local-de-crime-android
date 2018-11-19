@@ -1,15 +1,12 @@
 package ages181.policiafederal_android;
 
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +16,7 @@ public class CarregarOcorrencia {
 
     // Dados Gerais
 
-    static String dgNumeroOcorrencia, dgSedeOcorrencia,  dgHoraAcionamento, dgDataAcionamento, dgPeritosOcorrencia;
+    static String dgNumeroOcorrencia, dgSedeOcorrencia, dgHoraAcionamento, dgDataAcionamento, dgPeritosOcorrencia;
     // LISTA DE MAIS DE UM PERITO, ARRUMAR CLASSE DADOSGERAIS COM AUTOCOMPLETE ===>>
 
 
@@ -29,7 +26,8 @@ public class CarregarOcorrencia {
 
     // Sobre o Fato
 
-    static String sfHoraProvavel, sfDataProvavel, sfTipoDelito, outroTipodeDelito;
+    static String sfHoraProvavel, sfDataProvavel, sfTipoDelito, outroTipodeDelito, possiveisSuspeitos,
+            valoresSubtraidos;
     static JSONArray sfModusOperandi;
     // ====>>> sfCheckBox
 
@@ -45,18 +43,20 @@ public class CarregarOcorrencia {
 
     static String testNome, testDoc, testFuncao, testEntrevista;
 
-    static List<String> listaPeritos;
+    static List<String> listaPeritos, listaDelitos;
 
     // Vestígios
 
     static JSONArray vestigios;
 
-    public static void zeraTela(JSONObject ob){
+    static boolean isEncerrada;
+
+    public static void zeraTela(JSONObject ob) {
         try {
-            if(ob.getString("dataHoraAcionamento") == null) {
+            if (ob.getString("dataHoraAcionamento") == null) {
                 dgDataAcionamento = "";
                 dgHoraAcionamento = "";
-            }else{
+            } else {
                 String[] dataHora = parseData(ob.getString("dataHoraAcionamento"));
                 dgDataAcionamento = dataHora[0];
                 dgHoraAcionamento = dataHora[1];
@@ -65,6 +65,7 @@ public class CarregarOcorrencia {
             e.printStackTrace();
         }
         listaPeritos = new LinkedList<String>();
+        listaDelitos = new LinkedList<String>();
         dgNumeroOcorrencia = "";
         dgSedeOcorrencia = "";
         dgPeritosOcorrencia = "";
@@ -88,17 +89,20 @@ public class CarregarOcorrencia {
         sbHoraChegada = "";
         sbCondicoesLocal = "";
         sbInfo = "";
-        sfDataProvavel= "";
+        sfDataProvavel = "";
         sfHoraProvavel = "";
         sfTipoDelito = "";
+        outroTipodeDelito = "";
+        possiveisSuspeitos = "";
         vestigios = new JSONArray();
+        isEncerrada = false;
     }
 
     public static String getOutroTipodeDelito() {
         return outroTipodeDelito;
     }
 
-    public static void carregaOcorrencia(JSONObject ocorrencia){
+    public static void carregaOcorrencia(JSONObject ocorrencia) {
         JSONObject auxJson;
         JSONArray auxArrayJson;
 
@@ -111,13 +115,13 @@ public class CarregarOcorrencia {
             listaPeritos = new LinkedList<String>();
             if (auxArrayJson.length() != 0) {
                 for (int i = 0; i < auxArrayJson.length(); i++) {
-                    listaPeritos.add(auxArrayJson.get(i).toString());
+                    listaPeritos.add(auxArrayJson.get(i).toString().replace("\\\"", "\""));
                 }
             }
 
-            if (!ocorrencia.isNull("tipoLocal")){
+            if (!ocorrencia.isNull("tipoLocal")) {
                 auxJson = ocorrencia.getJSONObject("tipoLocal");
-                if(!auxJson.getString("tipoLocal").equals("Outro")) {
+                if (!auxJson.getString("tipoLocal").equals("Outro")) {
                     endLocal = auxJson.getString("tipoLocal");
                     endOutroLocal = "";
                 } else {
@@ -126,8 +130,8 @@ public class CarregarOcorrencia {
                 }
             } else {
                 endLocal = "";
+                endOutroLocal = "";
             }
-
             endEstado = ocorrencia.getString("estado");
             endCidade = ocorrencia.getString("municipio");
             endRua = ocorrencia.getString("logradouro");
@@ -138,13 +142,17 @@ public class CarregarOcorrencia {
             respDoc = ocorrencia.getString("documentoResponsavel");
             respEntrevista = ocorrencia.getString("entrevistaResponsavel");
             testNome = ocorrencia.getString("nomeTestemunha");
+
+            valoresSubtraidos = ocorrencia.getString("valoresSubtraidos");
+            possiveisSuspeitos = ocorrencia.getString("possiveisSuspeitos");
+
             testFuncao = ocorrencia.getString("funcaoTestemunha");
             testDoc = ocorrencia.getString("documentoTestemunha");
             testEntrevista = ocorrencia.getString("entrevistaTestemunha");
-            if(ocorrencia.isNull("dataHoraChegada")) {
-                    sbDatachegada = "";
-                    sbHoraChegada = "";
-            }else{
+            if (ocorrencia.isNull("dataHoraChegada")) {
+                sbDatachegada = "";
+                sbHoraChegada = "";
+            } else {
                 String[] dataHora = parseData(ocorrencia.getString("dataHoraChegada"));
                 sbDatachegada = dataHora[0];
                 sbHoraChegada = dataHora[1];
@@ -152,40 +160,38 @@ public class CarregarOcorrencia {
             sbCondicoesLocal = ocorrencia.getString("condicaoLocal");
             sbInfo = ocorrencia.getString("informacoesAdicionais");
 
-            if(ocorrencia.isNull("dataOcorrencia")){
-                sfDataProvavel= "";
+            if (ocorrencia.isNull("dataOcorrencia")) {
+                sfDataProvavel = "";
                 sfHoraProvavel = "";
-            }else{
+            } else {
                 String[] dataHora = parseData(ocorrencia.getString("dataOcorrencia"));
                 sfDataProvavel = dataHora[0];
                 sfHoraProvavel = dataHora[1];
             }
-            if (!ocorrencia.isNull("tipoDelito")){
-                auxJson = ocorrencia.getJSONObject("tipoDelito");
-                if(!auxJson.getString("tipoDelito").equals("Outro")) {
-                    sfTipoDelito = auxJson.getString("tipoDelito");
-                    outroTipodeDelito = "";
-                } else {
-                    sfTipoDelito = auxJson.getString("tipoDelito");
-                    outroTipodeDelito = ocorrencia.getString("outroTipoDelito");
-                }
 
-            } else {
-                sfTipoDelito = "";
+            auxArrayJson = ocorrencia.getJSONArray("tipoDelito");
+            listaDelitos = new LinkedList<String>();
+            if (auxArrayJson.length() != 0) {
+                for (int i = 0; i < auxArrayJson.length(); i++) {
+                    listaDelitos.add(auxArrayJson.getJSONObject(i).get("tipoDelito").toString());
+                }
             }
+
+            outroTipodeDelito = ocorrencia.getString("outroTipoDelito");
 
             // VESTIGIOS ARRAY
             vestigios = ocorrencia.getJSONArray("vestigios");
 
-            if(ocorrencia.isNull("dataHoraAcionamento")) {
+            if (ocorrencia.isNull("dataHoraAcionamento")) {
                 dgDataAcionamento = "";
                 dgHoraAcionamento = "";
-            }else{
+            } else {
                 String[] dataHora = parseData(ocorrencia.getString("dataHoraAcionamento"));
                 dgDataAcionamento = dataHora[0];
                 dgHoraAcionamento = dataHora[1];
             }
 
+            isEncerrada = ocorrencia.getString("ocorrenciaEncerrada").equals("true");
 
 
         } catch (Exception e) {
@@ -193,7 +199,7 @@ public class CarregarOcorrencia {
         }
     }
 
-    public static String[] parseData(String dataOriginal){
+    public static String[] parseData(String dataOriginal) {
         try {
             Date objetoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(dataOriginal);
             String data = new SimpleDateFormat("dd/MM/yyyy").format(objetoDate);
@@ -203,6 +209,22 @@ public class CarregarOcorrencia {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<String> getListaDelitos() {
+        return listaDelitos;
+    }
+
+    public static void setListaDelitos(List<String> listaDelitos) {
+        CarregarOcorrencia.listaDelitos = listaDelitos;
+    }
+
+    public static String getPossiveisSuspeitos() {
+        return possiveisSuspeitos;
+    }
+
+    public static String getValoresSubtraidos() {
+        return valoresSubtraidos;
     }
 
     public static List<String> getListaPeritos() {
@@ -321,11 +343,11 @@ public class CarregarOcorrencia {
         return testEntrevista;
     }
 
-    public static JSONArray getVestigios(){
+    public static JSONArray getVestigios() {
         return vestigios;
     }
 
-    
+
 }
 
 

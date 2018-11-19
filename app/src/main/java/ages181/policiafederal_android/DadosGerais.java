@@ -5,10 +5,8 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,6 @@ import android.widget.Toast;
 import org.json.JSONArray;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,10 +33,11 @@ public class DadosGerais extends Fragment {
     private EditText peritoOcorrencia;
     private EditText dataOcorrencia;
     private EditText horaOcorrencia;
-    private Date dataHoraAcionamento;
+    private Long dataHoraAcionamento;
     private List<String> listaPeritos;
     private ArrayAdapter<String> adapter;
     private ListView listaViewPeritos;
+    private Button button, buttonAddPerito;
 
 
     @Override
@@ -53,6 +51,8 @@ public class DadosGerais extends Fragment {
         dataOcorrencia = v.findViewById(R.id.dataOcorrenciaId);
         horaOcorrencia = v.findViewById(R.id.horaOcorrenciaId);
         calendarHoraAtual = Calendar.getInstance();
+        button = v.findViewById(R.id.buttonSaveDadosGerais);
+        buttonAddPerito = v.findViewById(R.id.buttonAddPerito);
 
         carregaDadosGerais();
 
@@ -61,7 +61,7 @@ public class DadosGerais extends Fragment {
         showTimePickerDialog();
         showDatePickerDialog();
 
-        listaViewPeritos = (ListView) v.findViewById(R.id.lista);
+        listaViewPeritos = v.findViewById(R.id.lista);
 
         listaViewPeritos.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class DadosGerais extends Fragment {
                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
+                        switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 listaPeritos.remove(position);
                                 adapter.notifyDataSetChanged();
@@ -85,10 +85,12 @@ public class DadosGerais extends Fragment {
                     }
                 };
 
-                //ALERTA
-                AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
-                builder.setMessage("Deseja remover '"+peritoSelecionado+"'?").setPositiveButton("Sim", dialogClickListener)
-                        .setNegativeButton("Não", dialogClickListener).show();
+                if (!CarregarOcorrencia.isEncerrada) {
+                    //ALERTA
+                    AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+                    builder.setMessage("Deseja remover '" + peritoSelecionado + "'?").setPositiveButton("Sim", dialogClickListener)
+                            .setNegativeButton("Não", dialogClickListener).show();
+                }
             }
         });
 
@@ -98,24 +100,20 @@ public class DadosGerais extends Fragment {
         listaViewPeritos.setAdapter(adapter);
 
         //Botao salvar dados
-        Button button = (Button) v.findViewById(R.id.buttonSaveDadosGerais);
-        button.setOnClickListener(new View.OnClickListener()
-        {
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 salvarDadosGerais();
             }
         });
 
         //Botao add perito
-        Button buttonAddPerito = (Button) v.findViewById(R.id.buttonAddPerito);
-        buttonAddPerito.setOnClickListener(new View.OnClickListener()
-        {
+
+        buttonAddPerito.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if(!peritoOcorrencia.getText().toString().trim().equals("")) {
+            public void onClick(View v) {
+                if (!peritoOcorrencia.getText().toString().trim().equals("")) {
                     listaPeritos.add(peritoOcorrencia.getText().toString());
                     peritoOcorrencia.setText("");
                     adapter.notifyDataSetChanged();
@@ -134,7 +132,7 @@ public class DadosGerais extends Fragment {
         return f;
     }
 
-    public void showDatePickerDialog(){
+    public void showDatePickerDialog() {
         dataOcorrencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,17 +145,17 @@ public class DadosGerais extends Fragment {
     protected DatePickerDialog.OnDateSetListener captarData = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            dataOcorrencia.setText(day+"/"+(month+1)+"/"+year);
+            dataOcorrencia.setText(day + "/" + (month + 1) + "/" + year);
         }
     };
 
-    public void showTimePickerDialog(){
+    public void showTimePickerDialog() {
 
-        horaOcorrencia.setOnClickListener(new View.OnClickListener(){
+        horaOcorrencia.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 new TimePickerDialog(getActivity(), captarHorario, calendarHoraAtual.get(Calendar.HOUR_OF_DAY),
-                        calendarHoraAtual.get(Calendar.MINUTE),true).show();
+                        calendarHoraAtual.get(Calendar.MINUTE), true).show();
             }
         });
     }
@@ -166,36 +164,49 @@ public class DadosGerais extends Fragment {
     protected TimePickerDialog.OnTimeSetListener captarHorario = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hora, int minuto) {
-            if(minuto < 10){
-                horaOcorrencia.setText(hora+":0"+minuto);
+            if (minuto < 10) {
+                horaOcorrencia.setText(hora + ":0" + minuto);
             } else {
-                horaOcorrencia.setText(hora+":"+minuto);
+                horaOcorrencia.setText(hora + ":" + minuto);
             }
 
         }
     };
 
-    public void carregaDadosGerais(){
+    public void carregaDadosGerais() {
         numOcorrencia.setText(CarregarOcorrencia.getDgNumeroOcorrencia());
         sedeOcorrencia.setText(CarregarOcorrencia.getDgSedeOcorrencia());
         dataOcorrencia.setText(CarregarOcorrencia.getDgDataAcionamento());
         horaOcorrencia.setText(CarregarOcorrencia.getDgHoraAcionamento());
         listaPeritos = new LinkedList<String>(CarregarOcorrencia.getListaPeritos());
+
+        verificaEncerrada();
+
+    }
+
+    public void verificaEncerrada() {
+        if (CarregarOcorrencia.isEncerrada) {
+            numOcorrencia.setEnabled(false);
+            sedeOcorrencia.setEnabled(false);
+            dataOcorrencia.setEnabled(false);
+            horaOcorrencia.setEnabled(false);
+            peritoOcorrencia.setEnabled(false);
+            buttonAddPerito.setEnabled(false);
+            button.setEnabled(false);
+            button.setVisibility(View.GONE);
+        }
     }
 
 
-    public boolean verificaAlteracao(){
-        if(!numOcorrencia.getText().toString().equals(CarregarOcorrencia.getDgNumeroOcorrencia()) ||
+    public boolean verificaAlteracao() {
+        return !numOcorrencia.getText().toString().equals(CarregarOcorrencia.getDgNumeroOcorrencia()) ||
                 !sedeOcorrencia.getText().toString().equals(CarregarOcorrencia.getDgSedeOcorrencia()) ||
-                !dataOcorrencia.getText().toString().equals(CarregarOcorrencia.getDgDataAcionamento())||
+                !dataOcorrencia.getText().toString().equals(CarregarOcorrencia.getDgDataAcionamento()) ||
                 !horaOcorrencia.getText().toString().equals(CarregarOcorrencia.getDgHoraAcionamento()) ||
-                !listaPeritos.equals(CarregarOcorrencia.getListaPeritos())){
-            return true;
-        } else
-            return false;
+                !listaPeritos.equals(CarregarOcorrencia.getListaPeritos());
     }
 
-    public void atualizaOcorrenciaLocal(){
+    public void atualizaOcorrenciaLocal() {
         CarregarOcorrencia.dgNumeroOcorrencia = numOcorrencia.getText().toString();
         CarregarOcorrencia.dgSedeOcorrencia = sedeOcorrencia.getText().toString();
         CarregarOcorrencia.dgDataAcionamento = dataOcorrencia.getText().toString();
@@ -203,35 +214,40 @@ public class DadosGerais extends Fragment {
         CarregarOcorrencia.listaPeritos = new LinkedList<String>(listaPeritos);
     }
 
-    public void salvarDadosGerais(){
-        if(!verificaAlteracao()) return;
+    public void salvarDadosGerais() {
+        if (!verificaAlteracao()) return;
 
-        try{
-            if(!dataOcorrencia.getText().toString().equals("") &&
+        try {
+            if (!dataOcorrencia.getText().toString().equals("") &&
                     !horaOcorrencia.getText().toString().equals("")) {
                 dataHoraAcionamento = StaticProperties.formataDataHora(dataOcorrencia.getText().toString(),
                         horaOcorrencia.getText().toString());
-            }else{
+            } else {
                 dataHoraAcionamento = null;
+            }
+
+            List<String> peritos = new LinkedList<String>();
+            for (String s : listaPeritos) {
+                peritos.add(s.replace("\"", "\\\""));
             }
 
             //FAZ A REQUISICAO
             HttpDadosGerais htp = new HttpDadosGerais(numOcorrencia.getText().toString(),
-                                sedeOcorrencia.getText().toString(),
-                    new JSONArray(listaPeritos),
-                                dataHoraAcionamento);
+                    sedeOcorrencia.getText().toString(),
+                    new JSONArray(peritos),
+                    dataHoraAcionamento);
             htp.execute().get();
 
             //VERIFICA RETORNO
-            if(htp.getStatusCode() == 200){
+            if (htp.getStatusCode() == 200) {
                 atualizaOcorrenciaLocal();
                 Toast toast = Toast.makeText(this.getContext(), "Dados salvos!", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
-                Toast toast = Toast.makeText(this.getContext(), "Erro: "+htp.getStatusCode(), Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this.getContext(), "Erro: " + htp.getStatusCode(), Toast.LENGTH_SHORT);
                 toast.show();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             Toast toast = Toast.makeText(this.getContext(), "Erro interno", Toast.LENGTH_SHORT);
             toast.show();
             e.printStackTrace();

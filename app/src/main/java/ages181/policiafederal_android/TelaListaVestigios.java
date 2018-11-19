@@ -18,6 +18,7 @@ public class TelaListaVestigios extends Fragment {
     VestigioAdapter va;
     FloatingActionButton fabCriarVestigio;
     int posicaoClicada;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,29 +31,38 @@ public class TelaListaVestigios extends Fragment {
         va = new VestigioAdapter(this.getContext(), StaticProperties.getListaVestigios());
         rv.setAdapter(va);
         configuraBotaoAdiciona(v);
+        verificaEncerrada();
         va.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int position) throws JSONException {
-                System.out.println("Posição item clicado: "+position);
+                System.out.println("Posição item clicado: " + position);
                 posicaoClicada = position;
                 pegarObjeto();
                 JSONObject json = StaticProperties.getVestigioClicado();
                 Intent i = new Intent(getActivity(), TelaAdicionarVestigio.class);
-                i.putExtra("coletado",json.getString("coletado"));
+                i.putExtra("coletado", json.getString("coletado"));
                 i.putExtra("etiqueta", json.getString("etiqueta"));
-                i.putExtra("tipo",json.getJSONObject("tipo").getString("tipoVestigio"));
+                i.putExtra("tipo", json.getJSONObject("tipo").getString("tipoVestigio"));
                 i.putExtra("nome", json.getJSONObject("tipo").getString("nomeVestigio"));
-                i.putExtra("infoAdicional",json.getString("informacoesAdicionais"));
+                i.putExtra("infoAdicional", json.getString("informacoesAdicionais"));
                 startActivity(i);
             }
         });
         return v;
     }
+
     public void pegarObjeto() throws JSONException {
         for (int i = 0; i < StaticProperties.getJsonArrayVestigios().length(); i++) {
-            if(StaticProperties.getListaVestigios().get(posicaoClicada).getIdBanco()==StaticProperties.getJsonArrayVestigios().getJSONObject(i).getString("_id")){
+            if (StaticProperties.getListaVestigios().get(posicaoClicada).getIdBanco() == StaticProperties.getJsonArrayVestigios().getJSONObject(i).getString("_id")) {
                 StaticProperties.setVestigioClicado(StaticProperties.getJsonArrayVestigios().getJSONObject(i));
             }
+        }
+    }
+
+    public void verificaEncerrada() {
+        if (CarregarOcorrencia.isEncerrada) {
+            fabCriarVestigio.setEnabled(false);
+            fabCriarVestigio.setVisibility(View.GONE);
         }
     }
 
@@ -64,7 +74,7 @@ public class TelaListaVestigios extends Fragment {
     }
 
     public void configuraBotaoAdiciona(View v) {
-        if(fabCriarVestigio != null) {
+        if (fabCriarVestigio != null) {
             fabCriarVestigio.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -12,8 +12,7 @@
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,12 +21,13 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
+            android:focusableInTouchMode="true"
             android:layout_height="wrap_content">
 
             <Spinner
                 android:id="@+id/spinnerLocal"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -39,11 +39,10 @@
 
             <Spinner
                 android:id="@+id/spinnerEstado"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="31dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:entries="@array/estadoList"
                 android:prompt="@string/estadoPrompt"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +63,8 @@
                 android:id="@+id/textViewEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Estado"
                 app:layout_constraintStart_toStartOf="@+id/spinnerEstado"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -91,10 +91,10 @@
 
             <EditText
                 android:id="@+id/editTextRua"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Digite o nome da rua"
@@ -117,8 +117,8 @@
                 android:id="@+id/editTextComplemento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Digite o complemento"
@@ -141,8 +141,8 @@
                 android:id="@+id/editTextNumero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Digite o número"
@@ -153,7 +153,7 @@
 
             <EditText
                 android:id="@+id/editTextOutro"
-                android:layout_width="230dp"
+                android:layout_width="0dp"
                 android:layout_height="46dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -167,7 +167,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextViewCidade"
-                android:layout_width="230dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -182,7 +182,6 @@
                 android:id="@+id/buttonSaveEndereco"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"

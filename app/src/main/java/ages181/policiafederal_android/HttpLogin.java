@@ -3,17 +3,23 @@ package ages181.policiafederal_android;
 import android.os.AsyncTask;
 import android.text.Editable;
 import android.util.Base64;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import java.net.URL;
+import java.security.KeyStore;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -33,9 +39,9 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
     public HttpLogin(Editable usuario, Editable senha) {
         this.usuario = usuario;
         this.senha = senha;
+
     }
 
-    ;
 
     private Exception exception;
 
@@ -48,25 +54,64 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
         try {
 
             // GET /login
-            String credentials = usuario + ":" + senha;
+            String credentials = (usuario + ":" + senha).replace("\"", "\\\"");
             String basic = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
-
             Request requestLogin = new Request.Builder()
                     .addHeader("content-type", "application/json")
                     .addHeader("Authorization", basic)
                     .url(StaticProperties.getUrl() + "login")
                     .build();
 
-            Response responseLogin = client.newCall(requestLogin).execute();
+            //------------------------SSL
+
+            OkHttpClient.Builder clientBuilder = client.newBuilder().readTimeout(60, TimeUnit.SECONDS);
+
+            boolean allowUntrusted = true;
+
+            if (  allowUntrusted) {
+                final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        X509Certificate[] cArrr = new X509Certificate[0];
+                        return cArrr;
+                    }
+
+                    @Override
+                    public void checkServerTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+
+                    @Override
+                    public void checkClientTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+                }};
+
+                SSLContext sslContext = SSLContext.getInstance("SSL");
+
+                sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+                clientBuilder.sslSocketFactory(sslContext.getSocketFactory());
+
+                HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String hostname, SSLSession session) {
+                        return true;
+                    }
+                };
+                clientBuilder.hostnameVerifier( hostnameVerifier);
+            }
+
+            //------------------------SSL
+
+            Response responseLogin = clientBuilder.build().newCall(requestLogin).execute();
 
             String body = responseLogin.body().string();
 
             JSONObject responseObject = new JSONObject(body);
-
-            if (responseObject.has("token")) {
+            StaticProperties.setToken(((String) responseObject.get("token")));
+            if (responseObject.has("token") && StaticProperties.getToken() != null) {
                 System.out.println("TOKEN: " + responseObject.get("token"));
                 //System.out.println("ID: " + responseObject.get("_id"));
-                StaticProperties.setToken(((String) responseObject.get("token")));
 
                 String json = "";
 
@@ -75,11 +120,52 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
                 Request requestListas = new Request.Builder()
                         .addHeader("content-type", "application/json")
                         .addHeader("x-access-token", StaticProperties.getToken())
-                        .url(StaticProperties.getUrl() +"obter_listas")
+                        .url(StaticProperties.getUrl() + "obter_listas")
                         .build();
-                Response responseListas = client.newCall(requestListas).execute();
+                //------------------------SSL
 
-                JSONObject listas = new JSONObject(responseListas.body().string());
+                clientBuilder = client.newBuilder().readTimeout(60, TimeUnit.SECONDS);
+
+                allowUntrusted = true;
+
+                if (  allowUntrusted) {
+                    final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                        @Override
+                        public X509Certificate[] getAcceptedIssuers() {
+                            X509Certificate[] cArrr = new X509Certificate[0];
+                            return cArrr;
+                        }
+
+                        @Override
+                        public void checkServerTrusted(final X509Certificate[] chain,
+                                                       final String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public void checkClientTrusted(final X509Certificate[] chain,
+                                                       final String authType) throws CertificateException {
+                        }
+                    }};
+
+                    SSLContext sslContext = SSLContext.getInstance("SSL");
+
+                    sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+                    clientBuilder.sslSocketFactory(sslContext.getSocketFactory());
+
+                    HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+                        @Override
+                        public boolean verify(String hostname, SSLSession session) {
+                            return true;
+                        }
+                    };
+                    clientBuilder.hostnameVerifier( hostnameVerifier);
+                }
+
+                //------------------------SSL
+
+                Response response = clientBuilder.build().newCall(requestListas).execute();
+
+                JSONObject listas = new JSONObject(response.body().string());
 
                 StaticProperties.setJsonListas(listas);
 
@@ -90,7 +176,7 @@ public class HttpLogin extends AsyncTask<Void, Void, Void> {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
 
         }

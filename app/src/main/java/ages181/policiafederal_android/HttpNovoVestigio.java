@@ -1,19 +1,18 @@
 package ages181.policiafederal_android;
 
 import android.os.AsyncTask;
-import android.text.Editable;
-import android.util.Base64;
-
-import com.ToxicBakery.viewpager.transforms.ScaleInOutTransformer;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -33,13 +32,13 @@ public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
     private String tipoVestigio, nomeVestigio;
 
     //Construtor
-    public HttpNovoVestigio (boolean coletadoN, String etiquetaN, String informacoesAdicionaisN, String tipo, String nomeVest){
+    public HttpNovoVestigio(boolean coletadoN, String etiquetaN, String informacoesAdicionaisN, String tipo, String nomeVest) {
         this.coletado = coletadoN;
-        this.etiqueta = etiquetaN;
-        this.informacoesAdicionais = informacoesAdicionaisN;
-        this.tipoVestigio = tipo;
-        this.nomeVestigio = nomeVest;
-    };
+        this.etiqueta = etiquetaN.replace("\"", "\\\"");
+        this.informacoesAdicionais = informacoesAdicionaisN.replace("\"", "\\\"");
+        this.tipoVestigio = tipo.replace("\"", "\\\"");
+        this.nomeVestigio = nomeVest.replace("\"", "\\\"");
+    }
 
     //Variáveis locais
     private String idTipoVestigio;
@@ -53,16 +52,16 @@ public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
         try {
             //Realizando a verificação para encontrar o ID do tipoVestigio cadastrado no banco de acordo com o que o usuário informou
             JSONArray jsonVestigios = StaticProperties.getJsonListas().getJSONArray("tipoVestigios");
-                //Percorrendo todos os tiposVestigios
-                for (int i = 0; i < jsonVestigios.length(); i++) {
-                        //Comparando cada vestigio com o nome informado pelo usuário
-                    if (nomeVestigio.equals(jsonVestigios.getJSONObject(i).getString("nomeVestigio")) &&
-                            tipoVestigio.equals(jsonVestigios.getJSONObject(i).getString("tipoVestigio"))) {
-                        //Setando o ID do tipoVestigio na variável local idTipoVestigio
-                        idTipoVestigio = jsonVestigios.getJSONObject(i).getString("_id");
-                        break;
-                    }
+            //Percorrendo todos os tiposVestigios
+            for (int i = 0; i < jsonVestigios.length(); i++) {
+                //Comparando cada vestigio com o nome informado pelo usuário
+                if (nomeVestigio.equals(jsonVestigios.getJSONObject(i).getString("nomeVestigio")) &&
+                        tipoVestigio.equals(jsonVestigios.getJSONObject(i).getString("tipoVestigio"))) {
+                    //Setando o ID do tipoVestigio na variável local idTipoVestigio
+                    idTipoVestigio = jsonVestigios.getJSONObject(i).getString("_id");
+                    break;
                 }
+            }
 
 
             //Criando o JSON que será enviado ao banco para criar um novo vestígio
@@ -79,18 +78,59 @@ public class HttpNovoVestigio extends AsyncTask<Void, Void, Void> {
                     .addHeader("content-type", "application/json")
                     .addHeader("x-access-token", StaticProperties.getToken())
                     .post(body_vestigio)
-                    .url(StaticProperties.getUrl() + "vestigios/"+StaticProperties.getIdOcorrencia())
+                    .url(StaticProperties.getUrl() + "vestigios/" + StaticProperties.getIdOcorrencia())
                     .build();
 
             //Capturando a resposta da requisição
-            Response responseNovoVestigio = client.newCall(requestNovoVestigio).execute();
+            //------------------------SSL
+
+            OkHttpClient.Builder clientBuilder = client.newBuilder().readTimeout(60, TimeUnit.SECONDS);
+
+            boolean allowUntrusted = true;
+
+            if (  allowUntrusted) {
+                final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        X509Certificate[] cArrr = new X509Certificate[0];
+                        return cArrr;
+                    }
+
+                    @Override
+                    public void checkServerTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+
+                    @Override
+                    public void checkClientTrusted(final X509Certificate[] chain,
+                                                   final String authType) throws CertificateException {
+                    }
+                }};
+
+                SSLContext sslContext = SSLContext.getInstance("SSL");
+
+                sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+                clientBuilder.sslSocketFactory(sslContext.getSocketFactory());
+
+                HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String hostname, SSLSession session) {
+                        return true;
+                    }
+                };
+                clientBuilder.hostnameVerifier( hostnameVerifier);
+            }
+
+            //------------------------SSL
+
+            Response response = clientBuilder.build().newCall(requestNovoVestigio).execute();
 
             System.out.println("ID ocorrencia: " + StaticProperties.getIdOcorrencia());
-            System.out.println(responseNovoVestigio.body().string());
+            System.out.println(response.body().string());
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return null;
 
         }

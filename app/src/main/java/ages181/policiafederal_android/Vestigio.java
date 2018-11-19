@@ -5,7 +5,7 @@ public class Vestigio {
     private String informacoesAdicionais, tipoVestigio, nomeVestigio, etiqueta, idBanco;
     private int numId;
 
-    public Vestigio(int numId, String informacoesAdicionais, String etiqueta, String nomeVest,String idBancoN) {
+    public Vestigio(int numId, String informacoesAdicionais, String etiqueta, String nomeVest, String idBancoN) {
         this.numId = numId;
         this.informacoesAdicionais = informacoesAdicionais;
         this.etiqueta = etiqueta;
