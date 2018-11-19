@@ -18,7 +18,7 @@ public class TelaLogin extends AppCompatActivity {
     private EditText senha;
     ImageView imagem;
     private AutoCompleteTextView actvUsuario;
-    private String[] listaLogin = {"admin"};
+    private String[] listaLogin = {""};
 
 
     @Override
